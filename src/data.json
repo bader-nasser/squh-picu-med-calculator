@@ -165,11 +165,11 @@
 					],
 						"info": "0.05 mg/kg/dose IV in neonates",
 						"mg_mcg_mmol": {
-							"multiplier": [0.05],
+							"multiplier": 0.05,
 							"unit": "mg"
 						},
 						"ml":[ 
-							"multiplier": [0.05], 
+							"multiplier": 0.05, 
 						]
 					}
 				],
@@ -241,11 +241,11 @@
 					{
 						"info": "1mg/kg/dose IV",
 						"mg_mcg_mmol": { 
-							"multiplier": [1],
+							"multiplier": 1,
 						"unit":"mg"
 					    }, 
 						"ml": [
-							"multiplier": [1],
+							"multiplier": 1,
 						]
 					}
 				]
