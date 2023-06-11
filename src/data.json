@@ -138,7 +138,7 @@
 				]
 			}
 		],
-		"pediatric Intubation Medications": [
+		"pediatric_intubation_medications": [
 			{
 			    "name": "Atropine (0.5mg/ml), (Prepare a solution of 0.5mg of atropine with 4ml of 0.9%NS (100mcg/ml))",
 				"doses": [
