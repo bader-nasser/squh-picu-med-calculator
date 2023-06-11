@@ -329,9 +329,74 @@
 				},
 				"formula_50ml": {
 					"single strength":"prepare solution of (50mg) 5ml of rocuronium with 45 ml of 0.9% NS \n (1mg/ml)",
-					"maximum strength": 
-				}
-			}
+					"maximum strength": "preare solution of (250mg) 25ml of rocuronium with25ml of 0.9% NS\n (5mg/ml)"
+				},
+				"compatible": [
+					"Dextrose 5%",
+					"sodium chloride 0.9%",
+					"Hartmann's",
+					"dexmedetomidine",
+					"milrinone"
+				],
+				"incompatible": [
+					"furosemide",
+					"insulin"
+				]
+			},
+			{
+				"name": "cisatracurium (2mg/ml)",
+				"dose": {
+					"info": "60-180 mcg/kg/min",
+					"multiplier": [60, 180],
+					"unit": "mcg/hr"
+				},
+				"formula_50ml": {
+					"single strength": "prepare solution of (50mg) 25ml of cisatracurium with 25 ml of 0.9% NS \n (1mcg/ml)",
+					"double strength": "undiluted \n (2mg/ml)"
+				},
+				"compatible":[
+					"Dextrose 5%",
+					"sodium chloride 0.9%",
+					"epinephrine",
+					"dexmedetomidine",
+					"dobutamine",
+					"dopamine",
+					"fentanyl",
+					"midazolam",
+					"morphine",
+					"norepinephrine",
+					"remifentanil"
+				],
+				"incompatible": [
+					"hartmann's",
+					"heparin"
+				]
+			},
+			{
+				"name": "ketamine (50mg/ml)",
+				"dose": {
+					"info": "8-45 mcg/kg/min",
+					"multiplier": [8, 45],
+					"unit": "mcg/min"
+				},
+				"formula_50ml": {
+					"single strength": "prepare solution of (50mg) 1ml of ketamine with 49 ml of 0.9% NS \n (1mg/ml)",
+					"double strength": "prepare solution of (50mcg) 1ml of ketamine with 24 ml of 0,9%NS \n (2mg/ml)"
+				},
+				"compatible": [
+					"Dextrose 5%",
+					"sodium chloride 0.9%",
+					"fentanyl", 
+					"midazolam",
+					"morphine"
+				],
+				"incompatible": [
+					"furosemide",
+					"heparine",
+					"insulin",
+					"sodium bicarbonate"
+				]
+			},
 			{
 				"name": "Propofol 10mg/ml",
 				"dose": "9-15 mg/kg/hr",
