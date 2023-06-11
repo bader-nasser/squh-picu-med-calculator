@@ -60,7 +60,9 @@
 				"incompatible": ["sodium bicarbonate"]
 			},
 			{
-				"name": 
+				"name": "Norepinephrine (0.01-0.5 mcg/Kg/min):,
+				"dose": "prepare solution of (_amount_) ml Norepinephrine in (_ns_amount_ml of 0.9% NS\n (1ml/hr = 0.1mcg/kg/min)",
+
 				"name": "Dopamine (40mg/ml)",
 				"dose": "5-20 mcg/kg/min",
 				"formula_50ml": {
