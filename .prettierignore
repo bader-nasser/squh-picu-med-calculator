@@ -1,0 +1,5 @@
+.next
+pnpm-lock.yaml
+package-lock.json
+out
+src-tauri/target

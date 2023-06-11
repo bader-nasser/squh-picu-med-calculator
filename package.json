@@ -1,0 +1,72 @@
+{
+	"name": "squh-picu-med-calculator",
+	"prettyName": "SQUH PICU Med Calculator",
+	"version": "0.8.2",
+	"private": true,
+	"scripts": {
+		"prepare": "husky install",
+		"update:node": "pnpm update",
+		"update:rust": "cargo update --manifest-path src-tauri/Cargo.toml",
+		"update-deps": "run-s update:*",
+		"dev": "next",
+		"dev-tauri": "tauri dev",
+		"build": "next build --no-lint",
+		"build-tauri": "tauri build",
+		"start": "serve out",
+		"serve": "run-s build start",
+		"tauri": "tauri",
+		"tauri-dev": "tauri dev",
+		"tauri-build": "tauri build",
+		"lint:types": "tsc --noEmit",
+		"lint:scripts": "next lint",
+		"lint:prettier": "prettier --check .",
+		"lint:styles": "stylelint \"**/*.css\"",
+		"lint:rust": "cargo fmt --manifest-path src-tauri/Cargo.toml -- --check",
+		"lint": "run-s lint:*",
+		"fmt:scripts": "next lint --fix",
+		"fmt:prettier": "prettier --write .",
+		"fmt:styles": "stylelint \"**/*.css\" --fix",
+		"fmt:rust": "cargo fmt --manifest-path src-tauri/Cargo.toml",
+		"fmt": "run-s fmt:*",
+		"test": "run-s lint",
+		"test-build": "run-s test build",
+		"amend": "git commit --amend --no-edit --date=\"$(date)\"",
+		"amend-q": "git commit --amend --no-edit --date=\"$(date)\" -n",
+		"amend-all": "git commit --amend --no-edit --date=\"$(date)\" --all",
+		"amend-all-q": "git commit --amend --no-edit --date=\"$(date)\" --all -n",
+		"push-f": "git push -f"
+	},
+	"dependencies": {
+		"@ant-design/icons": "^5.1.4",
+		"antd": "^5.6.1",
+		"next": "^13.4.4",
+		"react": "^18.2.0",
+		"react-dom": "^18.2.0"
+	},
+	"browser": {
+		"fs": false,
+		"path": false
+	},
+	"devDependencies": {
+		"@tauri-apps/cli": "^1.3.1",
+		"@types/node": "^20.3.0",
+		"@types/react": "^18.2.11",
+		"@types/react-dom": "^18.2.4",
+		"eslint": "^8.42.0",
+		"eslint-config-next": "^13.4.4",
+		"eslint-config-prettier": "^8.8.0",
+		"husky": "^8.0.3",
+		"npm-run-all": "^4.1.5",
+		"prettier": "^2.8.8",
+		"serve": "^14.2.0",
+		"stylelint": "^15.7.0",
+		"stylelint-config-standard": "^33.0.0",
+		"typescript": "^5.1.3"
+	},
+	"packageManager": "pnpm@8.6.0",
+	"engines": {
+		"node": ">=18.0.0",
+		"pnpm": ">=8.0.0",
+		"npm": ">=9.0.0"
+	}
+}
