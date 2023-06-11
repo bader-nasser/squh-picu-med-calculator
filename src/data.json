@@ -5,7 +5,7 @@
 				"name": "Epinephrine 1:10000 (1mg/10ml)",
 				"doses": [
 					{
-						"info": "0.01 mg/kg/dose (max 1 mg) IV/IO (0.1 ml/kg of 1:10000)",
+						"info": "0.01 mg/kg/dose max 1 mg) IV/IO (0.1 ml/kg of 1:10000)",
 						"mg_mcg_mmol": {
 							"max": 1,
 							"multiplier": 0.01,
@@ -49,7 +49,7 @@
 					{
 						"info": "60-100mg/kg/dose (max. 100mg/dose) IV/IO (0.1-0.2 ml/kg) slow push",
 						"mg_mcg_mmol": {
-							"multiplier": [60, 100], "max 3000"
+							"multiplier": [60, 100], "max": 3000,
 							"unit": "mg"
 						},
 						"ml": {
