@@ -96,13 +96,75 @@
 					"Dextrose 5%",
 					"Hartmann's",
 					"sodium chloride",
-					"**edit this and add more**"
+					"epinephrine",
+					"cisatracurium",
+					"dexmedetomidine",
+					"Labetalol",
+					"milrinone",
+					"norepinephrine"
 				],
 				"incompatible": [
 					"sodium bicarbonate",
-					"**edit this and add more**"
+					"aminophylline",
+					"omeprazole",
+					"heparine"
 				]
 			},
+			{
+				"dobutamine (5mg/ml)",
+				"dose": "5-20 mcg/kg/min",
+				"formula_50ml":{
+					"text": "Prepare solution of (_amount_) ml Dobutamine in (_ns_amount_) ml of 0.9% NS \n (1ml/hr = 1 mgc/kg/min)",
+					"multiplier": 30,
+					"ns_multiplier": "adjust"
+				},
+				"compatible":[
+					"Dextrose 5-10%",
+					"Hartmann's",
+					"sodium chloride 0.9%",
+					"epinephrine",
+					"cisatracurium",
+					"dexmedetomidine",
+					"Labetalol",
+					"Milrinone",
+					"norepinephrine"
+				],
+				"incompatible":[
+					"sodium bicarbonate",
+					"aminophylline",
+					"omeprazole",
+					"heparine"
+				]
+			},
+			{
+				"name": "milrinone (1mg/ml)",
+				"dose": "0.25-0.75 mcg/kg/min",
+				"formula_50ml":{
+					"text":"Prepare solution of (10mg) 10 ml milrinone in 40 ml of 0.9% NS or D5W \n (200mcg/ml)"
+				},
+				"compatible":[
+					"Dextrose 5%",
+					"sodium chloride",
+					"epinephrine",
+					"norepinephrine",
+					"amiodarone",
+					"dobutamine",
+					"dopamine",
+					"fentanyl",
+					"heparine",
+					"insulin",
+					"midazolam",
+					"morphine"
+				],
+				"incompatible":[
+					"sodium bicarbonate",
+					"furosemide"
+				]
+			},
+			{
+				"name": 
+			}
+
 			{
 				"name": "Vasopressin 20IU/ml",
 				"dose": "0.3-1 unit/kg/hr",
