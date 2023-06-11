@@ -12,7 +12,7 @@
 							"unit": "mg"
 						},
 						"ml": {
-							"multiplier": 0.01
+							"multiplier": 0.1
 						}
 					},
 					{
@@ -42,7 +42,101 @@
 						}
 					}
 				]
+			},
+			{
+				"name": "calcium gluconate 10% (100mg/ml, (0.2mmol/ml)",
+				"doses": [
+					{
+						"info": "60-100mg/kg/dose (max. 100mg/dose) IV/IO (0.1-0.2 ml/kg) slow push",
+						"mg_mcg_mmol": {
+							"multiplier": [60, 100], "max 3000"
+							"unit": "mg"
+						},
+						"ml": {
+							"multiplier": [0.6, 1]
+						}
+					}
+				]
+
+			},
+			{
+				"name": "calcium chloride 10% (100mg/ml), (1.4mmol/ml)", 
+				"doses": [
+					{
+						"info": "10-20mg/kg/dose (max 100mg/dose) IV/IO (0.1-0.2 ml/kg) Slow Push via central line, dilute if peripheral line",
+						"mg_mcg_mmol": {
+							"multiplier": [10, 20], "max 100",
+							"unit": "mg"
+						},
+						"ml": {
+							"multiplier": [0.1, 0.2], "max 1"
+						}
+					}
+				]
+			},
+			{
+				"name": "dextrose",
+				"doses": [
+					{
+						"info": " IV/IO: 1-2 mL/kg D50%, via central line only, 2-4 mL/kg D25%, via central line only, 5-10 mL/kg D10%",
+						"mg_mcg_mmol": {
+						},
+						"ml": {
+							"info": "D50%",
+							"multiplier": [1, 2],
+							"info": "D25%",
+							"multiplier": [2, 4],
+							"info": "D10%", 
+							"multiplier": [5, 10]
+						}
+					}
+				]
+			},
+			{
+				"name": "Adenosine (6mg/2ml)",
+				"doses": [
+					{
+						"info": "0.1mg/kg IV/IO rapid bolus in central line (max 6mg); Second dose: 0.2 mg/kg (max 12mg)",
+						"mg_mcg_mmol": {
+							"multiplier": [0.1], "max 6",
+							"multiplier": [0.2], "max 12",
+							"unite": "mg"
+						},
+						"ml": {
+							"multiplier": "need adjustment",
+							"multiplier": "need adjustment"
+						}
+					}
+				]
+			},
+			{
+				"name": "Magnesium Sulphate 10% (100 mg/mL)", 
+				"doses": [
+					{
+						"info": "25–50 mg/kg (max 2g/dose) IV/IO over 10 - 20 minute",
+						"mg_mcg_mmol": {
+							"multiplier": [25, 50], "max 2000"
+						},
+						"ml": "missing info"
+					}
+				]
+			},
+			{
+				"name": "Naloxone (0.4mg/ml)",
+				"doses":[
+					{
+						"info": " <5yrs or <20kg: 0.1mg/kg IV/IO/ETT, >5yrs or >20 kg: 2 mg IV/IO/ETT",
+						"mg_mcg_mmol":{
+							"multiplier": [0.1, 2],
+							},
+						"ml": "need adjustment"
+						]
+					}
+				]
 			}
+		],
+		"pediatric Intubation Medications": [
+
 		],
 		"inotropic_infusions": [
 			{
