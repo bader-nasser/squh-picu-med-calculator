@@ -531,7 +531,7 @@
 				"name": "rocuronium (50mg/ml)",
 				"dose": {
 					"info": "300mcg/kg/hr",
-					"multiplier": [300],
+					"multiplier": 300,
 					"unit": "mcg/hr"
 				},
 				"formula_50ml": {
