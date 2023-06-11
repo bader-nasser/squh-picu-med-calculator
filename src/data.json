@@ -60,9 +60,31 @@
 				"incompatible": ["sodium bicarbonate"]
 			},
 			{
-				"name": "Norepinephrine (0.01-0.5 mcg/Kg/min):,
-				"dose": "prepare solution of (_amount_) ml Norepinephrine in (_ns_amount_ml of 0.9% NS\n (1ml/hr = 0.1mcg/kg/min)",
-
+				"name": "Norepinephrine (1mg/ml)",
+				"dose": "0.01-0.5 mcg/kg/min",
+				"formula_50ml": {
+					"text": "prepare solution of (_amount_) ml Norepinephrine in (_ns_amount_ml) of 0.9% NS \n (1ml/hr = 0.1mcg/kg/min)",
+					"multiplier": 0.3
+				},
+				"compatible": [
+					"Dextrose 5%",
+					"Hartmann's",
+					"sodium chloride 0.9%",
+					"cisatracurium",
+					"dopamine",
+					"dobutamine",
+					"heparine",
+					"midazolam",
+					"milrinone",
+					"morphine",
+					"remifentanil"
+				]
+				"incompatible": [
+					"sodium bicarbonate",
+					"insulin"
+				]
+			},
+		     {
 				"name": "Dopamine (40mg/ml)",
 				"dose": "5-20 mcg/kg/min",
 				"formula_50ml": {
