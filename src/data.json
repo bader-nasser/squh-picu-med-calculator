@@ -199,7 +199,7 @@
 							"unit": "mg"
 						},
 						"ml": {
-							"multiplier": 0.05, 
+							"multiplier": 0.05
 						}
 					}
 				]
@@ -259,9 +259,9 @@
 							"multiplier": [0.5, 2],
 							"unit": "mg"
 						}, 
-						"ml": [
+						"ml": {
 							"multiplier": "need adjustment"
-						]
+						}
 					}
 				]
 			},
@@ -290,7 +290,7 @@
 							"unit":"mg"
 						}, 
 						"ml": {
-							"multiplier": 1,
+							"multiplier": 1
 						}
 					}
 				]
@@ -728,7 +728,6 @@
 			},
 			{
 				"name": "Aminophylline (250mg/10ml)",
-
 				"dose": {
 					"info": "1mg/kg/hr",
 					"multiplier": 60,
@@ -775,7 +774,6 @@
 				"name": "Labetalol (100mg/20ml)",
 				"dose": "0.5mg -3 mg/kg/H",
 				"formula_50ml": "Prepare 50mg (10ml) with 40ml 0.9% NS (1mg/ml)",
-
 				"compatible": [
 					"Dextrose 5%",
 					"Hartmann's",
@@ -798,7 +796,6 @@
 			},
 			{
 				"name": "Hydralazine 20 mg\n\nDilute in 5ml WFI",
-
 				"dose": "12.5-50 mcg/kg/hr. Max 3mg/kg/day",
 				"formula_50ml": {
 					"maximum_strength": "prepare 20mg (5ml) with 15ml 0.9% NS (1mg/ml)",
