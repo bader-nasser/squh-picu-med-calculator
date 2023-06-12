@@ -5,7 +5,7 @@
 				"name": "Epinephrine 1:10000 (1mg/10ml)",
 				"doses": [
 					{
-						"info": "0.01 mg/kg/dose max 1 mg) IV/IO (0.1 ml/kg of 1:10000)",
+						"info": "0.01 mg/kg/dose (max 1 mg) IV/IO (0.1 ml/kg of 1:10000)",
 						"mg_mcg_mmol": {
 							"max": 1,
 							"multiplier": 0.01,
@@ -242,7 +242,7 @@
 						"mg_mcg_mmol": {
 							"multiplier": 1, 
 							"max": 100,
-							"unit":"mg",
+							"unit":"mg"
 						}, 
 						"ml": {
 							"multiplier": "need adjustment"
@@ -251,7 +251,7 @@
 				]
 			},
 			{
-				"name": "Propofol 10mg/ml"
+				"name": "Propofol 10mg/ml",
 				"doses":[
 					{
 						"info": "0.5-2mg/kg/dose IV", 
@@ -278,7 +278,7 @@
 							"multiplier": "needs adjustment"
 						}
 					}
-				],
+				]
 			},
 			{
 				"name": "Suxamethonium 5% (50mg/ml), (prepare a solution of 1mg/ml) ", 
@@ -307,7 +307,17 @@
 				"compatible": [
 					"Dextrose 5-10%",
 					"sodium chloride 0.9%",
-					"**add more**"
+					"Hartmann's",
+					"Ringer's",
+					"cisatracurium",
+					"dexmedetomidine",
+					"dobutamine",
+					"dopamine",
+					"fentanyl",
+					"heparin",
+					"milrinone",
+					"morphine",
+					"remifentanil"
 				],
 				"incompatible": ["sodium bicarbonate"]
 			},
@@ -363,7 +373,7 @@
 				]
 			},
 			{
-				"dobutamine (5mg/ml)",
+				"name": "dobutamine (5mg/ml)",
 				"dose": "5-20 mcg/kg/min",
 				"formula_50ml":{
 					"text": "Prepare solution of (_amount_) ml Dobutamine in (_ns_amount_) ml of 0.9% NS \n (1ml/hr = 1 mgc/kg/min)",
@@ -391,9 +401,8 @@
 			{
 				"name": "milrinone (1mg/ml)",
 				"dose": "0.25-0.75 mcg/kg/min",
-				"formula_50ml":{
-					"text":"Prepare solution of (10mg) 10 ml milrinone in 40 ml of 0.9% NS or D5W \n (200mcg/ml)"
-				},
+				"formula_50ml": "Prepare solution of (10mg) 10 ml milrinone in 40 ml of 0.9% NS or D5W \n (200mcg/ml)"
+				,
 				"compatible":[
 					"Dextrose 5%",
 					"sodium chloride",
