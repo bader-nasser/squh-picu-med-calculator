@@ -241,7 +241,7 @@
 				"formula_50ml":{
 					"text": "Prepare solution of (_amount_) ml Dobutamine in (_ns_amount_) ml of 0.9% NS \n (1ml/hr = 1 mgc/kg/min)",
 					"multiplier": 30,
-					"ns_multiplier": "0.3"
+					"ns_multiplier": 0.3
 				},
 				"compatible":[
 					"Dextrose 5-10%",
