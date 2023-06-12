@@ -12,7 +12,7 @@
 							"unit": "mg"
 						},
 						"ml": {
-							"multiplier": 0.01
+							"multiplier": 0.1
 						}
 					},
 					{
@@ -42,6 +42,174 @@
 						}
 					}
 				]
+			},
+			{
+				"name": "calcium gluconate 10% (100mg/ml, (0.2mmol/ml)",
+				"doses": [
+					{
+						"info": "60-100mg/kg/dose (max. 100mg/dose) IV/IO (0.1-0.2 ml/kg) slow push",
+						"mg_mcg_mmol": {
+							"multiplier": [60, 100],
+							"max": 3000,
+							"unit": "mg"
+						},
+						"ml": {
+							"multiplier": [0.6, 1]
+						}
+					}
+				]
+
+			},
+			{
+				"name": "calcium chloride 10% (100mg/ml), (1.4mmol/ml)", 
+				"doses": [
+					{
+						"info": "10-20mg/kg/dose (max 100mg/dose) IV/IO (0.1-0.2 ml/kg) Slow Push via central line, dilute if peripheral line",
+						"mg_mcg_mmol": {
+							"multiplier": [10, 20], 
+							"max": 100,
+							"unit": "mg"
+						},
+						"ml": {
+							"multiplier": [0.1, 0.2],
+							"max": 1
+						}
+					}
+				]
+			},
+			{
+				"name": "dextrose",
+				"doses": [
+					{
+						"info": " IV/IO: 1-2 mL/kg D50%, via central line only, 2-4 mL/kg D25%, via central line only, 5-10 mL/kg D10%",
+						"mg_mcg_mmol": "",
+						"ml": [
+							{
+								"label": "D50%",
+								"multiplier": [1, 2]
+							},
+							{
+								"label": "D25%",
+								"multiplier": [2, 4]
+							},
+							{
+								"label": "D10%",
+								"multiplier": [5, 10]
+							}
+						  ]
+					}
+				]
+			},
+			{
+				"name": "Adenosine (6mg/2ml)",
+				"doses": [
+					{
+						"info": "0.1mg/kg IV/IO rapid bolus in central line (max 6mg); Second dose: 0.2 mg/kg (max 12mg)",
+						"mg_mcg_mmol": {
+							"doses": [
+								{
+									"multiplier": 0.1,
+									"max": 6
+								},
+								{
+									"multiplier": 0.2,
+									"max": 12
+								}
+							],
+							"unit": "mg"
+						},
+						"ml": [
+							{
+								"multiplier": 0.2,
+								"divider": 6
+							},
+							{
+								"multiplier": 0.4,
+								"divider": 6
+							}
+						]
+					}
+				]
+			},
+			{
+				"name": "Magnesium Sulphate 10% (100 mg/mL)", 
+				"doses": [
+					{
+						"info": "25 - 50 mg/kg (max 2g/dose) IV/IO over 10 - 20 minute",
+						"mg_mcg_mmol": {
+							"multiplier": [25, 50],
+							"max": 2000,
+							"unit": "mg"
+						},
+						"ml": "missing info"
+					}
+				]
+			},
+			{
+				"name": "Naloxone (0.4mg/ml)",
+				"doses": [
+					{
+						"info": " <5yrs or <20kg: 0.1mg/kg IV/IO/ETT, >5yrs or >20 kg: 2 mg IV/IO/ETT",
+						"mg_mcg_mmol": {
+							"multiplier": [0.1, 2],
+							"unit": "mg"
+						},
+						"ml": [
+							{
+								"multiplier": 0.1,
+								"divider": 0.4
+							},
+							{
+								"multiplier": 2,
+								"divider": 0.4
+							}
+						]
+					}
+				]
+			}
+		],
+		"pediatric_intubation_medications": [
+			{
+				"name": " Midazolam (5mg/ml), (prepare a solution of 5mg (1ml) midazolam with 4 ml of 0.9% NS (1mg/ml))", 
+				"doses": [
+					{
+						"info": "0.1-0.2 mg/kg/dose IV (max value 4mg)", 
+						"mg_mcg_mmol":{
+							"multiplier": [0.1, 0.2], 
+							"max": 4,
+							"unit":"mg"
+						},
+						"ml": {
+							"multiplier": [0.1, 0.2], 
+							"max": 4
+						}
+					},
+					{
+						"info": "0.05 mg/kg/dose IV in neonates",
+						"mg_mcg_mmol": {
+							"multiplier": 0.05,
+							"unit": "mg"
+						},
+						"ml": {
+							"multiplier": 0.05
+						}
+					}
+				]
+			},
+			{
+				"name": "Suxamethonium 5% (50mg/ml), (prepare a solution of 1mg/ml) ", 
+				"doses": [
+					{
+						"info": "1mg/kg/dose IV",
+						"mg_mcg_mmol": { 
+							"multiplier": 1,
+							"unit":"mg"
+						}, 
+						"ml": {
+							"multiplier": 1
+						}
+					}
+				]
 			}
 		],
 		"inotropic_infusions": [
@@ -55,9 +223,44 @@
 				"compatible": [
 					"Dextrose 5-10%",
 					"sodium chloride 0.9%",
-					"**edit this and add more**"
+					"Hartmann's",
+					"Ringer's",
+					"cisatracurium",
+					"dexmedetomidine",
+					"dobutamine",
+					"dopamine",
+					"fentanyl",
+					"heparin",
+					"milrinone",
+					"morphine",
+					"remifentanil"
 				],
 				"incompatible": ["sodium bicarbonate"]
+			},
+			{
+				"name": "Norepinephrine (1mg/ml)",
+				"dose": "0.01-0.5 mcg/kg/min",
+				"formula_50ml": {
+					"text": "prepare solution of (_amount_) ml Norepinephrine in (_ns_amount_ml) of 0.9% NS \n (1ml/hr = 0.1mcg/kg/min)",
+					"multiplier": 0.3
+				},
+				"compatible": [
+					"Dextrose 5%",
+					"Hartmann's",
+					"sodium chloride 0.9%",
+					"cisatracurium",
+					"dopamine",
+					"dobutamine",
+					"heparine",
+					"midazolam",
+					"milrinone",
+					"morphine",
+					"remifentanil"
+				],
+				"incompatible": [
+					"sodium bicarbonate",
+					"insulin"
+				]
 			},
 			{
 				"name": "Dopamine (40mg/ml)",
@@ -71,11 +274,67 @@
 					"Dextrose 5%",
 					"Hartmann's",
 					"sodium chloride",
-					"**edit this and add more**"
+					"epinephrine",
+					"cisatracurium",
+					"dexmedetomidine",
+					"Labetalol",
+					"milrinone",
+					"norepinephrine"
 				],
 				"incompatible": [
 					"sodium bicarbonate",
-					"**edit this and add more**"
+					"aminophylline",
+					"omeprazole",
+					"heparine"
+				]
+			},
+			{
+				"name": "dobutamine (5mg/ml)",
+				"dose": "5-20 mcg/kg/min",
+				"formula_50ml":{
+					"text": "Prepare solution of (_amount_) ml Dobutamine in (_ns_amount_) ml of 0.9% NS \n (1ml/hr = 1 mgc/kg/min)",
+					"multiplier": 30,
+					"ns_multiplier": 0.3
+				},
+				"compatible":[
+					"Dextrose 5-10%",
+					"Hartmann's",
+					"sodium chloride 0.9%",
+					"epinephrine",
+					"cisatracurium",
+					"dexmedetomidine",
+					"Labetalol",
+					"Milrinone",
+					"norepinephrine"
+				],
+				"incompatible":[
+					"sodium bicarbonate",
+					"aminophylline",
+					"omeprazole",
+					"heparine"
+				]
+			},
+			{
+				"name": "milrinone (1mg/ml)",
+				"dose": "0.25-0.75 mcg/kg/min",
+				"formula_50ml": "Prepare solution of (10mg) 10 ml milrinone in 40 ml of 0.9% NS or D5W \n (200mcg/ml)",
+				"compatible":[
+					"Dextrose 5%",
+					"sodium chloride",
+					"epinephrine",
+					"norepinephrine",
+					"amiodarone",
+					"dobutamine",
+					"dopamine",
+					"fentanyl",
+					"heparine",
+					"insulin",
+					"midazolam",
+					"morphine"
+				],
+				"incompatible":[
+					"sodium bicarbonate",
+					"furosemide"
 				]
 			},
 			{
@@ -88,30 +347,200 @@
 		],
 		"sedation_and_anaesthesia": [
 			{
-				"name": "Morphine (10mg/ml)",
-				"dose": {
-					"info": "10-40 mcg/kg/hr",
-					"multiplier": [10, 40],
+				"name": "fentanyl (100mcg/2ml)",
+				"dose":{
+					"info": "1-6 mcg/kg/hr",
+					"multiplier": [1, 6],
 					"unit": "mcg/hr"
 				},
-				"formula_50ml": "",
+				"formula_50ml": {
+					"single_strength": "prepare solution of (500mcg) 10ml of fentanyl with 40 ml of 0.9% NS \n (10mcg/ml)",
+					"double_strength": "prepare solution of (1000mcg) 20 ml of fentanyl with 30 ml of 0,9%NS \n (20mcg/ml)"
+				},
 				"compatible": [
-					"Dextrose 5-10%",
+					"Dextrose 5%",
 					"sodium chloride 0.9%",
-					"Hartmann's",
-					"Ringer's",
-					"adrenaline",
+					"epinephrine",
 					"cisatracurium",
-					"dopamine",
-					"insulin",
-					"ketamine",
+					"heparine", 
 					"Labetalol",
 					"midazolam",
-					"Milrinone",
-					"noradrenaline",
+					"milrinone",
 					"remifentanil"
 				],
-				"incompatible": ["Aminophylline"]
+				"incompatible": [
+					"No information"
+				]
+			},
+			{
+				"name": "Remifentanil (5mg) dilute in 5 ml WFI",
+				"dose": {
+					"info": "24-78 mcg/kg/hr",
+					"multiplier":[24, 78],
+					"unit": "mcg/hr"
+				},
+				"formula_50ml": {
+					"minimum_strength": "prepare solution of (1mg) 1ml of remifentanil in 49ml of 0.9% NS (20mcg/ml)",
+					"maximum_strength": "prepare solution of (5mg) 5ml of remifentanil in 45ml of 0.9% NS (250mcg/ml)"
+				},
+				"compatible": [
+					"Dextrose 5%",
+					"sodium chloride 0.9%",
+					"epinephrine",
+					"aminophylline",
+					"cisatracurium",
+					"dexmedetomidine",
+					"dobutamine",
+					"dopamine",
+					"fentanyl",
+					"furosemide",
+					"heparin",
+					"midazolam",
+					"morphine",
+					"norepinephrine",
+					"sodium bicarbonate"
+				], 
+				"incompatible":[
+					"blood products"
+				],
+			},
+			{
+				"name": "midazolam (5mg/ml)",
+				"dose": {
+					"info": "1-4 mcg/kg/min",
+					"multiplier": [1, 4],
+					"unit": "mcg/hr"
+				},
+				"formula_50ml": {
+					"single_strength":"prepare solution of (50mg) 10ml of midazolam with 40 ml of 0.9% NS \n (1mg/ml)",
+					"double_strength": "prepare solution of (100mg) 20 ml of midazolam with 30 ml of 0,9%NS \n (2mg/ml)"
+				},
+				"compatible": [
+					"Dextrose 5%",
+					"Hartmann's",
+					"Ringer's",
+					"sodium chloride 0.9%",
+					"cisatracurium",
+					"dopamine",
+					"fentanyl",
+					"Labetalol",
+					"milrinone",
+					"morphine",
+					"norepinephrine",
+					"remifentanil"
+				],
+				"incompatible": [
+					"albumin",
+					"furosemide",
+					"omeprazole",
+					"sodium bicarbonate"
+				]
+			},
+			{
+				"name": "dexmedetomidine (PRECEDEX) (200mcg/2ml)",
+				"dose": {
+					"info": "0.1-1.5 mcg/kg/hr",
+					"multiplier": [0.1, 1.5],
+					"unit": "mcg/hr"
+				},
+				"formula_50ml": {
+					"single_strength": "prepare solution of (200mcg) 2ml of dexmedetomidine with 48 ml of 0.9% NS \n (4mg/ml)",
+					"double_strength": "prepare solution of (400mg) 4ml of midazolam with 46 ml of 0,9%NS \n (8mg/ml)"
+				},
+				"compatible": [
+					"Dextrose 5%",
+					"Hartmann's",
+					"sodium chloride 0.9%",
+					"epinephrine",
+					"dobutamine",
+					"dopamine",
+					"furosemide",
+					"heparin",
+					"Labetalol",
+					"milrinone",
+					"norepinephrine",
+					"sodium bicarbonate"
+				],
+				"incompatible": [
+					"No information"
+				]
+			},
+			{
+				"name": "rocuronium (50mg/ml)",
+				"dose": {
+					"info": "300mcg/kg/hr",
+					"multiplier": 300,
+					"unit": "mcg/hr"
+				},
+				"formula_50ml": {
+					"single_strength":"prepare solution of (50mg) 5ml of rocuronium with 45 ml of 0.9% NS \n (1mg/ml)",
+					"maximum_strength": "prepare solution of (250mg) 25ml of rocuronium with 25ml of 0.9% NS\n (5mg/ml)"
+				},
+				"compatible": [
+					"Dextrose 5%",
+					"sodium chloride 0.9%",
+					"Hartmann's",
+					"dexmedetomidine",
+					"milrinone"
+				],
+				"incompatible": [
+					"furosemide",
+					"insulin"
+				]
+			},
+			{
+				"name": "cisatracurium (2mg/ml)",
+				"dose": {
+					"info": "60-180 mcg/kg/min",
+					"multiplier": [60, 180],
+					"unit": "mcg/hr"
+				},
+				"formula_50ml": {
+					"single_strength": "prepare solution of (50mg) 25ml of cisatracurium with 25 ml of 0.9% NS \n (1mcg/ml)",
+					"double_strength": "undiluted \n (2mg/ml)"
+				},
+				"compatible":[
+					"Dextrose 5%",
+					"sodium chloride 0.9%",
+					"epinephrine",
+					"dexmedetomidine",
+					"dobutamine",
+					"dopamine",
+					"fentanyl",
+					"midazolam",
+					"morphine",
+					"norepinephrine",
+					"remifentanil"
+				],
+				"incompatible": [
+					"hartmann's",
+					"heparin"
+				]
+			},
+			{
+				"name": "ketamine (50mg/ml)",
+				"dose": {
+					"info": "8-45 mcg/kg/min",
+					"multiplier": [8, 45],
+					"unit": "mcg/min"
+				},
+				"formula_50ml": {
+					"single_strength": "prepare solution of (50mg) 1ml of ketamine with 49 ml of 0.9% NS \n (1mg/ml)",
+					"double_strength": "prepare solution of (50mcg) 1ml of ketamine with 24 ml of 0.9% NS \n (2mg/ml)"
+				},
+				"compatible": [
+					"Dextrose 5%",
+					"sodium chloride 0.9%",
+					"fentanyl", 
+					"midazolam",
+					"morphine"
+				],
+				"incompatible": [
+					"furosemide",
+					"heparine",
+					"insulin",
+					"sodium bicarbonate"
+				]
 			},
 			{
 				"name": "Propofol 10mg/ml",
@@ -192,7 +621,6 @@
 			},
 			{
 				"name": "Aminophylline (250mg/10ml)",
-
 				"dose": {
 					"info": "1mg/kg/hr",
 					"multiplier": 60,
@@ -239,7 +667,6 @@
 				"name": "Labetalol (100mg/20ml)",
 				"dose": "0.5mg -3 mg/kg/H",
 				"formula_50ml": "Prepare 50mg (10ml) with 40ml 0.9% NS (1mg/ml)",
-
 				"compatible": [
 					"Dextrose 5%",
 					"Hartmann's",
@@ -262,7 +689,6 @@
 			},
 			{
 				"name": "Hydralazine 20 mg\n\nDilute in 5ml WFI",
-
 				"dose": "12.5-50 mcg/kg/hr. Max 3mg/kg/day",
 				"formula_50ml": {
 					"maximum_strength": "prepare 20mg (5ml) with 15ml 0.9% NS (1mg/ml)",
