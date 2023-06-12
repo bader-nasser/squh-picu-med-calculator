@@ -3,14 +3,21 @@ type MgOrMcgOrMmolUnit = "mg" | "mcg" | "mmol" | string;
 type PediatricResuscitationMedicationDose = {
 	info: string;
 	mg_mcg_mmol?: {
-		multiplier: number | number[];
+		multiplier?: number | number[];
 		unit: MgOrMcgOrMmolUnit;
 		max?: number;
+		doses?: { multiplier: number; max: number }[];
 	};
-	ml?: {
-		multiplier: number | number[];
-		max?: number;
-	};
+	ml?:
+		| {
+				multiplier: number | number[];
+				max?: number;
+		  }
+		| {
+				multiplier: number | number[];
+				divider?: number;
+				label?: string;
+		  }[];
 };
 
 export type PediatricResuscitationMedication = {

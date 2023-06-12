@@ -29,8 +29,8 @@ interface DataType {
 	key: string;
 	medications: string;
 	dose: string;
-	mg_mcg_mmol: string;
-	ml: string;
+	mg_mcg_mmol: string | string[];
+	ml: string | string[];
 }
 
 const columns: ColumnsType<DataType> = [
@@ -48,11 +48,37 @@ const columns: ColumnsType<DataType> = [
 		title: "mg/mcg/mmol",
 		dataIndex: "mg_mcg_mmol",
 		key: "mg_mcg_mmol",
+		render: (_, { mg_mcg_mmol }) => {
+			if (typeof mg_mcg_mmol === "string") {
+				return mg_mcg_mmol;
+			} else {
+				return (
+					<>
+						{mg_mcg_mmol.map((m) => (
+							<div key={m}>m</div>
+						))}
+					</>
+				);
+			}
+		},
 	},
 	{
 		title: "ml",
 		dataIndex: "ml",
 		key: "ml",
+		render: (_, { ml }) => {
+			if (typeof ml === "string") {
+				return ml;
+			} else {
+				return (
+					<>
+						{ml.map((m) => (
+							<div key={m}>m</div>
+						))}
+					</>
+				);
+			}
+		},
 	},
 ];
 
@@ -87,31 +113,66 @@ export default function Home() {
 		({ name, doses }) => {
 			doses.forEach((dose, index) => {
 				const { info, mg_mcg_mmol, ml } = dose;
-				let mg_ = "";
-				let ml_ = "";
+				let mg_: string | string[] = "";
+				let ml_: string | string[] = "";
 				if (mg_mcg_mmol) {
-					const { multiplier, unit, max } = mg_mcg_mmol;
-					if (Array.isArray(multiplier)) {
-						const [a, b] = multiplier;
-						mg_ = `(${a * weight} to ${b * weight}) ${unit}`;
-					} else {
-						mg_ = `(${multiplier * weight}) ${unit}`;
-					}
-					if (max) {
-						mg_ = `${mg_} (max value ${max}${unit})`;
+					const { multiplier, unit, max, doses } = mg_mcg_mmol;
+					if (doses && Array.isArray(doses)) {
+						mg_ = [];
+						for (const d of doses) {
+							mg_.push(
+								`(${
+									d.multiplier * weight
+								}) ${unit} (max value ${max} ${unit})`
+							);
+						}
+					} else if (multiplier) {
+						if (Array.isArray(multiplier)) {
+							const [a, b] = multiplier;
+							mg_ = `(${a * weight} to ${b * weight}) ${unit}`;
+						} else {
+							mg_ = `(${multiplier * weight}) ${unit}`;
+						}
+						if (max) {
+							mg_ = `${mg_} (max value ${max}${unit})`;
+						}
 					}
 				}
 				if (ml) {
 					const unit = "ml";
-					const { multiplier, max } = ml;
-					if (Array.isArray(multiplier)) {
-						const [a, b] = multiplier;
-						ml_ = `(${a * weight} to ${b * weight}) ${unit}`;
+					if (Array.isArray(ml)) {
+						ml_ = [];
+						for (const m of ml) {
+							const { multiplier, label, divider } = m;
+							if (Array.isArray(multiplier) && label) {
+								const [a, b] = multiplier;
+								ml_.push(
+									`(${a * weight} to ${
+										b * weight
+									}) ${unit} ${label}`
+								);
+							} else if (
+								typeof multiplier === "number" &&
+								divider
+							) {
+								ml_.push(
+									`(${
+										(multiplier * weight) / divider
+									}) ${unit}`
+								);
+							}
+						}
 					} else {
-						ml_ = `(${multiplier * weight}) ${unit}`;
-					}
-					if (max) {
-						ml_ = `${ml_} (max value ${max}${unit})`;
+						const { multiplier, max } = ml;
+						if (Array.isArray(multiplier)) {
+							const [a, b] = multiplier;
+							ml_ = `(${a * weight} to ${b * weight}) ${unit}`;
+						} else {
+							ml_ = `(${multiplier * weight}) ${unit}`;
+						}
+						if (max) {
+							ml_ = `${ml_} (max value ${max}${unit})`;
+						}
 					}
 				}
 

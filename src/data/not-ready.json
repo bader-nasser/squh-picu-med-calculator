@@ -39,6 +39,38 @@
 			]
 		}
 	],
+	"sedation_and_anaesthesia": [
+		{
+			"name": "Morphine (10mg/ml)",
+			"dose": {
+				"info": "10-40 mcg/kg/hr",
+				"multiplier": [10, 40],
+				"unit": "mcg/hr"
+			},
+			"formula_50ml": {
+				"full_strength": "prepare solution of (_amount_) mg (_amount_/10) ml with (50-(_amount_/10)) ml \n (20mcg/Kg/ml)",
+				"double_strength": "prepare solution of (2_amount_) mg (2_amount_/10) ml with (50-(2_amount_/10)) ml \n (40mcg/Kg/ml)",
+				"half_strength": "prepare solution of (0.5_amount_) mg (0.5_amount_/10) ml with (50-(0.5_amount/10)) ml \n (10mcg/Kg/ml)"
+			},
+			"compatible": [
+				"Dextrose 5-10%",
+				"sodium chloride 0.9%",
+				"Hartmann's",
+				"Ringer's",
+				"adrenaline",
+				"cisatracurium",
+				"dopamine",
+				"insulin",
+				"ketamine",
+				"Labetalol",
+				"midazolam",
+				"Milrinone",
+				"noradrenaline",
+				"remifentanil"
+			],
+			"incompatible": ["Aminophylline"]
+		}
+	],
 	"pediatric_intubation_medications": [
 		{
 			"name": "Atropine (0.5mg/ml), (Prepare a solution of 0.5mg of atropine with 4ml of 0.9%NS (100mcg/ml))",
