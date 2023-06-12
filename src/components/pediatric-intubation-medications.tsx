@@ -1,12 +1,12 @@
 import { Table, Typography } from "antd";
 import type { ColumnsType } from "antd/es/table";
 
-import data from "@/data/pediatric-resuscitation-medications.json";
+import data from "@/data/pediatric-intubation-medications.json";
 
 const { Title } = Typography;
-const medications: PediatricResuscitationMedication[] = data.medications;
+const medications: PediatricIntubationMedication[] = data.medications;
 
-export type PediatricResuscitationMedication = {
+export type PediatricIntubationMedication = {
 	name: string;
 	doses: {
 		info: string;
@@ -151,7 +151,7 @@ const columns: ColumnsType<DataType> = [
 	},
 ];
 
-export default function PediatricResuscitationMedications({ weight }: Props) {
+export default function PediatricIntubationMedications({ weight }: Props) {
 	const tableData: DataType[] = [];
 
 	for (const { name, doses } of medications) {
@@ -169,7 +169,7 @@ export default function PediatricResuscitationMedications({ weight }: Props) {
 
 	return (
 		<>
-			<Title level={2}>Pediatric Resuscitation Medications</Title>
+			<Title level={2}>Pediatric Intubation Medication</Title>
 			<Table columns={columns} dataSource={tableData} />
 		</>
 	);

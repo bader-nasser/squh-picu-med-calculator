@@ -1,11 +1,28 @@
 import { Table, Typography } from "antd";
 import type { ColumnsType } from "antd/es/table";
-const { Title } = Typography;
 
-import type { SedationAndAnaesthesia } from "@/types";
+import { prettifyKeyName } from "@/utilities";
+import data from "@/data/sedation-and-anaesthesia.json";
+
+const { Title } = Typography;
+// @ts-ignore
+const medications: SedationAndAnaesthesia[] = data.medications;
+
+export type SedationAndAnaesthesia = {
+	name: string;
+	dose:
+		| string
+		| {
+				info: string;
+				multiplier: number | number[];
+				unit: string;
+		  };
+	formula_50ml: string | { [key: string]: string };
+	compatible: string[];
+	incompatible: string[];
+};
 
 interface Props {
-	medications: SedationAndAnaesthesia[];
 	weight: number;
 }
 
@@ -16,10 +33,10 @@ interface DataType {
 		| string
 		| {
 				info: string;
-				multiplier: number[];
+				multiplier: number | number[];
 				unit: string;
 		  };
-	formula_50ml: string;
+	formula_50ml: string | { [key: string]: string };
 	compatible: string[];
 	incompatible: string[];
 	weight: number;
@@ -39,16 +56,19 @@ const columns: ColumnsType<DataType> = [
 			if (typeof dose === "string") {
 				return dose;
 			} else {
-				const {
-					info,
-					multiplier: [a, b],
-					unit,
-				} = dose;
+				const { info, multiplier, unit } = dose;
+				let computedValue = "";
+				if (typeof multiplier === "number") {
+					computedValue = `${multiplier * weight}`;
+				} else {
+					const [m1, m2] = multiplier;
+					computedValue = `${m1 * weight} - ${m2 * weight}`;
+				}
 				return (
 					<>
 						<div>{info}</div>
 						<div>
-							({a * weight} - {b * weight}) {unit}
+							({computedValue}) {unit}
 						</div>
 					</>
 				);
@@ -63,17 +83,13 @@ const columns: ColumnsType<DataType> = [
 			if (typeof formula_50ml === "string") {
 				return formula_50ml;
 			} else {
-				const { minimum_strength, maximum_strength } = formula_50ml;
 				return (
 					<>
-						<div>
-							<strong>Minimum strength</strong>:{" "}
-							{minimum_strength}
-						</div>
-						<div>
-							<strong>Maximum strength</strong>:{" "}
-							{maximum_strength}
-						</div>
+						{Object.entries(formula_50ml).map(([key, value]) => (
+							<p key={key}>
+								<strong>{prettifyKeyName(key)}</strong>: {value}
+							</p>
+						))}
 					</>
 				);
 			}
@@ -93,22 +109,18 @@ const columns: ColumnsType<DataType> = [
 	},
 ];
 
-export default function SedationAndAnaesthesia({ medications, weight }: Props) {
+export default function SedationAndAnaesthesia({ weight }: Props) {
 	const tableData: DataType[] = [];
 
-	medications.forEach(
-		({ name, dose, formula_50ml, compatible, incompatible }, index) => {
-			tableData.push({
-				key: `${name}_${index}`,
-				medications: name,
-				dose,
-				formula_50ml,
-				compatible,
-				incompatible,
-				weight,
-			});
-		}
-	);
+	for (const medication of medications) {
+		tableData.push({
+			key: medication.name,
+			medications: medication.name,
+			weight,
+			...medication,
+		});
+	}
+
 	return (
 		<>
 			<Title level={2}>Sedation and Anaesthesia</Title>

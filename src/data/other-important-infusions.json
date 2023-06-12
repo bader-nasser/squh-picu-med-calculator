@@ -1,0 +1,155 @@
+{
+	"medications": [
+		{
+			"name": "Furosemide 20mg /2ml",
+			"dose": "max rate is 0.5mg/kg/min or 4mg/min",
+			"formula_50ml": {
+				"maximum_strength": "10 mg/ml (undiluted)",
+				"minimum_strength": "prepare 20mg (2ml) with 18ml of 0.9 NS (1 mg/ml)"
+			},
+			"compatible": [
+				"Dextrose 5%",
+				"Hartmann's",
+				"sodium chloride 0.9%",
+				"heparin",
+				"remifentanil"
+			],
+			"incompatible": [
+				"Hydralazine",
+				"Ketamine",
+				"labetalol",
+				"midazolam",
+				"Milrinone",
+				"rocuronium"
+			]
+		},
+		{
+			"name": "Heparin",
+			"dose": "0.5-25 unit/kg/hr alter to APTT",
+			"formula_50ml": "Dilute to 1 u/ml",
+			"compatible": [
+				"Dextrose 5%",
+				"sodium chloride 0.9%",
+				"adrenaline",
+				"dexmedetomidine",
+				"dopamine",
+				"fentanyl",
+				"furosemide",
+				"hydralazine",
+				"milrinone",
+				"noradrenaline",
+				"remifentanil",
+				"sodium bicarbonate"
+			],
+			"incompatible": [
+				"Cisatracurium",
+				"dobutamine",
+				"Ketamine",
+				"labetalol"
+			]
+		},
+		{
+			"name": "Insulin (ACTRAPID)",
+			"dose": "0.02 - 0.1 unit/kg/hr",
+			"formula_50ml": "Dilute 50 units in 50ml (1 unit /ml)",
+			"compatible": [
+				"Dextrose 5-10%",
+				"Hartmann's",
+				"Ringer's",
+				"sodium chloride 0.9%",
+				"milrinone",
+				"morphine"
+			],
+			"incompatible": [
+				"Dopamine",
+				"Ketamine",
+				"labetalol",
+				"noradrenaline",
+				"rocuronium"
+			]
+		},
+		{
+			"name": "Aminophylline (250mg/10ml)",
+			"dose": {
+				"info": "1mg/kg/hr",
+				"multiplier": 60,
+				"unit": "mg"
+			},
+			"formula_50ml": {
+				"maximum_strength": "25 mg/ml (undiluted)",
+				"minimum_strength": "prepare 50mg (2ml) with 48ml of 0.9 NS ( mg/ml)"
+			},
+			"compatible": [
+				"Dextrose 5-10%",
+				"Hartmann's",
+				"Ringer's",
+				"sodium chloride 0.9%"
+			],
+			"incompatible": [
+				"adrenaline",
+				"dobutamine",
+				"hydralazine",
+				"insulin",
+				"midazolam",
+				"morphine",
+				"noradrenaline"
+			]
+		},
+		{
+			"name": "Salbutamol (500mcg/ml)",
+			"dose": "1-5 mcg/kg/min",
+			"formula_50ml": {
+				"maximum_strength": "prepare 10mg (20ml) with 30ml of 0.9% NS (200mcg/ml)",
+				"minimum_strength": "prepare 500mcg (1ml) with 50ml of 0.9% NS (10mcg/ml)"
+			},
+			"compatible": ["sodium chloride 0.9%"],
+			"incompatible": ["No information"]
+		},
+		{
+			"name": "Omeprazole 40mg\n\nDilute in 4 ml WFI",
+			"dose": "Max 8mg/H",
+			"formula_50ml": "prepare 40mg (4ml) with 36ml of 0.9% NS (1mg/ml)",
+			"compatible": ["Dextrose 5-10%", "sodium chloride 0.9%"],
+			"incompatible": ["midazolam"]
+		},
+		{
+			"name": "Labetalol (100mg/20ml)",
+			"dose": "0.5mg -3 mg/kg/H",
+			"formula_50ml": "Prepare 50mg (10ml) with 40ml 0.9% NS (1mg/ml)",
+			"compatible": [
+				"Dextrose 5%",
+				"Hartmann's",
+				"Ringer's",
+				"sodium chloride 0.9%",
+				"Dexmedetomidine",
+				"dobutamine",
+				"dopamine",
+				"fentanyl",
+				"midazolam",
+				"morphine",
+				"noradrenaline"
+			],
+			"incompatible": [
+				"furosemide",
+				"heparine",
+				"insuline",
+				"sodium bicarbonate"
+			]
+		},
+		{
+			"name": "Hydralazine 20 mg\n\nDilute in 5ml WFI",
+			"dose": "12.5-50 mcg/kg/hr. Max 3mg/kg/day",
+			"formula_50ml": {
+				"maximum_strength": "prepare 20mg (5ml) with 15ml 0.9% NS (1mg/ml)",
+				"minimum_strength": "prepare 2mg (0.5ml) with 49.5 ml 0.9%NS (40mcg/ml)"
+			},
+			"compatible": [
+				"Hartmann's",
+				"Ringer's",
+				"sodium chloride 0.9%",
+				"heparine"
+			],
+			"incompatible": ["dextrose 5%", "aminophylline", "furosemide"]
+		}
+	]
+}

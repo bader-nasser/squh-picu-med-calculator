@@ -1,11 +1,31 @@
 import { Table, Typography } from "antd";
 import type { ColumnsType } from "antd/es/table";
-const { Title, Text } = Typography;
 
-import type { OtherImportantInfusion } from "@/types";
+import data from "@/data/other-important-infusions.json";
+
+const { Title } = Typography;
+const medications: OtherImportantInfusion[] = data.medications;
+
+export type OtherImportantInfusion = {
+	name: string;
+	dose:
+		| string
+		| {
+				info: string;
+				multiplier: number;
+				unit: string;
+		  };
+	formula_50ml:
+		| string
+		| {
+				minimum_strength: string;
+				maximum_strength: string;
+		  };
+	compatible: string[];
+	incompatible: string[];
+};
 
 interface Props {
-	medications: OtherImportantInfusion[];
 	weight: number;
 }
 
@@ -96,25 +116,18 @@ const columns: ColumnsType<DataType> = [
 	},
 ];
 
-export default function OtherImportantInfusions({
-	medications,
-	weight,
-}: Props) {
+export default function OtherImportantInfusions({ weight }: Props) {
 	const tableData: DataType[] = [];
 
-	medications.forEach(
-		({ name, dose, formula_50ml, compatible, incompatible }, index) => {
-			tableData.push({
-				key: `${name}_${index}`,
-				medications: name,
-				dose,
-				formula_50ml,
-				compatible,
-				incompatible,
-				weight,
-			});
-		}
-	);
+	for (const medication of medications) {
+		tableData.push({
+			key: medication.name,
+			medications: medication.name,
+			weight,
+			...medication,
+		});
+	}
+
 	return (
 		<>
 			<Title level={2}>Other Important Infusions</Title>

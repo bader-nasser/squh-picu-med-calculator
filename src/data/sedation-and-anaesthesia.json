@@ -1,0 +1,195 @@
+{
+	"medications": [
+		{
+			"name": "fentanyl (100mcg/2ml)",
+			"dose": {
+				"info": "1-6 mcg/kg/hr",
+				"multiplier": [1, 6],
+				"unit": "mcg/hr"
+			},
+			"formula_50ml": {
+				"single_strength": "prepare solution of (500mcg) 10ml of fentanyl with 40 ml of 0.9% NS \n (10mcg/ml)",
+				"double_strength": "prepare solution of (1000mcg) 20 ml of fentanyl with 30 ml of 0,9%NS \n (20mcg/ml)"
+			},
+			"compatible": [
+				"Dextrose 5%",
+				"sodium chloride 0.9%",
+				"epinephrine",
+				"cisatracurium",
+				"heparine",
+				"Labetalol",
+				"midazolam",
+				"milrinone",
+				"remifentanil"
+			],
+			"incompatible": ["No information"]
+		},
+		{
+			"name": "Remifentanil (5mg) dilute in 5 ml WFI",
+			"dose": {
+				"info": "24-78 mcg/kg/hr",
+				"multiplier": [24, 78],
+				"unit": "mcg/hr"
+			},
+			"formula_50ml": {
+				"minimum_strength": "prepare solution of (1mg) 1ml of remifentanil in 49ml of 0.9% NS (20mcg/ml)",
+				"maximum_strength": "prepare solution of (5mg) 5ml of remifentanil in 45ml of 0.9% NS (250mcg/ml)"
+			},
+			"compatible": [
+				"Dextrose 5%",
+				"sodium chloride 0.9%",
+				"epinephrine",
+				"aminophylline",
+				"cisatracurium",
+				"dexmedetomidine",
+				"dobutamine",
+				"dopamine",
+				"fentanyl",
+				"furosemide",
+				"heparin",
+				"midazolam",
+				"morphine",
+				"norepinephrine",
+				"sodium bicarbonate"
+			],
+			"incompatible": ["blood products"]
+		},
+		{
+			"name": "midazolam (5mg/ml)",
+			"dose": {
+				"info": "1-4 mcg/kg/min",
+				"multiplier": [1, 4],
+				"unit": "mcg/hr"
+			},
+			"formula_50ml": {
+				"single_strength": "prepare solution of (50mg) 10ml of midazolam with 40 ml of 0.9% NS \n (1mg/ml)",
+				"double_strength": "prepare solution of (100mg) 20 ml of midazolam with 30 ml of 0.9% NS \n (2mg/ml)"
+			},
+			"compatible": [
+				"Dextrose 5%",
+				"Hartmann's",
+				"Ringer's",
+				"sodium chloride 0.9%",
+				"cisatracurium",
+				"dopamine",
+				"fentanyl",
+				"Labetalol",
+				"milrinone",
+				"morphine",
+				"norepinephrine",
+				"remifentanil"
+			],
+			"incompatible": [
+				"albumin",
+				"furosemide",
+				"omeprazole",
+				"sodium bicarbonate"
+			]
+		},
+		{
+			"name": "dexmedetomidine (PRECEDEX) (200mcg/2ml)",
+			"dose": {
+				"info": "0.1-1.5 mcg/kg/hr",
+				"multiplier": [0.1, 1.5],
+				"unit": "mcg/hr"
+			},
+			"formula_50ml": {
+				"single_strength": "prepare solution of (200mcg) 2ml of dexmedetomidine with 48 ml of 0.9% NS \n (4mg/ml)",
+				"double_strength": "prepare solution of (400mg) 4ml of midazolam with 46 ml of 0,9%NS \n (8mg/ml)"
+			},
+			"compatible": [
+				"Dextrose 5%",
+				"Hartmann's",
+				"sodium chloride 0.9%",
+				"epinephrine",
+				"dobutamine",
+				"dopamine",
+				"furosemide",
+				"heparin",
+				"Labetalol",
+				"milrinone",
+				"norepinephrine",
+				"sodium bicarbonate"
+			],
+			"incompatible": ["No information"]
+		},
+		{
+			"name": "rocuronium (50mg/ml)",
+			"dose": {
+				"info": "300mcg/kg/hr",
+				"multiplier": 300,
+				"unit": "mcg/hr"
+			},
+			"formula_50ml": {
+				"single_strength": "prepare solution of (50mg) 5ml of rocuronium with 45 ml of 0.9% NS \n (1mg/ml)",
+				"maximum_strength": "prepare solution of (250mg) 25ml of rocuronium with 25ml of 0.9% NS\n (5mg/ml)"
+			},
+			"compatible": [
+				"Dextrose 5%",
+				"sodium chloride 0.9%",
+				"Hartmann's",
+				"dexmedetomidine",
+				"milrinone"
+			],
+			"incompatible": ["furosemide", "insulin"]
+		},
+		{
+			"name": "cisatracurium (2mg/ml)",
+			"dose": {
+				"info": "60-180 mcg/kg/min",
+				"multiplier": [60, 180],
+				"unit": "mcg/hr"
+			},
+			"formula_50ml": {
+				"single_strength": "prepare solution of (50mg) 25ml of cisatracurium with 25 ml of 0.9% NS \n (1mcg/ml)",
+				"double_strength": "undiluted \n (2mg/ml)"
+			},
+			"compatible": [
+				"Dextrose 5%",
+				"sodium chloride 0.9%",
+				"epinephrine",
+				"dexmedetomidine",
+				"dobutamine",
+				"dopamine",
+				"fentanyl",
+				"midazolam",
+				"morphine",
+				"norepinephrine",
+				"remifentanil"
+			],
+			"incompatible": ["hartmann's", "heparin"]
+		},
+		{
+			"name": "ketamine (50mg/ml)",
+			"dose": {
+				"info": "8-45 mcg/kg/min",
+				"multiplier": [8, 45],
+				"unit": "mcg/min"
+			},
+			"formula_50ml": {
+				"single_strength": "prepare solution of (50mg) 1ml of ketamine with 49 ml of 0.9% NS \n (1mg/ml)",
+				"double_strength": "prepare solution of (50mcg) 1ml of ketamine with 24 ml of 0.9% NS \n (2mg/ml)"
+			},
+			"compatible": [
+				"Dextrose 5%",
+				"sodium chloride 0.9%",
+				"fentanyl",
+				"midazolam",
+				"morphine"
+			],
+			"incompatible": [
+				"furosemide",
+				"heparine",
+				"insulin",
+				"sodium bicarbonate"
+			]
+		},
+		{
+			"name": "Propofol 10mg/ml",
+			"dose": "9-15 mg/kg/hr",
+			"formula_50ml": "Undiluted",
+			"compatible": ["Dextrose 5%", "sodium chloride 0.9%"],
+			"incompatible": ["Cisatracurium"]
+		}
+	]
+}

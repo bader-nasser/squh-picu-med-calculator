@@ -5,86 +5,27 @@ import {
 	Input,
 	InputNumber,
 	Select,
-	Table,
 	Row,
 	Col,
 	Layout,
 	Typography,
 } from "antd";
-import type { ColumnsType } from "antd/es/table";
 
-import data from "@/data.json";
+import PediatricResuscitationMedications from "@/components/pediatric-resuscitation-medications";
+import PediatricIntubationMedications from "@/components/pediatric-intubation-medications";
 import InotropicInfusions from "@/components/inotropic-infusions";
 import SedationAndAnaesthesia from "@/components/sedation-and-anaesthesia";
 import OtherImportantInfusions from "@/components/other-important-infusions";
-import { Medications } from "@/types";
+
 import pkg from "../../package.json";
 
-const { Title, Text } = Typography;
+const { Title } = Typography;
 const { Option } = Select;
-const FormItem = Form.Item;
 const { Header, Content, Footer } = Layout;
+const FormItem = Form.Item;
 
-interface DataType {
-	key: string;
-	medications: string;
-	dose: string;
-	mg_mcg_mmol: string | string[];
-	ml: string | string[];
-}
-
-const columns: ColumnsType<DataType> = [
-	{
-		title: "Medications",
-		dataIndex: "medications",
-		key: "medications",
-	},
-	{
-		title: "Dose",
-		dataIndex: "dose",
-		key: "dose",
-	},
-	{
-		title: "mg/mcg/mmol",
-		dataIndex: "mg_mcg_mmol",
-		key: "mg_mcg_mmol",
-		render: (_, { mg_mcg_mmol }) => {
-			if (typeof mg_mcg_mmol === "string") {
-				return mg_mcg_mmol;
-			} else {
-				return (
-					<>
-						{mg_mcg_mmol.map((m) => (
-							<div key={m}>m</div>
-						))}
-					</>
-				);
-			}
-		},
-	},
-	{
-		title: "ml",
-		dataIndex: "ml",
-		key: "ml",
-		render: (_, { ml }) => {
-			if (typeof ml === "string") {
-				return ml;
-			} else {
-				return (
-					<>
-						{ml.map((m) => (
-							<div key={m}>m</div>
-						))}
-					</>
-				);
-			}
-		},
-	},
-];
-
-const medications: Medications = data;
 const initialValues = {
-	weight: 10,
+	weight: 49.4,
 	category: "pediatric_resuscitation_medications",
 };
 
@@ -107,129 +48,30 @@ export default function Home() {
 		console.log("Failed:", errorInfo);
 	};
 
-	const tableData: DataType[] = [];
-
-	medications.categories.pediatric_resuscitation_medications.forEach(
-		({ name, doses }) => {
-			doses.forEach((dose, index) => {
-				const { info, mg_mcg_mmol, ml } = dose;
-				let mg_: string | string[] = "";
-				let ml_: string | string[] = "";
-				if (mg_mcg_mmol) {
-					const { multiplier, unit, max, doses } = mg_mcg_mmol;
-					if (doses && Array.isArray(doses)) {
-						mg_ = [];
-						for (const d of doses) {
-							mg_.push(
-								`(${
-									d.multiplier * weight
-								}) ${unit} (max value ${max} ${unit})`
-							);
-						}
-					} else if (multiplier) {
-						if (Array.isArray(multiplier)) {
-							const [a, b] = multiplier;
-							mg_ = `(${a * weight} to ${b * weight}) ${unit}`;
-						} else {
-							mg_ = `(${multiplier * weight}) ${unit}`;
-						}
-						if (max) {
-							mg_ = `${mg_} (max value ${max}${unit})`;
-						}
-					}
-				}
-				if (ml) {
-					const unit = "ml";
-					if (Array.isArray(ml)) {
-						ml_ = [];
-						for (const m of ml) {
-							const { multiplier, label, divider } = m;
-							if (Array.isArray(multiplier) && label) {
-								const [a, b] = multiplier;
-								ml_.push(
-									`(${a * weight} to ${
-										b * weight
-									}) ${unit} ${label}`
-								);
-							} else if (
-								typeof multiplier === "number" &&
-								divider
-							) {
-								ml_.push(
-									`(${
-										(multiplier * weight) / divider
-									}) ${unit}`
-								);
-							}
-						}
-					} else {
-						const { multiplier, max } = ml;
-						if (Array.isArray(multiplier)) {
-							const [a, b] = multiplier;
-							ml_ = `(${a * weight} to ${b * weight}) ${unit}`;
-						} else {
-							ml_ = `(${multiplier * weight}) ${unit}`;
-						}
-						if (max) {
-							ml_ = `${ml_} (max value ${max}${unit})`;
-						}
-					}
-				}
-
-				tableData.push({
-					key: `${name}_${index}`,
-					medications: name,
-					dose: info,
-					mg_mcg_mmol: mg_,
-					ml: ml_,
-				});
-			});
-		}
+	let CategoryToShow = () => (
+		<PediatricResuscitationMedications weight={weight} />
 	);
 
-	let CategoryToShow = () => <div>Please select a category</div>;
 	switch (category) {
 		case "pediatric_resuscitation_medications":
 			CategoryToShow = () => (
-				<>
-					<Title level={2}>Pediatric Resuscitation Medications</Title>
-					<Table columns={columns} dataSource={tableData} />
-				</>
+				<PediatricResuscitationMedications weight={weight} />
 			);
 			break;
-
-		case "inotropic_infusions":
+		case "pediatric_intubation_medications":
 			CategoryToShow = () => (
-				<InotropicInfusions
-					medications={medications.categories["inotropic_infusions"]}
-					weight={weight}
-				/>
+				<PediatricIntubationMedications weight={weight} />
 			);
+			break;
+		case "inotropic_infusions":
+			CategoryToShow = () => <InotropicInfusions weight={weight} />;
 			break;
 		case "sedation_and_anaesthesia":
-			CategoryToShow = () => (
-				<SedationAndAnaesthesia
-					medications={
-						medications.categories["sedation_and_anaesthesia"]
-					}
-					weight={weight}
-				/>
-			);
+			CategoryToShow = () => <SedationAndAnaesthesia weight={weight} />;
 			break;
 		case "other_important_infusions":
-			CategoryToShow = () => (
-				<OtherImportantInfusions
-					medications={
-						medications.categories["other_important_infusions"]
-					}
-					weight={weight}
-				/>
-			);
+			CategoryToShow = () => <OtherImportantInfusions weight={weight} />;
 			break;
-		case "other": {
-			CategoryToShow = () => <div>Not implemented yet!</div>;
-			break;
-		}
 		default:
 			break;
 	}
@@ -307,27 +149,34 @@ export default function Home() {
 								</Col>
 							</Row>
 
-							<FormItem
-								name="category"
-								label="Category"
-								rules={[{ required: true }]}
-							>
-								<Select placeholder="Select a category">
-									<Option value="pediatric_resuscitation_medications">
-										Pediatric Resuscitation Medications
-									</Option>
-									<Option value="inotropic_infusions">
-										Inotropic Infusions
-									</Option>
-									<Option value="sedation_and_anaesthesia">
-										Sedation and Anaesthesia
-									</Option>
-									<Option value="other_important_infusions">
-										Other Important Infusions
-									</Option>
-									<Option value="other">Other</Option>
-								</Select>
-							</FormItem>
+							<Row>
+								<Col xs={{ span: 24 }} lg={{ span: 12 }}>
+									<FormItem
+										name="category"
+										label="Category"
+										rules={[{ required: true }]}
+									>
+										<Select placeholder="Select a category">
+											<Option value="pediatric_resuscitation_medications">
+												Pediatric Resuscitation
+												Medications
+											</Option>
+											<Option value="pediatric_intubation_medications">
+												Pediatric Intubation Medications
+											</Option>
+											<Option value="inotropic_infusions">
+												Inotropic Infusions
+											</Option>
+											<Option value="sedation_and_anaesthesia">
+												Sedation and Anaesthesia
+											</Option>
+											<Option value="other_important_infusions">
+												Other Important Infusions
+											</Option>
+										</Select>
+									</FormItem>
+								</Col>
+							</Row>
 
 							<CategoryToShow />
 						</Form>

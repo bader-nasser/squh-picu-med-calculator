@@ -1,0 +1,46 @@
+{
+	"medications": [
+		{
+			"name": " Midazolam (5mg/ml), (prepare a solution of 5mg (1ml) midazolam with 4 ml of 0.9% NS (1mg/ml))",
+			"doses": [
+				{
+					"info": "0.1-0.2 mg/kg/dose IV (max value 4mg)",
+					"mg_mcg_mmol": {
+						"multiplier": [0.1, 0.2],
+						"max": 4,
+						"unit": "mg"
+					},
+					"ml": {
+						"multiplier": [0.1, 0.2],
+						"max": 4
+					}
+				},
+				{
+					"info": "0.05 mg/kg/dose IV in neonates",
+					"mg_mcg_mmol": {
+						"multiplier": 0.05,
+						"unit": "mg"
+					},
+					"ml": {
+						"multiplier": 0.05
+					}
+				}
+			]
+		},
+		{
+			"name": "Suxamethonium 5% (50mg/ml), (prepare a solution of 1mg/ml) ",
+			"doses": [
+				{
+					"info": "1mg/kg/dose IV",
+					"mg_mcg_mmol": {
+						"multiplier": 1,
+						"unit": "mg"
+					},
+					"ml": {
+						"multiplier": 1
+					}
+				}
+			]
+		}
+	]
+}

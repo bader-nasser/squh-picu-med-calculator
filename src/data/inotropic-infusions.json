@@ -1,0 +1,129 @@
+{
+	"medications": [
+		{
+			"name": "Epinephrine (1mg/1ml)",
+			"dose": "0.01-0.5 mcg/kg/min",
+			"formula_50ml": {
+				"text": "Prepare solution of (_amount_) ml Epinephrine in (_ns_amount_) ml of 0.9% NS \n (1ml/hr = 0.1 mgc/kg/min)",
+				"multiplier": 0.3
+			},
+			"compatible": [
+				"Dextrose 5-10%",
+				"sodium chloride 0.9%",
+				"Hartmann's",
+				"Ringer's",
+				"cisatracurium",
+				"dexmedetomidine",
+				"dobutamine",
+				"dopamine",
+				"fentanyl",
+				"heparin",
+				"milrinone",
+				"morphine",
+				"remifentanil"
+			],
+			"incompatible": ["sodium bicarbonate"]
+		},
+		{
+			"name": "Norepinephrine (1mg/ml)",
+			"dose": "0.01-0.5 mcg/kg/min",
+			"formula_50ml": {
+				"text": "prepare solution of (_amount_) ml Norepinephrine in (_ns_amount_ml) of 0.9% NS \n (1ml/hr = 0.1mcg/kg/min)",
+				"multiplier": 0.3
+			},
+			"compatible": [
+				"Dextrose 5%",
+				"Hartmann's",
+				"sodium chloride 0.9%",
+				"cisatracurium",
+				"dopamine",
+				"dobutamine",
+				"heparine",
+				"midazolam",
+				"milrinone",
+				"morphine",
+				"remifentanil"
+			],
+			"incompatible": ["sodium bicarbonate", "insulin"]
+		},
+		{
+			"name": "Dopamine (40mg/ml)",
+			"dose": "5-20 mcg/kg/min",
+			"formula_50ml": {
+				"text": "Prepare solution of (_amount_) ml Dopamine in (_ns_amount_) ml of 0.9% NS \n (1ml/hr = 1 mgc/kg/min)",
+				"multiplier": 30,
+				"ns_multiplier": 0.3
+			},
+			"compatible": [
+				"Dextrose 5%",
+				"Hartmann's",
+				"sodium chloride",
+				"epinephrine",
+				"cisatracurium",
+				"dexmedetomidine",
+				"Labetalol",
+				"milrinone",
+				"norepinephrine"
+			],
+			"incompatible": [
+				"sodium bicarbonate",
+				"aminophylline",
+				"omeprazole",
+				"heparine"
+			]
+		},
+		{
+			"name": "dobutamine (5mg/ml)",
+			"dose": "5-20 mcg/kg/min",
+			"formula_50ml": {
+				"text": "Prepare solution of (_amount_) ml Dobutamine in (_ns_amount_) ml of 0.9% NS \n (1ml/hr = 1 mgc/kg/min)",
+				"multiplier": 30,
+				"ns_multiplier": 0.3
+			},
+			"compatible": [
+				"Dextrose 5-10%",
+				"Hartmann's",
+				"sodium chloride 0.9%",
+				"epinephrine",
+				"cisatracurium",
+				"dexmedetomidine",
+				"Labetalol",
+				"Milrinone",
+				"norepinephrine"
+			],
+			"incompatible": [
+				"sodium bicarbonate",
+				"aminophylline",
+				"omeprazole",
+				"heparine"
+			]
+		},
+		{
+			"name": "milrinone (1mg/ml)",
+			"dose": "0.25-0.75 mcg/kg/min",
+			"formula_50ml": "Prepare solution of (10mg) 10 ml milrinone in 40 ml of 0.9% NS or D5W \n (200mcg/ml)",
+			"compatible": [
+				"Dextrose 5%",
+				"sodium chloride",
+				"epinephrine",
+				"norepinephrine",
+				"amiodarone",
+				"dobutamine",
+				"dopamine",
+				"fentanyl",
+				"heparine",
+				"insulin",
+				"midazolam",
+				"morphine"
+			],
+			"incompatible": ["sodium bicarbonate", "furosemide"]
+		},
+		{
+			"name": "Vasopressin 20IU/ml",
+			"dose": "0.3-1 unit/kg/hr",
+			"formula_50ml": "Prepare solution of 5 units (0.25ml) in 49.75ml of 0.9% NS (0.1unit/ml) or 20 units (1ml) in 49ml of 0.9% NS (1unit/ml)",
+			"compatible": ["Dextrose 5%", "sodium chloride 0.9%"],
+			"incompatible": ["Furosemide"]
+		}
+	]
+}

@@ -1,11 +1,26 @@
 import { Table, Typography } from "antd";
 import type { ColumnsType } from "antd/es/table";
-const { Title } = Typography;
 
-import type { InotropicInfusion } from "@/types";
+import data from "@/data/inotropic-infusions.json";
+
+const { Title } = Typography;
+const medications: InotropicInfusion[] = data.medications;
+
+export type InotropicInfusion = {
+	name: string;
+	dose: string;
+	formula_50ml:
+		| string
+		| {
+				text: string;
+				multiplier: number;
+				ns_multiplier?: number;
+		  };
+	compatible: string[];
+	incompatible: string[];
+};
 
 interface Props {
-	medications: InotropicInfusion[];
 	weight: number;
 }
 
@@ -71,22 +86,18 @@ const columns: ColumnsType<DataType> = [
 	},
 ];
 
-export default function InotropicInfusions({ medications, weight }: Props) {
+export default function InotropicInfusions({ weight }: Props) {
 	const tableData: DataType[] = [];
 
-	medications.forEach(
-		({ name, dose, formula_50ml, compatible, incompatible }, index) => {
-			tableData.push({
-				key: `${name}_${index}`,
-				medications: name,
-				dose,
-				formula_50ml,
-				compatible,
-				incompatible,
-				weight,
-			});
-		}
-	);
+	for (const medication of medications) {
+		tableData.push({
+			key: medication.name,
+			medications: medication.name,
+			weight,
+			...medication,
+		});
+	}
+
 	return (
 		<>
 			<Title level={2}>Inotropic Infusions</Title>
