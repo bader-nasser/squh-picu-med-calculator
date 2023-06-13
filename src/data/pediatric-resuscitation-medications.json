@@ -145,9 +145,16 @@
 			"name": "Naloxone (0.4mg/ml)",
 			"doses": [
 				{
-					"info": " <5yrs or <20kg: 0.1mg/kg IV/IO/ETT, >5yrs or >20 kg: 2 mg IV/IO/ETT",
+					"info": " <5yrs or <20kg: 0.1mg/kg IV/IO/ETT, \n >5yrs or >20 kg: 2 mg IV/IO/ETT",
 					"mg_mcg_mmol": {
-						"multiplier": [0.1, 2],
+						"doses": [
+							{
+								"multiplier": 0.1
+							},
+							{
+								"multiplier": 2
+							}
+						],
 						"unit": "mg"
 					},
 					"ml": [

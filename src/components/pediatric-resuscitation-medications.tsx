@@ -2,6 +2,7 @@ import { Table, Typography } from "antd";
 import type { ColumnsType } from "antd/es/table";
 
 import data from "@/data/pediatric-resuscitation-medications.json";
+import { getNumberWithOneDecimalPoint } from "@/utilities";
 
 const { Title } = Typography;
 const medications: PediatricResuscitationMedication[] = data.medications;
@@ -14,7 +15,7 @@ type PediatricResuscitationMedication = {
 			multiplier?: number | number[];
 			unit: string;
 			max?: number;
-			doses?: { multiplier: number; max: number }[];
+			doses?: { multiplier: number; max?: number }[];
 		};
 		ml?:
 			| {
@@ -59,8 +60,13 @@ const columns: ColumnsType<DataType> = [
 						<>
 							{doses.map((dose) => (
 								<p key={dose.multiplier}>
-									({dose.multiplier * weight}) {unit} (max
-									value {max} {unit})
+									(
+									{getNumberWithOneDecimalPoint(
+										dose.multiplier * weight
+									)}
+									) {unit}{" "}
+									{dose.max &&
+										`(max value ${dose.max} ${unit})`}
 								</p>
 							))}
 						</>
@@ -68,10 +74,15 @@ const columns: ColumnsType<DataType> = [
 				} else if (multiplier) {
 					let value = "";
 					if (Array.isArray(multiplier)) {
-						const [m1, m2] = multiplier;
-						value = `(${m1 * weight} to ${m2 * weight}) ${unit}`;
+						const [v1, v2] = multiplier.map((m) =>
+							getNumberWithOneDecimalPoint(m * weight)
+						);
+						value = `(${v1} to ${v2}) ${unit}`;
 					} else {
-						value = `(${multiplier * weight}) ${unit}`;
+						const amount = getNumberWithOneDecimalPoint(
+							multiplier * weight
+						);
+						value = `(${amount}) ${unit}`;
 					}
 					if (max) {
 						value = `${value} (max value ${max}${unit})`;
@@ -93,16 +104,15 @@ const columns: ColumnsType<DataType> = [
 					for (const m of ml) {
 						const { multiplier, label, divider } = m;
 						if (Array.isArray(multiplier) && label) {
-							const [m1, m2] = multiplier;
-							data.push(
-								`(${m1 * weight} to ${
-									m2 * weight
-								}) ${unit} ${label}`
+							const [v1, v2] = multiplier.map((m) =>
+								getNumberWithOneDecimalPoint(m * weight)
 							);
+							data.push(`(${v1} to ${v2}) ${unit} ${label}`);
 						} else if (typeof multiplier === "number" && divider) {
-							data.push(
-								`(${(multiplier * weight) / divider}) ${unit}`
+							const amount = getNumberWithOneDecimalPoint(
+								(multiplier * weight) / divider
 							);
+							data.push(`(${amount}) ${unit}`);
 						}
 					}
 					return (
@@ -116,10 +126,15 @@ const columns: ColumnsType<DataType> = [
 					const { multiplier, max } = ml;
 					let value = "";
 					if (Array.isArray(multiplier)) {
-						const [m1, m2] = multiplier;
-						value = `(${m1 * weight} to ${m2 * weight}) ${unit}`;
+						const [v1, v2] = multiplier.map((m) =>
+							getNumberWithOneDecimalPoint(m * weight)
+						);
+						value = `(${v1} to ${v2}) ${unit}`;
 					} else {
-						value = `(${multiplier * weight}) ${unit}`;
+						const amount = getNumberWithOneDecimalPoint(
+							multiplier * weight
+						);
+						value = `(${amount}) ${unit}`;
 					}
 					if (max) {
 						value = `${value} (max value ${max}${unit})`;
@@ -154,7 +169,11 @@ export default function PediatricResuscitationMedications({ weight }: Props) {
 	return (
 		<>
 			<Title level={2}>Pediatric Resuscitation Medications</Title>
-			<Table columns={columns} dataSource={tableData} />
+			<Table
+				columns={columns}
+				dataSource={tableData}
+				pagination={false}
+			/>
 		</>
 	);
 }

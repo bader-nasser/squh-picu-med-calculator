@@ -22,7 +22,7 @@
 				"morphine",
 				"remifentanil"
 			],
-			"incompatible": ["sodium bicarbonate"]
+			"incompatible": "sodium bicarbonate"
 		},
 		{
 			"name": "Norepinephrine (1mg/ml)",
@@ -123,7 +123,7 @@
 			"dose": "0.3-1 unit/kg/hr",
 			"formula_50ml": "Prepare solution of 5 units (0.25ml) in 49.75ml of 0.9% NS (0.1unit/ml) or 20 units (1ml) in 49ml of 0.9% NS (1unit/ml)",
 			"compatible": ["Dextrose 5%", "sodium chloride 0.9%"],
-			"incompatible": ["Furosemide"]
+			"incompatible": "Furosemide"
 		}
 	]
 }

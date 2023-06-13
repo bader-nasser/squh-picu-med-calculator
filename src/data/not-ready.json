@@ -1,44 +1,4 @@
 {
-	"pediatric_resuscitation_medications": [
-		{
-			"name": "Adenosine (6mg/2ml)",
-			"doses": [
-				{
-					"info": "0.1mg/kg IV/IO rapid bolus in central line (max 6mg); Second dose: 0.2 mg/kg (max 12mg)",
-					"mg_mcg_mmol": {
-						"doses": [
-							{
-								"multiplier": 0.1,
-								"max": 6
-							},
-							{
-								"multiplier": 0.2,
-								"max": 12
-							}
-						],
-						"unit": "mg"
-					},
-					"ml": {
-						"multiplier": "need adjustment",
-						"multiplier": "need adjustment"
-					}
-				}
-			]
-		},
-		{
-			"name": "Naloxone (0.4mg/ml)",
-			"doses": [
-				{
-					"info": " <5yrs or <20kg: 0.1mg/kg IV/IO/ETT, >5yrs or >20 kg: 2 mg IV/IO/ETT",
-					"mg_mcg_mmol": {
-						"multiplier": [0.1, 2],
-						"unit": "mg"
-					},
-					"ml": "need adjustment"
-				}
-			]
-		}
-	],
 	"sedation_and_anaesthesia": [
 		{
 			"name": "Morphine (10mg/ml)",

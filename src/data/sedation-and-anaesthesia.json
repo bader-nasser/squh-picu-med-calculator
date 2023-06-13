@@ -9,7 +9,7 @@
 			},
 			"formula_50ml": {
 				"single_strength": "prepare solution of (500mcg) 10ml of fentanyl with 40 ml of 0.9% NS \n (10mcg/ml)",
-				"double_strength": "prepare solution of (1000mcg) 20 ml of fentanyl with 30 ml of 0,9%NS \n (20mcg/ml)"
+				"double_strength": "prepare solution of (1000mcg) 20 ml of fentanyl with 30 ml of 0.9% NS \n (20mcg/ml)"
 			},
 			"compatible": [
 				"Dextrose 5%",
@@ -22,7 +22,7 @@
 				"milrinone",
 				"remifentanil"
 			],
-			"incompatible": ["No information"]
+			"incompatible": "No information"
 		},
 		{
 			"name": "Remifentanil (5mg) dilute in 5 ml WFI",
@@ -52,7 +52,7 @@
 				"norepinephrine",
 				"sodium bicarbonate"
 			],
-			"incompatible": ["blood products"]
+			"incompatible": "blood products"
 		},
 		{
 			"name": "midazolam (5mg/ml)",
@@ -111,7 +111,7 @@
 				"norepinephrine",
 				"sodium bicarbonate"
 			],
-			"incompatible": ["No information"]
+			"incompatible": "No information"
 		},
 		{
 			"name": "rocuronium (50mg/ml)",
@@ -189,7 +189,7 @@
 			"dose": "9-15 mg/kg/hr",
 			"formula_50ml": "Undiluted",
 			"compatible": ["Dextrose 5%", "sodium chloride 0.9%"],
-			"incompatible": ["Cisatracurium"]
+			"incompatible": "Cisatracurium"
 		}
 	]
 }

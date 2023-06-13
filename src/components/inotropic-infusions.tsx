@@ -2,6 +2,7 @@ import { Table, Typography } from "antd";
 import type { ColumnsType } from "antd/es/table";
 
 import data from "@/data/inotropic-infusions.json";
+import { getNumberWithOneDecimalPoint } from "@/utilities";
 
 const { Title } = Typography;
 const medications: InotropicInfusion[] = data.medications;
@@ -16,8 +17,8 @@ type InotropicInfusion = {
 				multiplier: number;
 				ns_multiplier?: number;
 		  };
-	compatible: string[];
-	incompatible: string[];
+	compatible: string | string[];
+	incompatible: string | string[];
 };
 
 type DataType = {
@@ -46,14 +47,14 @@ const columns: ColumnsType<DataType> = [
 				return formula_50ml;
 			} else {
 				const { text, multiplier, ns_multiplier } = formula_50ml;
-				let newText = text.replace(
-					"_amount_",
-					`${multiplier * weight}`
+				const amount = getNumberWithOneDecimalPoint(
+					multiplier * weight
 				);
-				newText = newText.replace(
-					"_ns_amount_",
-					`${50 - (ns_multiplier || multiplier) * weight}`
+				const nsAmount = getNumberWithOneDecimalPoint(
+					50 - (ns_multiplier || multiplier) * weight
 				);
+				let newText = text.replace("_amount_", `${amount}`);
+				newText = newText.replace("_ns_amount_", `${nsAmount}`);
 				return newText;
 			}
 		},
@@ -62,13 +63,25 @@ const columns: ColumnsType<DataType> = [
 		title: "Compatible",
 		dataIndex: "compatible",
 		key: "compatible",
-		render: (_, { compatible }) => compatible.join(", "),
+		render: (_, { compatible }) => {
+			if (typeof compatible === "string") {
+				return compatible;
+			} else {
+				return compatible.join(", ");
+			}
+		},
 	},
 	{
 		title: "Incompatible",
 		dataIndex: "incompatible",
 		key: "incompatible",
-		render: (_, { incompatible }) => incompatible.join(", "),
+		render: (_, { incompatible }) => {
+			if (typeof incompatible === "string") {
+				return incompatible;
+			} else {
+				return incompatible.join(", ");
+			}
+		},
 	},
 ];
 
@@ -91,7 +104,11 @@ export default function InotropicInfusions({ weight }: Props) {
 	return (
 		<>
 			<Title level={2}>Inotropic Infusions</Title>
-			<Table columns={columns} dataSource={tableData} />
+			<Table
+				columns={columns}
+				dataSource={tableData}
+				pagination={false}
+			/>
 		</>
 	);
 }

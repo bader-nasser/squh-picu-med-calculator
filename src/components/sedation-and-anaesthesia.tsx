@@ -1,7 +1,7 @@
 import { Table, Typography } from "antd";
 import type { ColumnsType } from "antd/es/table";
 
-import { prettifyKeyName } from "@/utilities";
+import { getNumberWithOneDecimalPoint, prettifyKeyName } from "@/utilities";
 import data from "@/data/sedation-and-anaesthesia.json";
 
 const { Title } = Typography;
@@ -45,17 +45,21 @@ const columns: ColumnsType<DataType> = [
 				const { info, multiplier, unit } = dose;
 				let computedValue = "";
 				if (typeof multiplier === "number") {
-					computedValue = `${multiplier * weight}`;
+					computedValue = `${getNumberWithOneDecimalPoint(
+						multiplier * weight
+					)}`;
 				} else {
-					const [m1, m2] = multiplier;
-					computedValue = `${m1 * weight} - ${m2 * weight}`;
+					const [v1, v2] = multiplier.map((m) =>
+						getNumberWithOneDecimalPoint(m * weight)
+					);
+					computedValue = `${v1} - ${v2}`;
 				}
 				return (
 					<>
-						<div>{info}</div>
-						<div>
+						<p>{info}</p>
+						<p>
 							({computedValue}) {unit}
-						</div>
+						</p>
 					</>
 				);
 			}
@@ -85,13 +89,25 @@ const columns: ColumnsType<DataType> = [
 		title: "Compatible",
 		dataIndex: "compatible",
 		key: "compatible",
-		render: (_, { compatible }) => compatible.join(", "),
+		render: (_, { compatible }) => {
+			if (typeof compatible === "string") {
+				return compatible;
+			} else {
+				return compatible.join(", ");
+			}
+		},
 	},
 	{
 		title: "Incompatible",
 		dataIndex: "incompatible",
 		key: "incompatible",
-		render: (_, { incompatible }) => incompatible.join(", "),
+		render: (_, { incompatible }) => {
+			if (typeof incompatible === "string") {
+				return incompatible;
+			} else {
+				return incompatible.join(", ");
+			}
+		},
 	},
 ];
 
@@ -114,7 +130,11 @@ export default function SedationAndAnaesthesia({ weight }: Props) {
 	return (
 		<>
 			<Title level={2}>Sedation and Anaesthesia</Title>
-			<Table columns={columns} dataSource={tableData} />
+			<Table
+				columns={columns}
+				dataSource={tableData}
+				pagination={false}
+			/>
 		</>
 	);
 }

@@ -2,6 +2,7 @@ import { Table, Typography } from "antd";
 import type { ColumnsType } from "antd/es/table";
 
 import data from "@/data/other-important-infusions.json";
+import { getNumberWithOneDecimalPoint } from "@/utilities";
 
 const { Title } = Typography;
 const medications: OtherImportantInfusion[] = data.medications;
@@ -21,8 +22,8 @@ type OtherImportantInfusion = {
 				minimum_strength: string;
 				maximum_strength: string;
 		  };
-	compatible: string[];
-	incompatible: string[];
+	compatible: string | string[];
+	incompatible: string | string[];
 };
 
 type DataType = {
@@ -46,13 +47,16 @@ const columns: ColumnsType<DataType> = [
 				return dose;
 			} else {
 				const { info, multiplier, unit } = dose;
+				const doseAmount = getNumberWithOneDecimalPoint(
+					multiplier * weight
+				);
 				return (
 					<>
-						<div>{info}</div>
+						<p>{info}</p>
 						{multiplier && (
-							<div>
-								({multiplier * weight}) {unit}
-							</div>
+							<p>
+								({doseAmount}) {unit}
+							</p>
 						)}
 					</>
 				);
@@ -70,14 +74,14 @@ const columns: ColumnsType<DataType> = [
 				const { minimum_strength, maximum_strength } = formula_50ml;
 				return (
 					<>
-						<div>
+						<p>
 							<strong>Minimum strength</strong>:{" "}
 							{minimum_strength}
-						</div>
-						<div>
+						</p>
+						<p>
 							<strong>Maximum strength</strong>:{" "}
 							{maximum_strength}
-						</div>
+						</p>
 					</>
 				);
 			}
@@ -87,13 +91,25 @@ const columns: ColumnsType<DataType> = [
 		title: "Compatible",
 		dataIndex: "compatible",
 		key: "compatible",
-		render: (_, { compatible }) => compatible.join(", "),
+		render: (_, { compatible }) => {
+			if (typeof compatible === "string") {
+				return compatible;
+			} else {
+				return compatible.join(", ");
+			}
+		},
 	},
 	{
 		title: "Incompatible",
 		dataIndex: "incompatible",
 		key: "incompatible",
-		render: (_, { incompatible }) => incompatible.join(", "),
+		render: (_, { incompatible }) => {
+			if (typeof incompatible === "string") {
+				return incompatible;
+			} else {
+				return incompatible.join(", ");
+			}
+		},
 	},
 ];
 
@@ -116,7 +132,11 @@ export default function OtherImportantInfusions({ weight }: Props) {
 	return (
 		<>
 			<Title level={2}>Other Important Infusions</Title>
-			<Table columns={columns} dataSource={tableData} />
+			<Table
+				columns={columns}
+				dataSource={tableData}
+				pagination={false}
+			/>
 		</>
 	);
 }

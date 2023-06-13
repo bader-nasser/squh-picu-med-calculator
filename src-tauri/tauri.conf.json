@@ -8,11 +8,14 @@
 	},
 	"package": {
 		"productName": "squh-picu-med-calculator",
-		"version": "0.11.0"
+		"version": "../package.json"
 	},
 	"tauri": {
 		"allowlist": {
-			"all": false
+			"all": false,
+			"window": {
+				"print": true
+			}
 		},
 		"bundle": {
 			"active": true,

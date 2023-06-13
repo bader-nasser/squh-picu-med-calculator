@@ -11,13 +11,8 @@ import {
 	Typography,
 } from "antd";
 
-import PediatricResuscitationMedications from "@/components/pediatric-resuscitation-medications";
-import PediatricIntubationMedications from "@/components/pediatric-intubation-medications";
-import InotropicInfusions from "@/components/inotropic-infusions";
-import SedationAndAnaesthesia from "@/components/sedation-and-anaesthesia";
-import OtherImportantInfusions from "@/components/other-important-infusions";
-
 import pkg from "../../package.json";
+import ShowCategory from "@/components/show-category";
 
 const { Title } = Typography;
 const { Option } = Select;
@@ -25,7 +20,7 @@ const { Header, Content, Footer } = Layout;
 const FormItem = Form.Item;
 
 const initialValues = {
-	weight: 49.4,
+	weight: 50,
 	category: "pediatric_resuscitation_medications",
 };
 
@@ -47,34 +42,6 @@ export default function Home() {
 	const onFinishFailed = (errorInfo: any) => {
 		console.log("Failed:", errorInfo);
 	};
-
-	let CategoryToShow = () => (
-		<PediatricResuscitationMedications weight={weight} />
-	);
-
-	switch (category) {
-		case "pediatric_resuscitation_medications":
-			CategoryToShow = () => (
-				<PediatricResuscitationMedications weight={weight} />
-			);
-			break;
-		case "pediatric_intubation_medications":
-			CategoryToShow = () => (
-				<PediatricIntubationMedications weight={weight} />
-			);
-			break;
-		case "inotropic_infusions":
-			CategoryToShow = () => <InotropicInfusions weight={weight} />;
-			break;
-		case "sedation_and_anaesthesia":
-			CategoryToShow = () => <SedationAndAnaesthesia weight={weight} />;
-			break;
-		case "other_important_infusions":
-			CategoryToShow = () => <OtherImportantInfusions weight={weight} />;
-			break;
-		default:
-			break;
-	}
 
 	return (
 		<Layout>
@@ -124,8 +91,8 @@ export default function Home() {
 											>
 												<InputNumber
 													addonAfter="kg"
-													min={1}
-													max={300}
+													min={2}
+													max={150}
 													style={{ width: "120px" }}
 												/>
 											</FormItem>
@@ -139,8 +106,9 @@ export default function Home() {
 											>
 												<InputNumber
 													addonAfter="cm"
-													min={1}
+													min={40}
 													max={300}
+													type="number"
 													style={{ width: "120px" }}
 												/>
 											</FormItem>
@@ -177,9 +145,9 @@ export default function Home() {
 									</FormItem>
 								</Col>
 							</Row>
-
-							<CategoryToShow />
 						</Form>
+
+						<ShowCategory category={category} weight={weight} />
 					</Col>
 				</Row>
 			</Content>

@@ -102,15 +102,15 @@
 				"maximum_strength": "prepare 10mg (20ml) with 30ml of 0.9% NS (200mcg/ml)",
 				"minimum_strength": "prepare 500mcg (1ml) with 50ml of 0.9% NS (10mcg/ml)"
 			},
-			"compatible": ["sodium chloride 0.9%"],
-			"incompatible": ["No information"]
+			"compatible": "sodium chloride 0.9%",
+			"incompatible": "No information"
 		},
 		{
 			"name": "Omeprazole 40mg\n\nDilute in 4 ml WFI",
 			"dose": "Max 8mg/H",
 			"formula_50ml": "prepare 40mg (4ml) with 36ml of 0.9% NS (1mg/ml)",
 			"compatible": ["Dextrose 5-10%", "sodium chloride 0.9%"],
-			"incompatible": ["midazolam"]
+			"incompatible": "midazolam"
 		},
 		{
 			"name": "Labetalol (100mg/20ml)",
@@ -141,7 +141,7 @@
 			"dose": "12.5-50 mcg/kg/hr. Max 3mg/kg/day",
 			"formula_50ml": {
 				"maximum_strength": "prepare 20mg (5ml) with 15ml 0.9% NS (1mg/ml)",
-				"minimum_strength": "prepare 2mg (0.5ml) with 49.5 ml 0.9%NS (40mcg/ml)"
+				"minimum_strength": "prepare 2mg (0.5ml) with 49.5 ml 0.9% NS (40mcg/ml)"
 			},
 			"compatible": [
 				"Hartmann's",
