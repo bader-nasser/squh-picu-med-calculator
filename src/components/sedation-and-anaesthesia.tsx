@@ -8,7 +8,7 @@ const { Title } = Typography;
 // @ts-ignore
 const medications: SedationAndAnaesthesia[] = data.medications;
 
-export type SedationAndAnaesthesia = {
+type SedationAndAnaesthesia = {
 	name: string;
 	dose:
 		| string
@@ -22,25 +22,11 @@ export type SedationAndAnaesthesia = {
 	incompatible: string[];
 };
 
-interface Props {
-	weight: number;
-}
-
-interface DataType {
+type DataType = {
 	key: string;
 	medications: string;
-	dose:
-		| string
-		| {
-				info: string;
-				multiplier: number | number[];
-				unit: string;
-		  };
-	formula_50ml: string | { [key: string]: string };
-	compatible: string[];
-	incompatible: string[];
 	weight: number;
-}
+} & Omit<SedationAndAnaesthesia, "name">;
 
 const columns: ColumnsType<DataType> = [
 	{
@@ -108,6 +94,10 @@ const columns: ColumnsType<DataType> = [
 		render: (_, { incompatible }) => incompatible.join(", "),
 	},
 ];
+
+interface Props {
+	weight: number;
+}
 
 export default function SedationAndAnaesthesia({ weight }: Props) {
 	const tableData: DataType[] = [];

@@ -6,7 +6,7 @@ import data from "@/data/pediatric-resuscitation-medications.json";
 const { Title } = Typography;
 const medications: PediatricResuscitationMedication[] = data.medications;
 
-export type PediatricResuscitationMedication = {
+type PediatricResuscitationMedication = {
 	name: string;
 	doses: {
 		info: string;
@@ -29,32 +29,12 @@ export type PediatricResuscitationMedication = {
 	}[];
 };
 
-interface Props {
-	weight: number;
-}
-
-interface DataType {
+type DataType = {
 	key: string;
 	medications: string;
 	dose: string;
-	mg_mcg_mmol?: {
-		multiplier?: number | number[];
-		unit: string;
-		max?: number;
-		doses?: { multiplier: number; max: number }[];
-	};
-	ml?:
-		| {
-				multiplier: number | number[];
-				max?: number;
-		  }
-		| {
-				multiplier: number | number[];
-				divider?: number;
-				label?: string;
-		  }[];
 	weight: number;
-}
+} & Omit<PediatricResuscitationMedication["doses"][0], "info">;
 
 const columns: ColumnsType<DataType> = [
 	{
@@ -150,6 +130,10 @@ const columns: ColumnsType<DataType> = [
 		},
 	},
 ];
+
+interface Props {
+	weight: number;
+}
 
 export default function PediatricResuscitationMedications({ weight }: Props) {
 	const tableData: DataType[] = [];

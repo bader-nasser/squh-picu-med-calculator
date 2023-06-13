@@ -6,7 +6,7 @@ import data from "@/data/inotropic-infusions.json";
 const { Title } = Typography;
 const medications: InotropicInfusion[] = data.medications;
 
-export type InotropicInfusion = {
+type InotropicInfusion = {
 	name: string;
 	dose: string;
 	formula_50ml:
@@ -20,25 +20,11 @@ export type InotropicInfusion = {
 	incompatible: string[];
 };
 
-interface Props {
-	weight: number;
-}
-
-interface DataType {
+type DataType = {
 	key: string;
 	medications: string;
-	dose: string;
-	formula_50ml:
-		| string
-		| {
-				text: string;
-				multiplier: number;
-				ns_multiplier?: number;
-		  };
-	compatible: string[];
-	incompatible: string[];
 	weight: number;
-}
+} & Omit<InotropicInfusion, "name">;
 
 const columns: ColumnsType<DataType> = [
 	{
@@ -85,6 +71,10 @@ const columns: ColumnsType<DataType> = [
 		render: (_, { incompatible }) => incompatible.join(", "),
 	},
 ];
+
+interface Props {
+	weight: number;
+}
 
 export default function InotropicInfusions({ weight }: Props) {
 	const tableData: DataType[] = [];

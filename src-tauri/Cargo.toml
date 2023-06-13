@@ -1,6 +1,6 @@
 [package]
 name = "app"
-version = "0.9.0"
+version = "0.9.1"
 description = "A Tauri app to calculate PICU medications"
 authors = ["Bader Nasser"]
 license = ""
