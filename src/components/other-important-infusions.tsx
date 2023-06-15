@@ -1,27 +1,21 @@
-import { Table, Typography } from "antd";
-import type { ColumnsType } from "antd/es/table";
+import {Table, Typography} from 'antd';
+import type {ColumnsType} from 'antd/es/table';
+import data from '@/data/other-important-infusions.json';
+import {getNumberWithOneDecimalPoint, prettifyKeyName} from '@/utilities';
 
-import data from "@/data/other-important-infusions.json";
-import { getNumberWithOneDecimalPoint } from "@/utilities";
-
-const { Title } = Typography;
-const medications: OtherImportantInfusion[] = data.medications;
+const {Title} = Typography;
+const {medications}: {medications: OtherImportantInfusion[]} = data;
 
 type OtherImportantInfusion = {
 	name: string;
 	dose:
-		| string
-		| {
-				info: string;
-				multiplier: number;
-				unit: string;
-		  };
-	formula_50ml:
-		| string
-		| {
-				minimum_strength: string;
-				maximum_strength: string;
-		  };
+	| string
+	| {
+		info: string;
+		multiplier: number;
+		unit: string;
+	};
+	formula_50ml: string | Record<string, string>;
 	compatible: string | string[];
 	incompatible: string | string[];
 };
@@ -30,94 +24,91 @@ type DataType = {
 	key: string;
 	medications: string;
 	weight: number;
-} & Omit<OtherImportantInfusion, "name">;
+} & Omit<OtherImportantInfusion, 'name'>;
 
 const columns: ColumnsType<DataType> = [
 	{
-		title: "Medications",
-		dataIndex: "medications",
-		key: "medications",
+		title: 'Medications',
+		dataIndex: 'medications',
+		key: 'medications',
 	},
 	{
-		title: "Dose",
-		dataIndex: "dose",
-		key: "dose",
-		render: (_, { dose, weight }) => {
-			if (typeof dose === "string") {
+		title: 'Dose',
+		dataIndex: 'dose',
+		key: 'dose',
+		render(_, {dose, weight}) {
+			if (typeof dose === 'string') {
 				return dose;
-			} else {
-				const { info, multiplier, unit } = dose;
-				const doseAmount = getNumberWithOneDecimalPoint(
-					multiplier * weight
-				);
-				return (
-					<>
-						<p>{info}</p>
-						{multiplier && (
-							<p>
-								({doseAmount}) {unit}
-							</p>
-						)}
-					</>
-				);
 			}
+
+			const {info, multiplier, unit} = dose;
+			const doseAmount = getNumberWithOneDecimalPoint(
+				multiplier * weight,
+			);
+
+			return (
+				<>
+					<p>{info}</p>
+					{multiplier && (
+						<p>
+							({doseAmount}) {unit}
+						</p>
+					)}
+				</>
+			);
 		},
 	},
 	{
-		title: "Formula (50ml)",
-		dataIndex: "formula_50ml",
-		key: "formula_50ml",
-		render: (_, { formula_50ml }) => {
-			if (typeof formula_50ml === "string") {
+		title: 'Formula (50ml)',
+		dataIndex: 'formula_50ml',
+		key: 'formula_50ml',
+		render(_, {formula_50ml}) {
+			if (typeof formula_50ml === 'string') {
 				return formula_50ml;
-			} else {
-				const { minimum_strength, maximum_strength } = formula_50ml;
-				return (
-					<>
-						<p>
-							<strong>Minimum strength</strong>:{" "}
-							{minimum_strength}
-						</p>
-						<p>
-							<strong>Maximum strength</strong>:{" "}
-							{maximum_strength}
-						</p>
-					</>
-				);
 			}
+
+			return (
+				<>
+					{Object.entries(formula_50ml).map(([key, value]) => (
+						<p key={key}>
+							<strong>{prettifyKeyName(key)}:</strong> {value}
+						</p>
+					))}
+				</>
+			);
 		},
 	},
 	{
-		title: "Compatible",
-		dataIndex: "compatible",
-		key: "compatible",
-		render: (_, { compatible }) => {
-			if (typeof compatible === "string") {
+		title: 'Compatible',
+		dataIndex: 'compatible',
+		key: 'compatible',
+		render(_, {compatible}) {
+			if (typeof compatible === 'string') {
 				return compatible;
-			} else {
-				return compatible.join(", ");
 			}
+
+			return compatible.join(', ');
 		},
 	},
 	{
-		title: "Incompatible",
-		dataIndex: "incompatible",
-		key: "incompatible",
-		render: (_, { incompatible }) => {
-			if (typeof incompatible === "string") {
+		title: 'Incompatible',
+		dataIndex: 'incompatible',
+		key: 'incompatible',
+		render(_, {incompatible}) {
+			if (typeof incompatible === 'string') {
 				return incompatible;
-			} else {
-				return incompatible.join(", ");
 			}
+
+			return incompatible.join(', ');
 		},
 	},
 ];
 
-interface Props {
+type Props = {
 	weight: number;
-}
+};
 
-export default function OtherImportantInfusions({ weight }: Props) {
+export default function OtherImportantInfusions({weight}: Props) {
 	const tableData: DataType[] = [];
 
 	for (const medication of medications) {

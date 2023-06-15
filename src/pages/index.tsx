@@ -1,5 +1,4 @@
-import { useState } from "react";
-
+import {useState} from 'react';
 import {
 	Form,
 	Input,
@@ -9,19 +8,18 @@ import {
 	Col,
 	Layout,
 	Typography,
-} from "antd";
+} from 'antd';
+import pkg from '../../package.json';
+import ShowCategory from '@/components/show-category';
 
-import pkg from "../../package.json";
-import ShowCategory from "@/components/show-category";
-
-const { Title } = Typography;
-const { Option } = Select;
-const { Header, Content, Footer } = Layout;
+const {Title} = Typography;
+const {Option} = Select;
+const {Header, Content, Footer} = Layout;
 const FormItem = Form.Item;
 
 const initialValues = {
 	weight: 50,
-	category: "pediatric_resuscitation_medications",
+	category: 'pediatric_resuscitation_medications',
 };
 
 export default function Home() {
@@ -29,28 +27,34 @@ export default function Home() {
 	const [weight, setWeight] = useState(initialValues.weight);
 	const [category, setCategory] = useState(initialValues.category);
 
-	const onValuesChange = (changedValues: any, allValues: any) => {
-		console.log("Success:", changedValues);
-		changedValues.weight && setWeight(changedValues.weight);
-		changedValues.category && setCategory(changedValues.category);
+	const onValuesChange = (changedValues: {weight: number; category: string}) => {
+		console.log('Success:', changedValues);
+		const {weight, category} = changedValues;
+		if (weight) {
+			setWeight(changedValues.weight);
+		}
+
+		if (category) {
+			setCategory(changedValues.category);
+		}
 	};
 
 	const onFinish = (values: any) => {
-		console.log("Success:", values);
+		console.log('Success:', values);
 	};
 
 	const onFinishFailed = (errorInfo: any) => {
-		console.log("Failed:", errorInfo);
+		console.log('Failed:', errorInfo);
 	};
 
 	return (
 		<Layout>
 			<Header>
 				<Row>
-					<Col xs={{ span: 20, offset: 2 }}>
+					<Col xs={{span: 20, offset: 2}}>
 						<Title
-							style={{ color: "var(--background-color)" }}
-							className="m-0"
+							style={{color: 'var(--background-color)'}}
+							className='m-0'
 						>
 							{pkg.prettyName}
 						</Title>
@@ -58,58 +62,58 @@ export default function Home() {
 				</Row>
 			</Header>
 
-			<Content className="my-5">
+			<Content className='my-5'>
 				<Row>
-					<Col xs={{ span: 20, offset: 2 }}>
+					<Col xs={{span: 20, offset: 2}}>
 						<Form
 							form={form}
-							layout="horizontal"
+							layout='horizontal'
 							initialValues={initialValues}
-							size={"large"}
+							size='large'
 							onValuesChange={onValuesChange}
 							onFinish={onFinish}
 							onFinishFailed={onFinishFailed}
 						>
 							<Row gutter={16}>
-								<Col xs={{ span: 24 }} lg={{ span: 12 }}>
+								<Col xs={{span: 24}} lg={{span: 12}}>
 									<FormItem
-										name="name"
-										label="Patient Name"
-										rules={[{ required: true }]}
+										name='name'
+										label='Patient Name'
+										rules={[{required: true}]}
 									>
-										<Input />
+										<Input/>
 									</FormItem>
 								</Col>
 
-								<Col xs={{ span: 24 }} lg={{ span: 12 }}>
+								<Col xs={{span: 24}} lg={{span: 12}}>
 									<Row gutter={16}>
 										<Col>
 											<FormItem
-												name="weight"
-												label="Weight"
-												rules={[{ required: true }]}
+												name='weight'
+												label='Weight'
+												rules={[{required: true}]}
 											>
 												<InputNumber
-													addonAfter="kg"
+													addonAfter='kg'
 													min={2}
 													max={150}
-													style={{ width: "120px" }}
+													style={{width: '120px'}}
 												/>
 											</FormItem>
 										</Col>
 
 										<Col>
 											<FormItem
-												name="height"
-												label="Height"
-												rules={[{ required: false }]}
+												name='height'
+												label='Height'
+												rules={[{required: false}]}
 											>
 												<InputNumber
-													addonAfter="cm"
+													addonAfter='cm'
 													min={40}
 													max={300}
-													type="number"
-													style={{ width: "120px" }}
+													type='number'
+													style={{width: '120px'}}
 												/>
 											</FormItem>
 										</Col>
@@ -118,27 +122,27 @@ export default function Home() {
 							</Row>
 
 							<Row>
-								<Col xs={{ span: 24 }} lg={{ span: 12 }}>
+								<Col xs={{span: 24}} lg={{span: 12}}>
 									<FormItem
-										name="category"
-										label="Category"
-										rules={[{ required: true }]}
+										name='category'
+										label='Category'
+										rules={[{required: true}]}
 									>
-										<Select placeholder="Select a category">
-											<Option value="pediatric_resuscitation_medications">
+										<Select placeholder='Select a category'>
+											<Option value='pediatric_resuscitation_medications'>
 												Pediatric Resuscitation
 												Medications
 											</Option>
-											<Option value="pediatric_intubation_medications">
+											<Option value='pediatric_intubation_medications'>
 												Pediatric Intubation Medications
 											</Option>
-											<Option value="inotropic_infusions">
+											<Option value='inotropic_infusions'>
 												Inotropic Infusions
 											</Option>
-											<Option value="sedation_and_anaesthesia">
+											<Option value='sedation_and_anaesthesia'>
 												Sedation and Anaesthesia
 											</Option>
-											<Option value="other_important_infusions">
+											<Option value='other_important_infusions'>
 												Other Important Infusions
 											</Option>
 										</Select>
@@ -147,18 +151,16 @@ export default function Home() {
 							</Row>
 						</Form>
 
-						<ShowCategory category={category} weight={weight} />
+						<ShowCategory category={category} weight={weight}/>
 					</Col>
 				</Row>
 			</Content>
 
 			<Footer>
 				<Row>
-					<Col xs={{ span: 20, offset: 2 }}>
-						<div>
-							<p>Developed by Bader Nasser</p>
-							<p>{pkg.version}</p>
-						</div>
+					<Col xs={{span: 20, offset: 2}}>
+						<p>Developed by Bader Nasser</p>
+						<p>{pkg.version}</p>
 					</Col>
 				</Row>
 			</Footer>

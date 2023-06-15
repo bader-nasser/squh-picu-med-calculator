@@ -1,7 +1,44 @@
 {
 	"medications": [
 		{
-			"name": " Midazolam (5mg/ml), (prepare a solution of 5mg (1ml) midazolam with 4 ml of 0.9% NS (1mg/ml))",
+			"name": [
+				"Atropine (0.5mg/ml)",
+				"(Prepare a solution of 0.5mg of atropine with 4ml of 0.9%NS (100mcg/ml))"
+			],
+			"doses": [
+				{
+					"info": "0.02mg/kg (min 0.1mg) IV/IO",
+					"mg_mcg_mmol": {
+						"multiplier": 0.02,
+						"min": 0.1,
+						"unit": "mg"
+					},
+					"ml": {
+						"multiplier": 0.02,
+						"divider": 0.1,
+						"min": 1
+					}
+				},
+				{
+					"info": [
+						"0.04 - 0.06 mg/kg (max 0.5mg) ETT",
+						"Repeat once if needed"
+					],
+					"mg_mcg_mmol": {
+						"multiplier": [0.04, 0.06],
+						"max": 0.5,
+						"unit": "mg"
+					},
+					"ml": {
+						"multiplier": [0.04, 0.06],
+						"divider": 0.1,
+						"max": 5
+					}
+				}
+			]
+		},
+		{
+			"name": "Midazolam (5mg/ml), (prepare a solution of 5mg (1ml) midazolam with 4 ml of 0.9% NS (1mg/ml))",
 			"doses": [
 				{
 					"info": "0.1-0.2 mg/kg/dose IV (max value 4mg)",
@@ -23,6 +60,22 @@
 					},
 					"ml": {
 						"multiplier": 0.05
+					}
+				}
+			]
+		},
+		{
+			"name": "Rocuronium 10mg/ml",
+			"doses": [
+				{
+					"info": "1mg/kg/dose IV",
+					"mg_mcg_mmol": {
+						"multiplier": 1,
+						"unit": "mg"
+					},
+					"ml": {
+						"multiplier": 1,
+						"divider": 10
 					}
 				}
 			]

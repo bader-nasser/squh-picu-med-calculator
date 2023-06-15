@@ -114,21 +114,6 @@
 					}
 				}
 			]
-		},
-		{
-			"name": "Rocuronium 10mg/ml",
-			"doses": [
-				{
-					"info": "1mg/kg/dose IV",
-					"mg_mcg_mmol": {
-						"multiplier": 1,
-						"unit": "mg"
-					},
-					"ml": {
-						"multiplier": "needs adjustment"
-					}
-				}
-			]
 		}
 	]
 }
