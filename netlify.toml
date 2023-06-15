@@ -18,7 +18,7 @@ base = "."
 # a base has not been set. This sample publishes the directory
 # located at the absolute path "root/project/build-output"
 
-command = "next build"
+command = "pnpm run build"
 publish = "out"
 
 [build.environment]
