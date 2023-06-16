@@ -1,7 +1,7 @@
 import {Table, Typography} from 'antd';
 import type {ColumnsType} from 'antd/es/table';
 import data from '@/data/inotropic-infusions.json';
-import {getNumberWithOneDecimalPoint} from '@/utilities';
+import {displayData, getNumberWithOneDecimalPoint} from '@/utilities';
 
 const {Title} = Typography;
 const {medications}: {medications: InotropicInfusion[]} = data;
@@ -80,11 +80,7 @@ const columns: ColumnsType<DataType> = [
 		dataIndex: 'compatible',
 		key: 'compatible',
 		render(_, {compatible}) {
-			if (typeof compatible === 'string') {
-				return compatible;
-			}
-
-			return compatible.join(', ');
+			return displayData(compatible, {joinBy: ', '});
 		},
 	},
 	{
@@ -92,11 +88,7 @@ const columns: ColumnsType<DataType> = [
 		dataIndex: 'incompatible',
 		key: 'incompatible',
 		render(_, {incompatible}) {
-			if (typeof incompatible === 'string') {
-				return incompatible;
-			}
-
-			return incompatible.join(', ');
+			return displayData(incompatible, {joinBy: ', '});
 		},
 	},
 ];

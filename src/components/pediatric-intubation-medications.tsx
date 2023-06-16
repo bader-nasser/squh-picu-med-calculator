@@ -1,7 +1,7 @@
 import {Table, Typography} from 'antd';
 import type {ColumnsType} from 'antd/es/table';
 import data from '@/data/pediatric-intubation-medications.json';
-import {getNumberWithOneDecimalPoint} from '@/utilities';
+import {displayData, getNumberWithOneDecimalPoint} from '@/utilities';
 
 const {Title} = Typography;
 const {medications}: {medications: PediatricIntubationMedication[]} = data;
@@ -58,15 +58,7 @@ const columns: ColumnsType<DataType> = [
 		dataIndex: 'medications',
 		key: 'medications',
 		render(_, {medications}) {
-			if (typeof medications === 'string') {
-				return medications;
-			}
-
-			return (
-				<>
-					{medications.map(info => <p key={info}>{info}</p>)}
-				</>
-			);
+			return displayData(medications);
 		},
 	},
 	{
@@ -74,15 +66,7 @@ const columns: ColumnsType<DataType> = [
 		dataIndex: 'dose',
 		key: 'dose',
 		render(_, {dose}) {
-			if (typeof dose === 'string') {
-				return dose;
-			}
-
-			return (
-				<>
-					{dose.map(info => <p key={info}>{info}</p>)}
-				</>
-			);
+			return displayData(dose);
 		},
 	},
 	{
@@ -93,19 +77,19 @@ const columns: ColumnsType<DataType> = [
 			if (mg_mcg_mmol) {
 				const {multiplier, unit, max, min, doses} = mg_mcg_mmol;
 				if (doses && Array.isArray(doses)) {
-					return (
-						<>
-							{doses.map(dose => (
-								<p key={dose.multiplier}>
-									(
-									{getMgMcgMmolValue({
-										multiplier: dose.multiplier,
-										weight})}
-									) {unit} (max value {max} {unit})
-								</p>
-							))}
-						</>
-					);
+					const data: string[] = [];
+					for (const dose of doses) {
+						let text = `(${getMgMcgMmolValue({
+							multiplier: dose.multiplier,
+							weight})}) ${unit}`;
+						if (max) {
+							text = `${text} (max value ${max} ${unit})`;
+						}
+
+						data.push(text);
+					}
+
+					return displayData(data);
 				}
 
 				if (multiplier) {
@@ -158,13 +142,7 @@ const columns: ColumnsType<DataType> = [
 						}
 					}
 
-					return (
-						<>
-							{data.map(d => (
-								<p key={d}>{d}</p>
-							))}
-						</>
-					);
+					return displayData(data);
 				}
 
 				const {multiplier, max, divider, min} = ml;

@@ -1,7 +1,7 @@
 import {Table, Typography} from 'antd';
 import type {ColumnsType} from 'antd/es/table';
 import data from '@/data/pediatric-resuscitation-medications.json';
-import {getNumberWithOneDecimalPoint} from '@/utilities';
+import {displayData, getNumberWithOneDecimalPoint} from '@/utilities';
 
 const {Title} = Typography;
 const {medications}: {medications: PediatricResuscitationMedication[]} = data;
@@ -55,21 +55,19 @@ const columns: ColumnsType<DataType> = [
 			if (mg_mcg_mmol) {
 				const {multiplier, unit, max, doses} = mg_mcg_mmol;
 				if (doses && Array.isArray(doses)) {
-					return (
-						<>
-							{doses.map(dose => (
-								<p key={dose.multiplier}>
-									(
-									{getNumberWithOneDecimalPoint(
-										dose.multiplier * weight,
-									)}
-									) {unit}{' '}
-									{dose.max
-										&& `(max value ${dose.max} ${unit})`}
-								</p>
-							))}
-						</>
-					);
+					const data: string[] = [];
+					for (const dose of doses) {
+						let text = `(${getNumberWithOneDecimalPoint(
+							dose.multiplier * weight,
+						)} ${unit})`;
+						if (dose.max) {
+							text = `${text} (max value ${dose.max} ${unit})`;
+						}
+
+						data.push(text);
+					}
+
+					return displayData(data);
 				}
 
 				if (multiplier) {
@@ -119,13 +117,7 @@ const columns: ColumnsType<DataType> = [
 						}
 					}
 
-					return (
-						<>
-							{data.map(d => (
-								<p key={d}>{d}</p>
-							))}
-						</>
-					);
+					return displayData(data);
 				}
 
 				const {multiplier, max} = ml;

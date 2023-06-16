@@ -1,7 +1,7 @@
 import {Table, Typography} from 'antd';
 import type {ColumnsType} from 'antd/es/table';
 import data from '@/data/other-important-infusions.json';
-import {getNumberWithOneDecimalPoint, prettifyKeyName} from '@/utilities';
+import {displayData, getNumberWithOneDecimalPoint, prettifyKeyName} from '@/utilities';
 
 const {Title} = Typography;
 const {medications}: {medications: OtherImportantInfusion[]} = data;
@@ -63,19 +63,7 @@ const columns: ColumnsType<DataType> = [
 		dataIndex: 'formula_50ml',
 		key: 'formula_50ml',
 		render(_, {formula_50ml}) {
-			if (typeof formula_50ml === 'string') {
-				return formula_50ml;
-			}
-
-			return (
-				<>
-					{Object.entries(formula_50ml).map(([key, value]) => (
-						<p key={key}>
-							<strong>{prettifyKeyName(key)}:</strong> {value}
-						</p>
-					))}
-				</>
-			);
+			return displayData(formula_50ml);
 		},
 	},
 	{
@@ -83,11 +71,7 @@ const columns: ColumnsType<DataType> = [
 		dataIndex: 'compatible',
 		key: 'compatible',
 		render(_, {compatible}) {
-			if (typeof compatible === 'string') {
-				return compatible;
-			}
-
-			return compatible.join(', ');
+			return displayData(compatible, {joinBy: ', '});
 		},
 	},
 	{
@@ -95,11 +79,7 @@ const columns: ColumnsType<DataType> = [
 		dataIndex: 'incompatible',
 		key: 'incompatible',
 		render(_, {incompatible}) {
-			if (typeof incompatible === 'string') {
-				return incompatible;
-			}
-
-			return incompatible.join(', ');
+			return displayData(incompatible, {joinBy: ', '});
 		},
 	},
 ];
