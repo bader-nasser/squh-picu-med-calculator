@@ -1,6 +1,10 @@
 name: "publish"
 
-on: pull_request
+on:
+  pull_request:
+  push:
+    branches:
+      - main
 
 jobs:
   create-release:
@@ -15,7 +19,7 @@ jobs:
       - name: setup node
         uses: actions/setup-node@v3
         with:
-          node-version: 16
+          node-version: 20
       - name: get version
         run: echo "PACKAGE_VERSION=$(node -p "require('./package.json').version")" >> $GITHUB_ENV
       - name: create release
@@ -26,7 +30,7 @@ jobs:
             const { data } = await github.rest.repos.createRelease({
               owner: context.repo.owner,
               repo: context.repo.repo,
-              tag_name: `app-v${process.env.PACKAGE_VERSION}`,
+              tag_name: `app-v${process.env.PACKAGE_VERSION}-upload`,
               name: `Desktop App v${process.env.PACKAGE_VERSION}`,
               body: 'Take a look at the assets to download and install this app.',
               draft: true,
@@ -49,7 +53,7 @@ jobs:
       - name: setup node
         uses: actions/setup-node@v3
         with:
-          node-version: 16
+          node-version: 20
       - name: install Rust stable
         uses: dtolnay/rust-toolchain@stable
       - name: install dependencies (ubuntu only)
@@ -57,8 +61,12 @@ jobs:
         run: |
           sudo apt-get update
           sudo apt-get install -y libgtk-3-dev libwebkit2gtk-4.0-dev libappindicator3-dev librsvg2-dev patchelf
+      - name: install pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: 8.x.x
       - name: install frontend dependencies
-        run: yarn install # change this to npm or pnpm depending on which one you use
+        run: pnpm install # change this to npm or pnpm depending on which one you use
       - uses: tauri-apps/tauri-action@v0
         env:
           GITHUB_TOKEN: ${{ secrets.TAURI_SECRET }}

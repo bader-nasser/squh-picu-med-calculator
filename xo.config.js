@@ -1,16 +1,20 @@
 module.exports = {
 	envs:	['es2022', 'browser', 'node'],
-	extends: ['xo-react'],
+	extends: [
+		'xo-react',
+		'plugin:jsx-a11y/recommended',
+		'plugin:jsx-a11y/strict',
+	],
 	rules: {
+		'capitalized-comments': 'off',
 		'react/react-in-jsx-scope': 'off',
 		'import/extensions': 'warn',
 	},
 	overrides: [
 		{
-			files: '**/*.js',
+			files: '*.config.js',
 			rules: {
-				'capitalized-comments': 'off',
-				'unicorn/prefer-module': 'warn',
+				'unicorn/prefer-module': 'off',
 			},
 		},
 	],
