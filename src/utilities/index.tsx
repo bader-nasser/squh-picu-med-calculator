@@ -12,7 +12,7 @@ export function capitalize(text: string, options?: {secondWord: boolean}) {
 	let newText = text;
 	newText = `${newText[0].toUpperCase()}${newText.slice(1)}`;
 	if (options?.secondWord) {
-		const [firstWord, secondWord, ...rest] = newText.split(' ');
+		const [firstWord, secondWord = '', ...rest] = newText.split(' ');
 		newText = `${firstWord}${capitalize(secondWord)}${rest.toString()}}`;
 	}
 
