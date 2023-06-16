@@ -32,7 +32,7 @@
 				"icons/icon.icns",
 				"icons/icon.ico"
 			],
-			"identifier": "picu-med-calculator.app",
+			"identifier": "picu.med.calculator.app",
 			"longDescription": "A Tauri app to calculate PICU medications",
 			"macOS": {
 				"entitlements": null,
