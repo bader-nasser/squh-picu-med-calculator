@@ -21,6 +21,10 @@ function getAmount({multiplier, weight}: GetAmountProps) {
 	);
 }
 
+function getDoseAmount(args: GetAmountProps) {
+	return getAmount(args);
+}
+
 function getNsAmount({nsMultiplier, multiplier, weight}: GetNsAmountProps) {
 	return getNumberWithOneDecimalPoint(
 		50 - ((nsMultiplier ?? multiplier) * weight),
@@ -29,7 +33,13 @@ function getNsAmount({nsMultiplier, multiplier, weight}: GetNsAmountProps) {
 
 type InotropicInfusion = {
 	name: string;
-	dose: string;
+	dose:
+	| string
+	| {
+		info: string;
+		multiplier: number | number[];
+		unit: string;
+	};
 	formula_50ml:
 	| string
 	| {
@@ -57,6 +67,31 @@ const columns: ColumnsType<DataType> = [
 		title: 'Dose',
 		dataIndex: 'dose',
 		key: 'dose',
+		render(_, {dose, weight}) {
+			if (typeof dose === 'string') {
+				return dose;
+			}
+
+			let text = '';
+			const {info, multiplier, unit} = dose;
+
+			if (typeof multiplier === 'number') {
+				const doseAmount = getDoseAmount({
+					multiplier, weight,
+				});
+				text = `(${doseAmount}) ${unit}`;
+			} else {
+				const [v1, v2] = multiplier.map(m => getDoseAmount({multiplier: m, weight}));
+				text = `(${v1} to ${v2}) ${unit}`;
+			}
+
+			return (
+				<>
+					<p>{info}</p>
+					<p>{text}</p>
+				</>
+			);
+		},
 	},
 	{
 		title: 'Formula (50ml)',
