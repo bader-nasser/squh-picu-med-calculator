@@ -1,8 +1,8 @@
-name: "publish"
-on:
-  push:
-    branches:
-      - main
+name: "Test all"
+on: pull_request
+#  push:
+#    branches:
+#      - main
 
 jobs:
   publish-tauri:
@@ -33,12 +33,19 @@ jobs:
           version: 8.x.x
       - name: install frontend dependencies
         run: pnpm install # change this to npm or pnpm depending on which one you use
+
+      - name: Test types
+        run: pnpm lint:types
+
+      - name: Format the app
+        run: pnpm fmt
+
       - uses: tauri-apps/tauri-action@v0
         env:
           GITHUB_TOKEN: ${{ secrets.TAURI_SECRET }}
         with:
-          tagName: app-v__VERSION__ # the action automatically replaces \_\_VERSION\_\_ with the app version
-          releaseName: "App v__VERSION__"
+          tagName: app-v__VERSION__-pr # the action automatically replaces \_\_VERSION\_\_ with the app version
+          releaseName: "App v__VERSION__ from PR"
           releaseBody: "See the assets to download this version and install."
           releaseDraft: true
           prerelease: false
