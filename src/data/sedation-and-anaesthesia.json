@@ -1,6 +1,48 @@
 {
 	"medications": [
 		{
+			"name": "Morphine (10mg/ml)",
+			"dose": {
+				"info": "10-40 mcg/kg/hr",
+				"multiplier": [10, 40],
+				"unit": "mcg/hr"
+			},
+			"formula_50ml": {
+				"full_strength": {
+					"text": "prepare solution of (_amount_) mg (_amount_ml_) ml with (_ns_amount_) ml of 0.9% NS \n (20mcg/Kg/ml)",
+					"multiplier": 1,
+					"divider": 10
+				},
+				"double_strength": {
+					"text": "prepare solution of (_amount_) mg (_amount_ml_) ml with (_ns_amount_) ml of 0.9% NS \n (40mcg/Kg/ml)",
+					"multiplier": 2,
+					"divider": 10
+				},
+				"half_strength": {
+					"text": "prepare solution of (_amount_) mg (_amount_ml_) ml with (_ns_amount_) mL of 0.9% NS \n (10mcg/Kg/ml)",
+					"multiplier": 0.5,
+					"divider": 10
+				}
+			},
+			"compatible": [
+				"Dextrose 5-10%",
+				"sodium chloride 0.9%",
+				"Hartmann's",
+				"Ringer's",
+				"adrenaline",
+				"cisatracurium",
+				"dopamine",
+				"insulin",
+				"ketamine",
+				"Labetalol",
+				"midazolam",
+				"Milrinone",
+				"noradrenaline",
+				"remifentanil"
+			],
+			"incompatible": ["Aminophylline"]
+		},
+		{
 			"name": "fentanyl (100mcg/2ml)",
 			"dose": {
 				"info": "1-6 mcg/kg/hr",
