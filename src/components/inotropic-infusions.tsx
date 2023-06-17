@@ -1,7 +1,7 @@
 import {Table, Typography} from 'antd';
 import type {ColumnsType} from 'antd/es/table';
 import data from '@/data/inotropic-infusions.json';
-import {displayData, getNumberWithOneDecimalPoint} from '@/utilities';
+import {displayData, getNumberWithOneDecimalPoint, capitalize} from '@/utilities';
 
 const {Title} = Typography;
 const {medications}: {medications: InotropicInfusion[]} = data;
@@ -62,6 +62,9 @@ const columns: ColumnsType<DataType> = [
 		title: 'Medications',
 		dataIndex: 'medications',
 		key: 'medications',
+		render(_, {medications}) {
+			return capitalize(medications);
+		},
 	},
 	{
 		title: 'Dose',
@@ -76,12 +79,12 @@ const columns: ColumnsType<DataType> = [
 			const {info, multiplier, unit} = dose;
 
 			if (typeof multiplier === 'number') {
-				const doseAmount = getDoseAmount({
-					multiplier, weight,
-				});
+				const doseAmount = getDoseAmount({multiplier, weight});
 				text = `(${doseAmount}) ${unit}`;
 			} else {
-				const [v1, v2] = multiplier.map(m => getDoseAmount({multiplier: m, weight}));
+				const [v1, v2] = multiplier.map(m =>
+					getDoseAmount({multiplier: m, weight}),
+				);
 				text = `(${v1} to ${v2}) ${unit}`;
 			}
 
@@ -99,7 +102,7 @@ const columns: ColumnsType<DataType> = [
 		key: 'formula_50ml',
 		render(_, {formula_50ml, weight}) {
 			if (typeof formula_50ml === 'string') {
-				return formula_50ml;
+				return capitalize(formula_50ml);
 			}
 
 			const {text, multiplier, ns_multiplier: nsMultiplier} = formula_50ml;
@@ -107,7 +110,7 @@ const columns: ColumnsType<DataType> = [
 			const nsAmount = getNsAmount({nsMultiplier, multiplier, weight});
 			let newText = text.replace('_amount_', `${amount}`);
 			newText = newText.replace('_ns_amount_', `${nsAmount}`);
-			return newText;
+			return capitalize(newText);
 		},
 	},
 	{
@@ -115,7 +118,10 @@ const columns: ColumnsType<DataType> = [
 		dataIndex: 'compatible',
 		key: 'compatible',
 		render(_, {compatible}) {
-			return displayData(compatible, {joinBy: ', '});
+			return displayData(compatible, {
+				joinBy: ', ',
+				capitalize: {secondWord: true},
+			});
 		},
 	},
 	{
@@ -123,7 +129,10 @@ const columns: ColumnsType<DataType> = [
 		dataIndex: 'incompatible',
 		key: 'incompatible',
 		render(_, {incompatible}) {
-			return displayData(incompatible, {joinBy: ', '});
+			return displayData(incompatible, {
+				joinBy: ', ',
+				capitalize: {secondWord: true},
+			});
 		},
 	},
 ];

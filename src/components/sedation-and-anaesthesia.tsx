@@ -1,6 +1,6 @@
 import {Table, Typography} from 'antd';
 import type {ColumnsType} from 'antd/es/table';
-import {displayData, getNumberWithOneDecimalPoint, prettifyKeyName} from '@/utilities';
+import {displayData, getNumberWithOneDecimalPoint, prettifyKeyName, capitalize} from '@/utilities';
 import data from '@/data/sedation-and-anaesthesia.json';
 
 const {Title} = Typography;
@@ -33,6 +33,9 @@ const columns: ColumnsType<DataType> = [
 		title: 'Medications',
 		dataIndex: 'medications',
 		key: 'medications',
+		render(_, {medications}) {
+			return capitalize(medications);
+		},
 	},
 	{
 		title: 'Dose',
@@ -71,7 +74,7 @@ const columns: ColumnsType<DataType> = [
 		dataIndex: 'formula_50ml',
 		key: 'formula_50ml',
 		render(_, {formula_50ml}) {
-			return displayData(formula_50ml);
+			return displayData(formula_50ml, {capitalize: true});
 		},
 	},
 	{
@@ -79,7 +82,10 @@ const columns: ColumnsType<DataType> = [
 		dataIndex: 'compatible',
 		key: 'compatible',
 		render(_, {compatible}) {
-			return displayData(compatible, {joinBy: ', '});
+			return displayData(compatible, {
+				joinBy: ', ',
+				capitalize: {secondWord: true},
+			});
 		},
 	},
 	{
@@ -87,7 +93,10 @@ const columns: ColumnsType<DataType> = [
 		dataIndex: 'incompatible',
 		key: 'incompatible',
 		render(_, {incompatible}) {
-			return displayData(incompatible, {joinBy: ', '});
+			return displayData(incompatible, {
+				joinBy: ', ',
+				capitalize: {secondWord: true},
+			});
 		},
 	},
 ];

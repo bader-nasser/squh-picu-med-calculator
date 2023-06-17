@@ -58,7 +58,7 @@ const columns: ColumnsType<DataType> = [
 		dataIndex: 'medications',
 		key: 'medications',
 		render(_, {medications}) {
-			return displayData(medications);
+			return displayData(medications, {capitalize: true});
 		},
 	},
 	{

@@ -41,6 +41,9 @@ const columns: ColumnsType<DataType> = [
 		title: 'Medications',
 		dataIndex: 'medications',
 		key: 'medications',
+		render(_, {medications}) {
+			return displayData(medications, {capitalize: {secondWord: true}});
+		},
 	},
 	{
 		title: 'Dose',
