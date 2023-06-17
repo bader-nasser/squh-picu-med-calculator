@@ -33,11 +33,11 @@ export function displayData(
 	options: DisplayDataOptions = {},
 ) {
 	const {joinBy, capitalize: cap = false} = options;
+	const capitalizeSecondWord = typeof cap === 'object' && cap?.secondWord;
+
 	if (typeof data === 'string') {
 		return cap
-			? capitalize(data, {
-				secondWord: typeof cap === 'object' && cap?.secondWord,
-			})
+			? capitalize(data, {secondWord: capitalizeSecondWord})
 			: data;
 	}
 
@@ -45,9 +45,7 @@ export function displayData(
 		if (typeof joinBy === 'string') {
 			return data
 				.map(d => cap
-					? capitalize(d, {
-						secondWord: typeof cap === 'object' && cap?.secondWord,
-					})
+					? capitalize(d, {secondWord: capitalizeSecondWord})
 					: d,
 				)
 				.join(joinBy);
