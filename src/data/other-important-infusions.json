@@ -10,17 +10,17 @@
 			"compatible": [
 				"Dextrose 5%",
 				"Hartmann's",
-				"sodium chloride 0.9%",
-				"heparin",
-				"remifentanil"
+				"Sodium Chloride 0.9%",
+				"Heparin",
+				"Remifentanil"
 			],
 			"incompatible": [
 				"Hydralazine",
 				"Ketamine",
-				"labetalol",
-				"midazolam",
+				"Labetalol",
+				"Midazolam",
 				"Milrinone",
-				"rocuronium"
+				"Rocuronium"
 			]
 		},
 		{
@@ -29,23 +29,23 @@
 			"formula_50ml": "Dilute to 1 u/ml",
 			"compatible": [
 				"Dextrose 5%",
-				"sodium chloride 0.9%",
-				"adrenaline",
-				"dexmedetomidine",
-				"dopamine",
-				"fentanyl",
-				"furosemide",
-				"hydralazine",
-				"milrinone",
-				"noradrenaline",
-				"remifentanil",
-				"sodium bicarbonate"
+				"Sodium Chloride 0.9%",
+				"Epinephrine",
+				"Dexmedetomidine",
+				"Dopamine",
+				"Fentanyl",
+				"Furosemide",
+				"Hydralazine",
+				"Milrinone",
+				"Norepinephrine",
+				"Remifentanil",
+				"Sodium Bicarbonate"
 			],
 			"incompatible": [
 				"Cisatracurium",
-				"dobutamine",
+				"Dobutamine",
 				"Ketamine",
-				"labetalol"
+				"Labetalol"
 			]
 		},
 		{
@@ -56,16 +56,16 @@
 				"Dextrose 5-10%",
 				"Hartmann's",
 				"Ringer's",
-				"sodium chloride 0.9%",
-				"milrinone",
-				"morphine"
+				"Sodium Chloride 0.9%",
+				"Milrinone",
+				"Morphine"
 			],
 			"incompatible": [
 				"Dopamine",
 				"Ketamine",
-				"labetalol",
-				"noradrenaline",
-				"rocuronium"
+				"Labetalol",
+				"Norepinephrine",
+				"Rocuronium"
 			]
 		},
 		{
@@ -83,16 +83,16 @@
 				"Dextrose 5-10%",
 				"Hartmann's",
 				"Ringer's",
-				"sodium chloride 0.9%"
+				"Sodium Chloride 0.9%"
 			],
 			"incompatible": [
-				"adrenaline",
-				"dobutamine",
-				"hydralazine",
-				"insulin",
-				"midazolam",
-				"morphine",
-				"noradrenaline"
+				"Epinephrine",
+				"Dobutamine",
+				"Hydralazine",
+				"Insulin",
+				"Midazolam",
+				"Morphine",
+				"Norepinephrine"
 			]
 		},
 		{
@@ -102,15 +102,15 @@
 				"maximum_strength": "prepare 10mg (20ml) with 30ml of 0.9% NS (200mcg/ml)",
 				"minimum_strength": "prepare 500mcg (1ml) with 50ml of 0.9% NS (10mcg/ml)"
 			},
-			"compatible": "sodium chloride 0.9%",
-			"incompatible": "No information"
+			"compatible": "Sodium Chloride 0.9%",
+			"incompatible": "No Information"
 		},
 		{
 			"name": "Omeprazole 40mg\n\nDilute in 4 ml WFI",
 			"dose": "Max 8mg/H",
 			"formula_50ml": "prepare 40mg (4ml) with 36ml of 0.9% NS (1mg/ml)",
-			"compatible": ["Dextrose 5-10%", "sodium chloride 0.9%"],
-			"incompatible": "midazolam"
+			"compatible": ["Dextrose 5-10%", "Sodium Chloride 0.9%"],
+			"incompatible": "Midazolam"
 		},
 		{
 			"name": "Labetalol (100mg/20ml)",
@@ -120,20 +120,20 @@
 				"Dextrose 5%",
 				"Hartmann's",
 				"Ringer's",
-				"sodium chloride 0.9%",
+				"Sodium Chloride 0.9%",
 				"Dexmedetomidine",
-				"dobutamine",
-				"dopamine",
-				"fentanyl",
-				"midazolam",
-				"morphine",
-				"noradrenaline"
+				"Dobutamine",
+				"Dopamine",
+				"Fentanyl",
+				"Midazolam",
+				"Morphine",
+				"Norepinephrine"
 			],
 			"incompatible": [
-				"furosemide",
-				"heparine",
-				"insuline",
-				"sodium bicarbonate"
+				"Furosemide",
+				"Heparin",
+				"Insuline",
+				"Sodium Bicarbonate"
 			]
 		},
 		{
@@ -146,10 +146,10 @@
 			"compatible": [
 				"Hartmann's",
 				"Ringer's",
-				"sodium chloride 0.9%",
-				"heparine"
+				"Sodium Chloride 0.9%",
+				"Heparin"
 			],
-			"incompatible": ["dextrose 5%", "aminophylline", "furosemide"]
+			"incompatible": ["Dextrose 5%", "Aminophylline", "Furosemide"]
 		}
 	]
 }

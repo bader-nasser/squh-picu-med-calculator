@@ -9,42 +9,42 @@
 			},
 			"compatible": [
 				"Dextrose 5-10%",
-				"sodium chloride 0.9%",
+				"Sodium Chloride 0.9%",
 				"Hartmann's",
 				"Ringer's",
-				"cisatracurium",
-				"dexmedetomidine",
-				"dobutamine",
-				"dopamine",
-				"fentanyl",
-				"heparin",
-				"milrinone",
-				"morphine",
-				"remifentanil"
+				"Cisatracurium",
+				"Dexmedetomidine",
+				"Dobutamine",
+				"Dopamine",
+				"Fentanyl",
+				"Heparin",
+				"Milrinone",
+				"Morphine",
+				"Remifentanil"
 			],
-			"incompatible": "sodium bicarbonate"
+			"incompatible": "Sodium Bicarbonate"
 		},
 		{
-			"name": "Norepinephrine (1mg/ml)",
+			"name": "Norepinephrine(1mg/ml)",
 			"dose": "0.01-0.5 mcg/kg/min",
 			"formula_50ml": {
-				"text": "prepare solution of (_amount_) ml Norepinephrine in (_ns_amount_ml) of 0.9% NS \n (1ml/hr = 0.1mcg/kg/min)",
+				"text": "prepare solution of (_amount_) ml Norepinephrinein (_ns_amount_ml) of 0.9% NS \n (1ml/hr = 0.1mcg/kg/min)",
 				"multiplier": 0.3
 			},
 			"compatible": [
 				"Dextrose 5%",
 				"Hartmann's",
-				"sodium chloride 0.9%",
-				"cisatracurium",
-				"dopamine",
-				"dobutamine",
-				"heparine",
-				"midazolam",
-				"milrinone",
-				"morphine",
-				"remifentanil"
+				"Sodium Chloride 0.9%",
+				"Cisatracurium",
+				"Dopamine",
+				"Dobutamine",
+				"Heparin",
+				"Midazolam",
+				"Milrinone",
+				"Morphine",
+				"Remifentanil"
 			],
-			"incompatible": ["sodium bicarbonate", "insulin"]
+			"incompatible": ["Sodium Bicarbonate", "Insulin"]
 		},
 		{
 			"name": "Dopamine (40mg/ml)",
@@ -57,23 +57,23 @@
 			"compatible": [
 				"Dextrose 5%",
 				"Hartmann's",
-				"sodium chloride",
-				"epinephrine",
-				"cisatracurium",
-				"dexmedetomidine",
+				"Sodium Chloride",
+				"Epinephrine",
+				"Cisatracurium",
+				"Dexmedetomidine",
 				"Labetalol",
-				"milrinone",
-				"norepinephrine"
+				"Milrinone",
+				"Norepinephrine"
 			],
 			"incompatible": [
-				"sodium bicarbonate",
-				"aminophylline",
-				"omeprazole",
-				"heparine"
+				"Sodium Bicarbonate",
+				"Aminophylline",
+				"Omeprazole",
+				"Heparin"
 			]
 		},
 		{
-			"name": "dobutamine (5mg/ml)",
+			"name": "Dobutamine (5mg/ml)",
 			"dose": "5-20 mcg/kg/min",
 			"formula_50ml": {
 				"text": "Prepare solution of (_amount_) ml Dobutamine in (_ns_amount_) ml of 0.9% NS \n (1ml/hr = 1 mgc/kg/min)",
@@ -83,46 +83,46 @@
 			"compatible": [
 				"Dextrose 5-10%",
 				"Hartmann's",
-				"sodium chloride 0.9%",
-				"epinephrine",
-				"cisatracurium",
-				"dexmedetomidine",
+				"Sodium Chloride 0.9%",
+				"Epinephrine",
+				"Cisatracurium",
+				"Dexmedetomidine",
 				"Labetalol",
 				"Milrinone",
-				"norepinephrine"
+				"Norepinephrine"
 			],
 			"incompatible": [
-				"sodium bicarbonate",
-				"aminophylline",
-				"omeprazole",
-				"heparine"
+				"Sodium Bicarbonate",
+				"Aminophylline",
+				"Omeprazole",
+				"Heparin"
 			]
 		},
 		{
-			"name": "milrinone (1mg/ml)",
+			"name": "Milrinone (1mg/ml)",
 			"dose": "0.25-0.75 mcg/kg/min",
-			"formula_50ml": "Prepare solution of (10mg) 10 ml milrinone in 40 ml of 0.9% NS or D5W \n (200mcg/ml)",
+			"formula_50ml": "Prepare solution of (10mg) 10 ml Milrinone in 40 ml of 0.9% NS or D5W \n (200mcg/ml)",
 			"compatible": [
 				"Dextrose 5%",
-				"sodium chloride",
-				"epinephrine",
-				"norepinephrine",
+				"Sodium Chloride",
+				"Epinephrine",
+				"Norepinephrine",
 				"amiodarone",
-				"dobutamine",
-				"dopamine",
-				"fentanyl",
-				"heparine",
-				"insulin",
-				"midazolam",
-				"morphine"
+				"Dobutamine",
+				"Dopamine",
+				"Fentanyl",
+				"Heparin",
+				"Insulin",
+				"Midazolam",
+				"Morphine"
 			],
-			"incompatible": ["sodium bicarbonate", "furosemide"]
+			"incompatible": ["Sodium Bicarbonate", "Furosemide"]
 		},
 		{
 			"name": "Vasopressin 20IU/ml",
 			"dose": "0.3-1 unit/kg/hr",
 			"formula_50ml": "Prepare solution of 5 units (0.25ml) in 49.75ml of 0.9% NS (0.1unit/ml) or 20 units (1ml) in 49ml of 0.9% NS (1unit/ml)",
-			"compatible": ["Dextrose 5%", "sodium chloride 0.9%"],
+			"compatible": ["Dextrose 5%", "Sodium Chloride 0.9%"],
 			"incompatible": "Furosemide"
 		}
 	]

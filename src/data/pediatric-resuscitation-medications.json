@@ -43,7 +43,7 @@
 			]
 		},
 		{
-			"name": "calcium gluconate 10% (100mg/ml, (0.2mmol/ml)",
+			"name": "Calcium Gluconate 10% (100mg/ml, (0.2mmol/ml)",
 			"doses": [
 				{
 					"info": "60-100mg/kg/dose (max. 100mg/dose) IV/IO (0.1-0.2 ml/kg) slow push",
@@ -59,7 +59,7 @@
 			]
 		},
 		{
-			"name": "calcium chloride 10% (100mg/ml), (1.4mmol/ml)",
+			"name": "Calcium Chloride 10% (100mg/ml), (1.4mmol/ml)",
 			"doses": [
 				{
 					"info": "10-20mg/kg/dose (max 100mg/dose) IV/IO (0.1-0.2 ml/kg) Slow Push via central line, dilute if peripheral line",
@@ -76,7 +76,7 @@
 			]
 		},
 		{
-			"name": "dextrose",
+			"name": "Dextrose",
 			"doses": [
 				{
 					"info": " IV/IO: 1-2 mL/kg D50%, via central line only, 2-4 mL/kg D25%, via central line only, 5-10 mL/kg D10%",
