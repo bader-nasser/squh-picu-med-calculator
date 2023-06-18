@@ -7,7 +7,7 @@
 			    "multiplier": [0.01, 0.5],
 			    "unit": "mcg/min"},
 			"formula_50ml": {
-				"text": "Prepare solution of (_amount_) ml Epinephrine in (_ns_amount_) ml of 0.9% NS \n (1ml/hr = 0.1 mgc/kg/min)",
+				"text": "Prepare solution of (_amount_) ml Epinephrine inj with (_ns_amount_) ml of 0.9% NS \n (1ml/hr = 0.1 mcg/kg/min)",
 				"multiplier": 0.3
 			},
 			"compatible": [
@@ -34,7 +34,7 @@
 			    "multiplier": [0.01, 0.5],
 			    "unit": "mcg/min"},
 			"formula_50ml": {
-				"text": "prepare solution of (_amount_) ml Norepinephrinein (_ns_amount_ml) of 0.9% NS \n (1ml/hr = 0.1mcg/kg/min)",
+				"text": "prepare solution of (_amount_) ml Norepinephrine inj with (_ns_amount_ml) of 0.9% NS \n (1ml/hr = 0.1mcg/kg/min)",
 				"multiplier": 0.3
 			},
 			"compatible": [
@@ -59,7 +59,7 @@
 			    "multiplier": [5, 20],
 			    "unit": "mcg/min"},
 			"formula_50ml": {
-				"text": "Prepare solution of (_amount_) ml Dopamine in (_ns_amount_) ml of 0.9% NS \n (1ml/hr = 1 mgc/kg/min)",
+				"text": "Prepare solution of (_amount_) ml Dopamine inj with (_ns_amount_) ml of 0.9% NS \n (1ml/hr = 0.1mcg/kg/min)",
 				"multiplier": 30,
 				"ns_multiplier": 0.3
 			},
@@ -88,7 +88,7 @@
 			    "multiplier": [5, 20],
 			    "unit": "mcg/min"},
 			"formula_50ml": {
-				"text": "Prepare solution of (_amount_) ml of Dobutamine in (_ns_amount_) ml of 0.9% NS \n (1ml/hr = 1 mgc/kg/min)",
+				"text": "Prepare solution of (_amount_) ml of Dobutamine inj with (_ns_amount_) ml of 0.9% NS \n (1ml/hr = 0.1mcg/kg/min)",
 				"multiplier": 30,
 				"ns_multiplier": 0.3
 			},
