@@ -1,11 +1,16 @@
 {
 	"medications": [
 		{
+<<<<<<< HEAD
+			"name": "Furosemide inj 20mg /2ml",
+			"dose": "max rate is 0.5mg/kg/min or 4mg/min",
+=======
 			"name": "Furosemide 20mg /2ml",
 			"dose": {
 				"info": "max rate is 0.5 mg/kg/min or 4 mg/min",
 			    "multiplier": 0.5,
 			    "unit": "mg/hr"},
+>>>>>>> 031845edaf4a746121cb5e739968c8c475b22985
 			"formula_50ml": {
 				"maximum_strength": "10 mg/ml (undiluted)",
 				"minimum_strength": "prepare 20mg (2ml) with 18ml of 0.9 NS (1 mg/ml)"
@@ -27,12 +32,18 @@
 			]
 		},
 		{
+<<<<<<< HEAD
+			"name": "Heparin inj (See Avilable Concentration)",
+			"dose": "0.5-25 unit/kg/hr titrate to APTT results",
+			"formula_50ml": "Dilute to 1 u/ml",
+=======
 			"name": "Heparin (See Available Stock)",
 			"dose": {
 				"info":"0.5 - 25 unit/kg/hr alter to APTT",
 			    "multiplier": [0.5, 25],
 			    "unit": "unit/hr"},
 			"formula_50ml": "Dilute to 1 unit/ml",
+>>>>>>> 031845edaf4a746121cb5e739968c8c475b22985
 			"compatible": [
 				"Dextrose 5%",
 				"Sodium Chloride 0.9%",
@@ -55,12 +66,18 @@
 			]
 		},
 		{
+<<<<<<< HEAD
+			"name": "Insulin (ACTRAPID) inj (100 IU/ml)",
+			"dose": "0.02 - 0.1 unit/kg/hr",
+			"formula_50ml": "Dilute 50 units in 50ml (1 unit /ml)",
+=======
 			"name": "Insulin inj (ACTRAPID) (100 IU/ml)",
 			"dose": {
 				"info":"0.02 - 0.1 unit/kg/hr",
 			    "multiplier": [0.02, 0.1],
 			    "unit": "unit/hr"},
 			"formula_50ml": "Dilute 50 units (0.5ml) of Insulin inj with 49ml of o,9% NS (1 unit /ml)",
+>>>>>>> 031845edaf4a746121cb5e739968c8c475b22985
 			"compatible": [
 				"Dextrose 5-10%",
 				"Hartmann's",

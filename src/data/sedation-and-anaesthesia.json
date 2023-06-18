@@ -1,7 +1,7 @@
 {
 	"medications": [
 		{
-			"name": "Morphine (10mg/ml)",
+			"name": "Morphine inj (10mg/ml)",
 			"dose": {
 				"info": "10-40 mcg/kg/hr",
 				"multiplier": [10, 40],
@@ -9,17 +9,17 @@
 			},
 			"formula_50ml": {
 				"full_strength": {
-					"text": "prepare solution of (_amount_) mg (_amount_ml_) ml with (_ns_amount_) ml of 0.9% NS \n (20mcg/Kg/ml)",
+					"text": "prepare solution of (_amount_) mg (_amount_ml_) ml of Morphine inj with (_ns_amount_) ml of 0.9% NS \n (20mcg/Kg/ml)",
 					"multiplier": 1,
 					"divider": 10
 				},
 				"double_strength": {
-					"text": "prepare solution of (_amount_) mg (_amount_ml_) ml with (_ns_amount_) ml of 0.9% NS \n (40mcg/Kg/ml)",
+					"text": "prepare solution of (_amount_) mg (_amount_ml_) ml of Morphine inj with (_ns_amount_) ml of 0.9% NS \n (40mcg/Kg/ml)",
 					"multiplier": 2,
 					"divider": 10
 				},
 				"half_strength": {
-					"text": "prepare solution of (_amount_) mg (_amount_ml_) ml with (_ns_amount_) mL of 0.9% NS \n (10mcg/Kg/ml)",
+					"text": "prepare solution of (_amount_) mg (_amount_ml_) ml of Morphine inj with (_ns_amount_) mL of 0.9% NS \n (10mcg/Kg/ml)",
 					"multiplier": 0.5,
 					"divider": 10
 				}
@@ -43,15 +43,15 @@
 			"incompatible": ["Aminophylline"]
 		},
 		{
-			"name": "Fentanyl (100mcg/2ml)",
+			"name": "Fentanyl inj (100mcg/2ml)",
 			"dose": {
 				"info": "1-6 mcg/kg/hr",
 				"multiplier": [1, 6],
 				"unit": "mcg/hr"
 			},
 			"formula_50ml": {
-				"single_strength": "prepare solution of (500mcg) 10ml of Fentanyl with 40 ml of 0.9% NS \n (10mcg/ml)",
-				"double_strength": "prepare solution of (1000mcg) 20 ml of Fentanyl with 30 ml of 0.9% NS \n (20mcg/ml)"
+				"single_strength": "prepare solution of (500mcg) 10ml of Fentanyl inj with 40 ml of 0.9% NS \n (10mcg/ml)",
+				"double_strength": "prepare solution of (1000mcg) 20 ml of Fentanyl inj with 30 ml of 0.9% NS \n (20mcg/ml)"
 			},
 			"compatible": [
 				"Dextrose 5%",
@@ -67,15 +67,15 @@
 			"incompatible": "No Information"
 		},
 		{
-			"name": "Remifentanil (5mg) dilute in 5 ml WFI",
+			"name": "Remifentanil inj (5mg) dilute in 5 ml WFI",
 			"dose": {
 				"info": "24-78 mcg/kg/hr",
 				"multiplier": [24, 78],
 				"unit": "mcg/hr"
 			},
 			"formula_50ml": {
-				"minimum_strength": "prepare solution of (1mg) 1ml of Remifentanil in 49ml of 0.9% NS (20mcg/ml)",
-				"maximum_strength": "prepare solution of (5mg) 5ml of Remifentanil in 45ml of 0.9% NS (250mcg/ml)"
+				"minimum_strength": "prepare solution of (1mg) 1ml of Remifentanil inj with 49ml of 0.9% NS (20mcg/ml)",
+				"maximum_strength": "prepare solution of (5mg) 5ml of Remifentanil inj with 45ml of 0.9% NS (250mcg/ml)"
 			},
 			"compatible": [
 				"Dextrose 5%",
@@ -97,15 +97,15 @@
 			"incompatible": "blood products"
 		},
 		{
-			"name": "Midazolam (5mg/ml)",
+			"name": "Midazolam inj (5mg/ml)",
 			"dose": {
 				"info": "1-4 mcg/kg/min",
 				"multiplier": [1, 4],
 				"unit": "mcg/hr"
 			},
 			"formula_50ml": {
-				"single_strength": "prepare solution of (50mg) 10ml of Midazolam with 40 ml of 0.9% NS \n (1mg/ml)",
-				"double_strength": "prepare solution of (100mg) 20 ml of Midazolam with 30 ml of 0.9% NS \n (2mg/ml)"
+				"single_strength": "prepare solution of (50mg) 10ml of Midazolam inj with 40 ml of 0.9% NS \n (1mg/ml)",
+				"double_strength": "prepare solution of (100mg) 20 ml of Midazolam inj with 30 ml of 0.9% NS \n (2mg/ml)"
 			},
 			"compatible": [
 				"Dextrose 5%",
@@ -129,15 +129,15 @@
 			]
 		},
 		{
-			"name": "Dexmedetomidine (PRECEDEX) (200mcg/2ml)",
+			"name": "Dexmedetomidine (PRECEDEX) inj (200mcg/2ml)",
 			"dose": {
 				"info": "0.1-1.5 mcg/kg/hr",
 				"multiplier": [0.1, 1.5],
 				"unit": "mcg/hr"
 			},
 			"formula_50ml": {
-				"single_strength": "prepare solution of (200mcg) 2ml of Dexmedetomidine with 48 ml of 0.9% NS \n (4mg/ml)",
-				"double_strength": "prepare solution of (400mg) 4ml of Midazolam with 46 ml of 0,9%NS \n (8mg/ml)"
+				"single_strength": "prepare solution of (200mcg) 2ml of Dexmedetomidine inj with 48 ml of 0.9% NS \n (4mg/ml)",
+				"double_strength": "prepare solution of (400mg) 4ml of Dexmedetomidin inj with 46 ml of 0,9%NS \n (8mg/ml)"
 			},
 			"compatible": [
 				"Dextrose 5%",
@@ -156,15 +156,15 @@
 			"incompatible": "No Information"
 		},
 		{
-			"name": "Rocuronium (50mg/ml)",
+			"name": "Rocuronium inj (50mg/ml)",
 			"dose": {
 				"info": "300mcg/kg/hr",
 				"multiplier": 300,
 				"unit": "mcg/hr"
 			},
 			"formula_50ml": {
-				"single_strength": "prepare solution of (50mg) 5ml of Rocuronium with 45 ml of 0.9% NS \n (1mg/ml)",
-				"maximum_strength": "prepare solution of (250mg) 25ml of Rocuronium with 25ml of 0.9% NS\n (5mg/ml)"
+				"single_strength": "prepare solution of (50mg) 5ml of Rocuronium inj with 45 ml of 0.9% NS \n (1mg/ml)",
+				"maximum_strength": "prepare solution of (250mg) 25ml of Rocuronium inj with 25ml of 0.9% NS\n (5mg/ml)"
 			},
 			"compatible": [
 				"Dextrose 5%",
@@ -176,14 +176,14 @@
 			"incompatible": ["Furosemide", "Insulin"]
 		},
 		{
-			"name": "Cisatracurium (2mg/ml)",
+			"name": "Cisatracurium inj (2mg/ml)",
 			"dose": {
 				"info": "60-180 mcg/kg/min",
 				"multiplier": [60, 180],
 				"unit": "mcg/hr"
 			},
 			"formula_50ml": {
-				"single_strength": "prepare solution of (50mg) 25ml of Cisatracurium with 25 ml of 0.9% NS \n (1mcg/ml)",
+				"single_strength": "prepare solution of (50mg) 25ml of Cisatracurium inj with 25 ml of 0.9% NS \n (1mcg/ml)",
 				"double_strength": "undiluted \n (2mg/ml)"
 			},
 			"compatible": [
@@ -202,15 +202,15 @@
 			"incompatible": ["Hartmann's", "Heparin"]
 		},
 		{
-			"name": "Ketamine (50mg/ml)",
+			"name": "Ketamine inj (50mg/ml)",
 			"dose": {
 				"info": "8-45 mcg/kg/min",
 				"multiplier": [8, 45],
 				"unit": "mcg/min"
 			},
 			"formula_50ml": {
-				"single_strength": "prepare solution of (50mg) 1ml of ketamine with 49 ml of 0.9% NS \n (1mg/ml)",
-				"double_strength": "prepare solution of (50mcg) 1ml of ketamine with 24 ml of 0.9% NS \n (2mg/ml)"
+				"single_strength": "prepare solution of (50mg) 1ml of ketamine inj with 49 ml of 0.9% NS \n (1mg/ml)",
+				"double_strength": "prepare solution of (50mcg) 1ml of ketamine inj with 24 ml of 0.9% NS \n (2mg/ml)"
 			},
 			"compatible": [
 				"Dextrose 5%",
@@ -227,8 +227,12 @@
 			]
 		},
 		{
-			"name": "Propofol 10mg/ml",
-			"dose": "9-15 mg/kg/hr",
+			"name": "Propofol inj (10mg/ml)",
+			"dose": {
+				"info": "9-15 mg/kg/hr",
+			    "multiplier": [9, 15],
+			    "unit": "mg/hr"
+			},
 			"formula_50ml": "Undiluted",
 			"compatible": ["Dextrose 5%", "Sodium Chloride 0.9%"],
 			"incompatible": "Cisatracurium"
