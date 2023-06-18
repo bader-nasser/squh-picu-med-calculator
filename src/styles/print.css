@@ -1,0 +1,32 @@
+@media print {
+	/* All your print styles go here */
+	*,
+	*::before,
+	*::after {
+		color: black !important;
+		background: unset !important;
+		font-size: 10pt !important;
+		border: unset !important;
+		margin: 0 !important;
+		padding: 0 !important;
+	}
+
+	html {
+		padding-inline-start: 0.5cm !important;
+
+		/* increasing the padding creates an extra empty page! */
+		padding-top: 0 !important;
+	}
+
+	th,
+	td {
+		border-bottom: 1pt solid black !important;
+	}
+
+	#header,
+	#footer,
+	#nav,
+	.no-print {
+		display: none !important;
+	}
+}

@@ -9,6 +9,7 @@ import {
 	Layout,
 	Typography,
 } from 'antd';
+import {PrinterOutlined} from '@ant-design/icons';
 import pkg from '../../package.json';
 import ShowCategory from '@/components/show-category';
 
@@ -49,22 +50,41 @@ export default function Home() {
 
 	return (
 		<Layout>
-			<Header>
+			<Header className='header'>
 				<Row>
-					<Col xs={{span: 20, offset: 2}}>
-						<Title
-							style={{color: 'var(--background-color)'}}
-							className='m-0'
-						>
-							{pkg.prettyName}
-						</Title>
+					<Col
+						xs={{span: 22, offset: 1}}
+						lg={{span: 20, offset: 2}}
+						xxl={{span: 18, offset: 3}}
+					>
+						<Row justify='space-between' align='middle'>
+							<Col>
+								<Title
+									style={{color: 'var(--background-color)'}}
+									className='m-0'
+								>
+									{pkg.prettyName}
+								</Title>
+							</Col>
+							<Col className='no-print'>
+								<PrinterOutlined
+									style={{fontSize: '32px', paddingBlock: '16px'}}
+									onClick={() => {
+										window.print();
+									}}/>
+							</Col>
+						</Row>
 					</Col>
 				</Row>
 			</Header>
 
 			<Content className='my-5'>
 				<Row>
-					<Col xs={{span: 20, offset: 2}}>
+					<Col
+						xs={{span: 22, offset: 1}}
+						lg={{span: 20, offset: 2}}
+						xxl={{span: 18, offset: 3}}
+					>
 						<Form
 							form={form}
 							layout='horizontal'
@@ -121,7 +141,7 @@ export default function Home() {
 								</Col>
 							</Row>
 
-							<Row>
+							<Row className='no-print'>
 								<Col xs={{span: 24}} lg={{span: 12}}>
 									<FormItem
 										name='category'
@@ -156,9 +176,13 @@ export default function Home() {
 				</Row>
 			</Content>
 
-			<Footer>
+			<Footer className='footer no-print'>
 				<Row>
-					<Col xs={{span: 20, offset: 2}}>
+					<Col
+						xs={{span: 22, offset: 1}}
+						lg={{span: 20, offset: 2}}
+						xxl={{span: 18, offset: 3}}
+					>
 						<p>Developed by Bader Nasser</p>
 						<p>{pkg.version}</p>
 					</Col>

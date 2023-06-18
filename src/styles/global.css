@@ -25,16 +25,25 @@ body {
 	min-height: 100vh;
 }
 
-.ant-layout-header,
-.ant-layout-footer {
-	text-align: center;
+.header,
+.footer {
 	color: var(--background-color);
 	background-color: var(--primary-color);
 }
 
-.ant-layout-header {
-	height: unset;
+.header {
+	padding-inline: 0;
 	padding-block: 16px;
+	height: unset;
+}
+
+th,
+td {
+	vertical-align: baseline;
+}
+
+.footer {
+	text-align: center;
 }
 
 .text-left {
