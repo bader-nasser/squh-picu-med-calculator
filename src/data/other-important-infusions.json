@@ -134,7 +134,7 @@
 			"dose": {
 				"info": "0.5 - 3 mg/kg/hr",
 			        "multiplier": [0.5, 3],
-			      qqq`  "unit": "mg/hr"},
+			        "unit": "mg/hr"},
 			"formula_50ml": "Prepare 50mg (10ml) of Labetalol inj with 40ml 0.9% NS (1mg/ml)",
 			"compatible": [
 				"Dextrose 5%",
