@@ -1,18 +1,18 @@
 import {Table, Typography} from 'antd';
 import type {ColumnsType} from 'antd/es/table';
 import data from '@/data/other-important-infusions.json';
-import {displayData, getNumberWithOneDecimalPoint, prettifyKeyName, capitalize} from '@/utilities';
+import {displayData, getDoseAmount} from '@/utilities';
 
 const {Title} = Typography;
 const {medications}: {medications: OtherImportantInfusion[]} = data;
 
 type OtherImportantInfusion = {
-	name: string;
+	name: string | string[];
 	dose:
 	| string
 	| {
 		info: string;
-		multiplier: number;
+		multiplier: number | number[];
 		unit: string;
 	};
 	formula_50ml: string | Record<string, string>;
@@ -22,7 +22,7 @@ type OtherImportantInfusion = {
 
 type DataType = {
 	key: string;
-	medications: string;
+	medications: string | string[];
 	weight: number;
 } & Omit<OtherImportantInfusion, 'name'>;
 
@@ -32,7 +32,7 @@ const columns: ColumnsType<DataType> = [
 		dataIndex: 'medications',
 		key: 'medications',
 		render(_, {medications}) {
-			return capitalize(medications);
+			return displayData(medications, {capitalize: true});
 		},
 	},
 	{
@@ -45,20 +45,10 @@ const columns: ColumnsType<DataType> = [
 			}
 
 			const {info, multiplier, unit} = dose;
-			const doseAmount = getNumberWithOneDecimalPoint(
-				multiplier * weight,
-			);
-
-			return (
-				<>
-					<p>{info}</p>
-					{multiplier && (
-						<p>
-							({doseAmount}) {unit}
-						</p>
-					)}
-				</>
-			);
+			const doseAmount = getDoseAmount({multiplier, weight});
+			const calculations = `(${doseAmount}) ${unit}`;
+			const data = [info, calculations];
+			return displayData(data);
 		},
 	},
 	{
@@ -101,9 +91,11 @@ export default function OtherImportantInfusions({weight}: Props) {
 	const tableData: DataType[] = [];
 
 	for (const medication of medications) {
+		const {name} = medication;
+		const key = Array.isArray(name) ? name[0] : name;
 		tableData.push({
-			key: medication.name,
-			medications: medication.name,
+			key,
+			medications: name,
 			weight,
 			...medication,
 		});

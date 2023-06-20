@@ -1,26 +1,12 @@
 import {Table, Typography} from 'antd';
 import type {ColumnsType} from 'antd/es/table';
-import {displayData, getNumberWithOneDecimalPoint, prettifyKeyName, capitalize} from '@/utilities';
+import {displayData, getDoseAmount, getNsAmount} from '@/utilities';
 import data from '@/data/sedation-and-anaesthesia.json';
 
 const {Title} = Typography;
 
 // @ts-expect-error Silencing a strange error!
 const {medications}: {medications: SedationAndAnaesthesiaDataType[]} = data;
-
-type DoseAmountArgs = {
-	multiplier: number;
-	weight: number;
-	divider?: number;
-};
-
-function getDoseAmount({multiplier, weight, divider = 1}: DoseAmountArgs) {
-	return getNumberWithOneDecimalPoint(multiplier * weight / divider);
-}
-
-function getNsAmount({multiplier, weight, divider = 1}: DoseAmountArgs) {
-	return getNumberWithOneDecimalPoint(50 - (multiplier * weight / divider));
-}
 
 type FormulaObjectData = {
 	text: string;
@@ -29,7 +15,7 @@ type FormulaObjectData = {
 };
 
 type SedationAndAnaesthesiaDataType = {
-	name: string;
+	name: string | string[];
 	dose:
 	| string
 	| {
@@ -38,13 +24,13 @@ type SedationAndAnaesthesiaDataType = {
 		unit: string;
 	};
 	formula_50ml: string | Record<string, string> | Record<string, FormulaObjectData>;
-	compatible: string[];
-	incompatible: string[];
+	compatible: string | string[];
+	incompatible: string | string[];
 };
 
 type DataType = {
 	key: string;
-	medications: string;
+	medications: string | string[];
 	weight: number;
 } & Omit<SedationAndAnaesthesiaDataType, 'name'>;
 
@@ -54,7 +40,7 @@ const columns: ColumnsType<DataType> = [
 		dataIndex: 'medications',
 		key: 'medications',
 		render(_, {medications}) {
-			return capitalize(medications);
+			return displayData(medications, {capitalize: true});
 		},
 	},
 	{
@@ -67,24 +53,11 @@ const columns: ColumnsType<DataType> = [
 			}
 
 			const {info, multiplier, unit} = dose;
-			let computedValue = '';
-			if (typeof multiplier === 'number') {
-				computedValue = `${getDoseAmount({multiplier, weight})}`;
-			} else {
-				const [v1, v2] = multiplier.map(m =>
-					getDoseAmount({multiplier: m, weight}),
-				);
-				computedValue = `${v1} - ${v2}`;
-			}
+			const doseAmount = getDoseAmount({multiplier, weight});
+			const calculations = `(${doseAmount}) ${unit}`;
+			const data = [info, calculations];
 
-			return (
-				<>
-					<p>{info}</p>
-					<p>
-						({computedValue}) {unit}
-					</p>
-				</>
-			);
+			return displayData(data);
 		},
 	},
 	{
@@ -105,24 +78,15 @@ const columns: ColumnsType<DataType> = [
 					const newValue: FormulaObjectData = value;
 					const {text, multiplier, divider} = newValue;
 					let newText = text;
-					let amount: string;
-					let amountMl: string;
+					const doseAmount = getDoseAmount({multiplier, weight});
+					const doseAmountMl = getDoseAmount({multiplier, weight, divider});
 					if (typeof multiplier === 'number') {
-						amount = getDoseAmount({multiplier, weight}).toString();
-						amountMl = getDoseAmount({multiplier, weight, divider}).toString();
-						const nsAmount = getNsAmount({multiplier, weight, divider}).toString();
+						const nsAmount = getNsAmount({multiplier, weight, divider});
 						newText = newText.replace('_ns_amount_', nsAmount);
-					} else {
-						const [v1, v2] = multiplier.map(m =>
-							getDoseAmount({multiplier: m, weight}));
-						const [v1Ml, v2Ml] = multiplier.map(m =>
-							getDoseAmount({multiplier: m, weight, divider}));
-						amount = `(${v1} to ${v2})`;
-						amountMl = `(${v1Ml} to ${v2Ml})`;
 					}
 
-					newText = newText.replace('_amount_', amount);
-					newText = newText.replace('_amount_ml_', amountMl);
+					newText = newText.replace('_amount_', doseAmount);
+					newText = newText.replace('_amount_ml_', doseAmountMl);
 					newFormula[key] = newText;
 				}
 			}
@@ -162,9 +126,11 @@ export default function SedationAndAnaesthesia({weight}: Props) {
 	const tableData: DataType[] = [];
 
 	for (const medication of medications) {
+		const {name} = medication;
+		const key = Array.isArray(name) ? name[0] : name;
 		tableData.push({
-			key: medication.name,
-			medications: medication.name,
+			key,
+			medications: name,
 			weight,
 			...medication,
 		});

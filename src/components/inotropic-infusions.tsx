@@ -1,35 +1,10 @@
 import {Table, Typography} from 'antd';
 import type {ColumnsType} from 'antd/es/table';
 import data from '@/data/inotropic-infusions.json';
-import {displayData, getNumberWithOneDecimalPoint, capitalize} from '@/utilities';
+import {displayData, capitalize, getDoseAmount, getNsAmount} from '@/utilities';
 
 const {Title} = Typography;
 const {medications}: {medications: InotropicInfusion[]} = data;
-
-type GetAmountProps = {
-	multiplier: number;
-	weight: number;
-};
-
-type GetNsAmountProps = {
-	nsMultiplier?: number;
-} & GetAmountProps;
-
-function getAmount({multiplier, weight}: GetAmountProps) {
-	return getNumberWithOneDecimalPoint(
-		multiplier * weight,
-	);
-}
-
-function getDoseAmount(args: GetAmountProps) {
-	return getAmount(args);
-}
-
-function getNsAmount({nsMultiplier, multiplier, weight}: GetNsAmountProps) {
-	return getNumberWithOneDecimalPoint(
-		50 - ((nsMultiplier ?? multiplier) * weight),
-	);
-}
 
 type InotropicInfusion = {
 	name: string;
@@ -75,25 +50,12 @@ const columns: ColumnsType<DataType> = [
 				return dose;
 			}
 
-			let text = '';
 			const {info, multiplier, unit} = dose;
+			const doseAmount = getDoseAmount({multiplier, weight});
+			const calculations = `(${doseAmount}) ${unit}`;
+			const data = [info, calculations];
 
-			if (typeof multiplier === 'number') {
-				const doseAmount = getDoseAmount({multiplier, weight});
-				text = `(${doseAmount}) ${unit}`;
-			} else {
-				const [v1, v2] = multiplier.map(m =>
-					getDoseAmount({multiplier: m, weight}),
-				);
-				text = `(${v1} to ${v2}) ${unit}`;
-			}
-
-			return (
-				<>
-					<p>{info}</p>
-					<p>{text}</p>
-				</>
-			);
+			return displayData(data);
 		},
 	},
 	{
@@ -106,9 +68,9 @@ const columns: ColumnsType<DataType> = [
 			}
 
 			const {text, multiplier, ns_multiplier: nsMultiplier} = formula_50ml;
-			const amount = getAmount({weight, multiplier});
+			const doseAmount = getDoseAmount({weight, multiplier});
 			const nsAmount = getNsAmount({nsMultiplier, multiplier, weight});
-			let newText = text.replace('_amount_', `${amount}`);
+			let newText = text.replace('_amount_', `${doseAmount}`);
 			newText = newText.replace('_ns_amount_', `${nsAmount}`);
 			return capitalize(newText);
 		},
@@ -145,9 +107,10 @@ export default function InotropicInfusions({weight}: Props) {
 	const tableData: DataType[] = [];
 
 	for (const medication of medications) {
+		const {name} = medication;
 		tableData.push({
-			key: medication.name,
-			medications: medication.name,
+			key: name,
+			medications: name,
 			weight,
 			...medication,
 		});
