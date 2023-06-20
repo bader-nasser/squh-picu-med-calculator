@@ -1,11 +1,88 @@
-export function prettifyKeyName(key: string) {
+export function prettifyKeyName(key: string): string {
 	let newText = key.replace('_', ' ');
 	newText = `${newText[0].toUpperCase()}${newText.slice(1)}`;
 	return newText;
 }
 
-export function getNumberWithOneDecimalPoint(value: number) {
+export function round(value: number): number {
+	return Number.parseFloat(value.toFixed(0));
+}
+
+export function getNumberWithOneDecimalPoint(value: number): number {
 	return Number.parseFloat(value.toFixed(1));
+}
+
+type GetDoseAmountProps = {
+	multiplier: number | number[];
+	divider?: number;
+	weight: number;
+	max?: number;
+	min?: number;
+	seperator?: string;
+};
+
+type GetNsAmountProps = {
+	multiplier: number;
+	divider?: number;
+	weight: number;
+	nsMultiplier?: number;
+};
+
+export function getDoseAmount({
+	multiplier, weight, divider, max, min, seperator = '-',
+}: GetDoseAmountProps): string {
+	const theDivider = divider ?? 1;
+	if (typeof multiplier === 'number') {
+		let doseAmount = getNumberWithOneDecimalPoint((multiplier * weight) / theDivider);
+		if (min && doseAmount < min) {
+			doseAmount = min;
+		}
+
+		if (max && doseAmount > max) {
+			doseAmount = max;
+		}
+
+		return `${doseAmount}`;
+	}
+
+	let [v1, v2] = multiplier.map(m =>
+		getNumberWithOneDecimalPoint((m * weight) / theDivider));
+	if (min) {
+		if (v1 < min) {
+			v1 = min;
+		}
+
+		if (v2 < min) {
+			v2 = min;
+		}
+	}
+
+	if (max) {
+		if (v1 > max) {
+			v1 = max;
+		}
+
+		if (v2 > max) {
+			v2 = max;
+		}
+	}
+
+	if (v1 === v2) {
+		return `${v1}`;
+	}
+
+	return `${v1} ${seperator} ${v2}`;
+}
+
+export function getNsAmount({
+	nsMultiplier, multiplier, weight, divider = 1,
+}: GetNsAmountProps): string {
+	const theDivider = divider ?? 1;
+	const theNsMultiplier = nsMultiplier ?? multiplier;
+	const nsAmount = getNumberWithOneDecimalPoint(
+		50 - ((theNsMultiplier * weight) / theDivider),
+	);
+	return `${nsAmount}`;
 }
 
 export function capitalize(text: string, options?: {secondWord: boolean}): string {

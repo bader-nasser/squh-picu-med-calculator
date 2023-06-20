@@ -12,6 +12,7 @@ import {
 import {PrinterOutlined} from '@ant-design/icons';
 import pkg from '../../package.json';
 import ShowCategory from '@/components/show-category';
+import {round} from '@/utilities';
 
 const {Title} = Typography;
 const {Option} = Select;
@@ -25,14 +26,13 @@ const initialValues = {
 
 export default function Home() {
 	const [form] = Form.useForm();
-	const [weight, setWeight] = useState(initialValues.weight);
+	const [weight, setWeight] = useState(round(initialValues.weight));
 	const [category, setCategory] = useState(initialValues.category);
 
 	const onValuesChange = (changedValues: {weight: number; category: string}) => {
-		console.log('Success:', changedValues);
 		const {weight, category} = changedValues;
 		if (weight) {
-			setWeight(changedValues.weight);
+			setWeight(round(changedValues.weight));
 		}
 
 		if (category) {
@@ -41,11 +41,11 @@ export default function Home() {
 	};
 
 	const onFinish = (values: any) => {
-		console.log('Success:', values);
+		// console.log('Success:', values);
 	};
 
 	const onFinishFailed = (errorInfo: any) => {
-		console.log('Failed:', errorInfo);
+		// console.log('Failed:', errorInfo);
 	};
 
 	return (
