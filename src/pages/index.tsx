@@ -49,7 +49,7 @@ export default function Home() {
 	};
 
 	return (
-		<Layout>
+		<Layout className='layout'>
 			<Header className='header'>
 				<Row>
 					<Col
@@ -59,10 +59,7 @@ export default function Home() {
 					>
 						<Row justify='space-between' align='middle'>
 							<Col>
-								<Title
-									style={{color: 'var(--background-color)'}}
-									className='m-0'
-								>
+								<Title className='title'>
 									{pkg.prettyName}
 								</Title>
 							</Col>
@@ -78,7 +75,7 @@ export default function Home() {
 				</Row>
 			</Header>
 
-			<Content className='my-5'>
+			<Content className='content'>
 				<Row>
 					<Col
 						xs={{span: 22, offset: 1}}

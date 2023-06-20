@@ -18,7 +18,7 @@ body {
 	text-rendering: optimizelegibility;
 }
 
-.ant-layout {
+.layout {
 	/* for iPhone5 */
 	min-height: 568px;
 	/* stylelint-disable-next-line declaration-block-no-duplicate-properties */
@@ -35,6 +35,15 @@ body {
 	padding-inline: 0;
 	padding-block: 16px;
 	height: unset;
+}
+
+.title {
+	color: var(--background-color) !important;
+	margin: 0 !important;
+}
+
+.content {
+	margin-block: 3rem !important;
 }
 
 th,
