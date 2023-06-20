@@ -22,7 +22,7 @@ jobs:
       - name: get version
         run: echo "PACKAGE_VERSION=$(node -p "require('./package.json').version")" >> $GITHUB_ENV
       - name: get time
-        run: echo "TIME=$(node -p "new Date().toISOString().replaceAll('-', '').split(':')[0]")" >> $GITHUB_ENV
+        run: echo "TIME=$(node -p "new Date().toISOString().replaceAll(/[:-]/g, '').replace('T', '-').split('.')[0]")" >> $GITHUB_ENV
       - name: create release
         id: create-release
         uses: actions/github-script@v6
