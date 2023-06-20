@@ -1,4 +1,4 @@
-name: "Test all"
+name: "Test 'em all"
 on: pull_request
 #  push:
 #    branches:

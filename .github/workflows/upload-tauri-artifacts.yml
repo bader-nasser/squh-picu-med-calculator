@@ -1,7 +1,6 @@
-name: "publish"
+name: "upload tauri artifacts"
 
 on:
-  pull_request:
   push:
     branches:
       - main
@@ -22,6 +21,8 @@ jobs:
           node-version: 20
       - name: get version
         run: echo "PACKAGE_VERSION=$(node -p "require('./package.json').version")" >> $GITHUB_ENV
+      - name: get time
+        run: echo "TIME=$(node -p "new Date().toISOString().replaceAll('-', '').split(':')[0]")" >> $GITHUB_ENV
       - name: create release
         id: create-release
         uses: actions/github-script@v6
@@ -30,8 +31,8 @@ jobs:
             const { data } = await github.rest.repos.createRelease({
               owner: context.repo.owner,
               repo: context.repo.repo,
-              tag_name: `desktop-app-v${process.env.PACKAGE_VERSION}`,
-              name: `Desktop App v${process.env.PACKAGE_VERSION}`,
+              tag_name: `desktop-app-v${process.env.PACKAGE_VERSION}-${process.env.TIME}`,
+              name: `Desktop App v${process.env.PACKAGE_VERSION} ${process.env.TIME}`,
               body: 'Take a look at the assets to download and install this app.',
               draft: true,
               prerelease: false
@@ -66,7 +67,7 @@ jobs:
         with:
           version: 8.x.x
       - name: install frontend dependencies
-        run: pnpm install # change this to npm or pnpm depending on which one you use
+        run: pnpm install
       - uses: tauri-apps/tauri-action@v0
         env:
           GITHUB_TOKEN: ${{ secrets.TAURI_SECRET }}
