@@ -1,11 +1,6 @@
 {
 	"medications": [
 		{
-			"name": "Furosemide inj 20mg /2ml",
-			"dose": {
-				"info": "max rate is 0.5mg/kg/min or 4mg/min",
-				"multiplier": 0.5,
-				"unit": "mg/min"}, 
 			"name": "Furosemide 20mg /2ml",
 			"dose": {
 				"info": "max rate is 0.5 mg/kg/min or 4 mg/min",
@@ -33,11 +28,8 @@
 		},
 		{
 			"name": "Heparin inj (See Avilable Concentration)",
-			"dose": "0.5-25 unit/kg/hr titrate to APTT results",
-			"formula_50ml": "Dilute to 1 unit/ml",
-			"name": "Heparin (See Available Stock)",
 			"dose": {
-				"info":"0.5 - 25 unit/kg/hr alter to APTT",
+				"info":"0.5 - 25 unit/kg/hr titrate to APTT",
 			    "multiplier": [0.5, 25],
 			    "unit": "unit/hr"},
 			"formula_50ml": "Dilute to 1 unit/ml",
@@ -90,7 +82,7 @@
 			"dose": {
 				"info": "1 mg/kg/hr",
 				"multiplier": 60,
-				"unit": "mg"
+				"unit": "mg/hr"
 			},
 			"formula_50ml": {
 				"maximum_strength": "25 mg/ml (undiluted)",
@@ -114,7 +106,10 @@
 		},
 		{
 			"name": "Salbutamol inj (500mcg/ml)",
-			"dose": "1 - 5 mcg/kg/min",
+			"dose": {
+				"info":"1 - 5 mcg/kg/min",
+			    "multiplier": [1, 5],
+			    "unit": "mcg/min"},
 			"formula_50ml": {
 				"maximum_strength": "prepare 10mg (20ml) of Salbutamol inj with 30ml of 0.9% NS (200mcg/ml)",
 				"minimum_strength": "prepare 500mcg (1ml) of Salbutamol inj with 50ml of 0.9% NS (10mcg/ml)"

@@ -101,7 +101,7 @@
 			"dose": {
 				"info": "1-4 mcg/kg/min",
 				"multiplier": [1, 4],
-				"unit": "mcg/hr"
+				"unit": "mcg/min"
 			},
 			"formula_50ml": {
 				"single_strength": "prepare solution of (50mg) 10ml of Midazolam inj with 40 ml of 0.9% NS \n (1mg/ml)",
@@ -178,7 +178,7 @@
 		{
 			"name": "Cisatracurium inj (2mg/ml)",
 			"dose": {
-				"info": "60-180 mcg/kg/min",
+				"info": "60-180 mcg/kg/hr",
 				"multiplier": [60, 180],
 				"unit": "mcg/hr"
 			},

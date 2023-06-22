@@ -28,7 +28,7 @@
 			]
 		},
 		{
-			"name": "Sodium Bicarbonate 8.4% (1mmol/ml)",
+			"name": "Sodium Bicarbonate inj 8.4% (1mmol/ml)",
 			"doses": [
 				{
 					"info": "1-2 mmol/kg/dose IV/IO slowly (dilute to 0.5mmol/ml)",
@@ -43,7 +43,7 @@
 			]
 		},
 		{
-			"name": "Calcium Gluconate 10% (100mg/ml, (0.2mmol/ml)",
+			"name": "Calcium Gluconate inj 10% (100mg/ml), (0.2mmol/ml)",
 			"doses": [
 				{
 					"info": "60-100mg/kg/dose (max. 100mg/dose) IV/IO (0.1-0.2 ml/kg) slow push",
@@ -59,7 +59,7 @@
 			]
 		},
 		{
-			"name": "Calcium Chloride 10% (100mg/ml), (1.4mmol/ml)",
+			"name": "Calcium Chloride inj 10% (100mg/ml), (1.4mmol/ml)",
 			"doses": [
 				{
 					"info": "10-20mg/kg/dose (max 100mg/dose) IV/IO (0.1-0.2 ml/kg) Slow Push via central line, dilute if peripheral line",
@@ -98,7 +98,7 @@
 			]
 		},
 		{
-			"name": "Adenosine (6mg/2ml)",
+			"name": "Adenosine inj (6mg/2ml)",
 			"doses": [
 				{
 					"info": "0.1mg/kg IV/IO rapid bolus in central line (max 6mg); Second dose: 0.2 mg/kg (max 12mg)",
@@ -129,7 +129,7 @@
 			]
 		},
 		{
-			"name": "Magnesium Sulphate 10% (100 mg/mL)",
+			"name": "Magnesium Sulphate inj 10% (100 mg/mL)",
 			"doses": [
 				{
 					"info": "25 - 50 mg/kg (max 2g/dose) IV/IO over 10 - 20 minute",
@@ -142,7 +142,7 @@
 			]
 		},
 		{
-			"name": "Naloxone (0.4mg/ml)",
+			"name": "Naloxone inj (0.4mg/ml)",
 			"doses": [
 				{
 					"info": " <5yrs or <20kg: 0.1mg/kg IV/IO/ETT, \n >5yrs or >20 kg: 2 mg IV/IO/ETT",
