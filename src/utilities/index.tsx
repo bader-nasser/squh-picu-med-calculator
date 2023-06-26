@@ -4,6 +4,10 @@ export function prettifyKeyName(key: string): string {
 	return newText;
 }
 
+export function prettify(key: string): string {
+	return key.split('-').map(k => `${k[0].toUpperCase()}${k.slice(1)}`).join(' ');
+}
+
 export function round(value: number): number {
 	return Number.parseFloat(value.toFixed(0));
 }

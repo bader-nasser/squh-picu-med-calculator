@@ -10,6 +10,7 @@ import {
 	Typography,
 } from 'antd';
 import {PrinterOutlined} from '@ant-design/icons';
+import Link from 'next/link';
 import pkg from '../../package.json';
 import ShowCategory from '@/components/show-category';
 import {round} from '@/utilities';
@@ -32,20 +33,12 @@ export default function Home() {
 	const onValuesChange = (changedValues: {weight: number; category: string}) => {
 		const {weight, category} = changedValues;
 		if (weight) {
-			setWeight(round(changedValues.weight));
+			setWeight(round(weight));
 		}
 
 		if (category) {
-			setCategory(changedValues.category);
+			setCategory(category);
 		}
-	};
-
-	const onFinish = (values: any) => {
-		// console.log('Success:', values);
-	};
-
-	const onFinishFailed = (errorInfo: any) => {
-		// console.log('Failed:', errorInfo);
 	};
 
 	return (
@@ -68,7 +61,20 @@ export default function Home() {
 									style={{fontSize: '32px', paddingBlock: '16px'}}
 									onClick={() => {
 										window.print();
-									}}/>
+									}}
+								/>
+							</Col>
+						</Row>
+						<Row justify='space-between' align='middle' className='no-print'>
+							<Col>
+								<Link
+									href='/frontpage'
+									style={{
+										color: 'white',
+										textDecorationLine: 'underline',
+									}}
+								>Front Page (Almost done)
+								</Link>
 							</Col>
 						</Row>
 					</Col>
@@ -88,8 +94,6 @@ export default function Home() {
 							initialValues={initialValues}
 							size='large'
 							onValuesChange={onValuesChange}
-							onFinish={onFinish}
-							onFinishFailed={onFinishFailed}
 						>
 							<Row gutter={16}>
 								<Col xs={{span: 24}} lg={{span: 12}}>
