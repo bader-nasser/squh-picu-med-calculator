@@ -1,0 +1,176 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "$ref": "#/definitions/PediatricResuscitationMedications",
+    "definitions": {
+        "PediatricResuscitationMedications": {
+            "type": "object",
+            "properties": {
+                "$schema": {
+                    "type": "string"
+                },
+                "medications": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/PediatricResuscitationMedication"
+                    }
+                }
+            },
+            "required": [
+                "$schema",
+                "medications"
+            ],
+            "additionalProperties": false
+        },
+        "PediatricResuscitationMedication": {
+            "type": "object",
+            "properties": {
+                "name": {
+                    "type": "string"
+                },
+                "doses": {
+                    "type": "array",
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "info": {
+                                "type": "string"
+                            },
+                            "mg_mcg_mmol": {
+                                "type": "object",
+                                "properties": {
+                                    "multiplier": {
+                                        "anyOf": [
+                                            {
+                                                "type": "number"
+                                            },
+                                            {
+                                                "type": "array",
+                                                "items": {
+                                                    "type": "number"
+                                                }
+                                            }
+                                        ],
+                                        "description": "The number multiplied by the weight. If the dose has a range, use an array like: [1, 2]"
+                                    },
+                                    "unit": {
+                                        "type": "string",
+                                        "enum": [
+                                            "mg",
+                                            "mcg",
+                                            "mmol"
+                                        ]
+                                    },
+                                    "max": {
+                                        "type": "number",
+                                        "description": "Optional"
+                                    },
+                                    "doses": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "object",
+                                            "properties": {
+                                                "multiplier": {
+                                                    "type": "number",
+                                                    "description": "The number multiplied by the weight"
+                                                },
+                                                "max": {
+                                                    "type": "number",
+                                                    "description": "Optional"
+                                                }
+                                            },
+                                            "required": [
+                                                "multiplier"
+                                            ],
+                                            "additionalProperties": false
+                                        },
+                                        "description": "Optional"
+                                    }
+                                },
+                                "required": [
+                                    "unit"
+                                ],
+                                "additionalProperties": false
+                            },
+                            "ml": {
+                                "anyOf": [
+                                    {
+                                        "type": "object",
+                                        "properties": {
+                                            "multiplier": {
+                                                "anyOf": [
+                                                    {
+                                                        "type": "number"
+                                                    },
+                                                    {
+                                                        "type": "array",
+                                                        "items": {
+                                                            "type": "number"
+                                                        }
+                                                    }
+                                                ],
+                                                "description": "The number multiplied by the weight. If the dose has a range, use an array like: [1, 2]"
+                                            },
+                                            "max": {
+                                                "type": "number",
+                                                "description": "Optional"
+                                            }
+                                        },
+                                        "required": [
+                                            "multiplier"
+                                        ],
+                                        "additionalProperties": false
+                                    },
+                                    {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "object",
+                                            "properties": {
+                                                "multiplier": {
+                                                    "anyOf": [
+                                                        {
+                                                            "type": "number"
+                                                        },
+                                                        {
+                                                            "type": "array",
+                                                            "items": {
+                                                                "type": "number"
+                                                            }
+                                                        }
+                                                    ],
+                                                    "description": "The number multiplied by the weight. If the dose has a range, use an array like: [1, 2]"
+                                                },
+                                                "divider": {
+                                                    "type": "number",
+                                                    "description": "Optional",
+                                                    "default": 1
+                                                },
+                                                "label": {
+                                                    "type": "string",
+                                                    "description": "Optional"
+                                                }
+                                            },
+                                            "required": [
+                                                "multiplier"
+                                            ],
+                                            "additionalProperties": false
+                                        }
+                                    }
+                                ],
+                                "description": "Optional"
+                            }
+                        },
+                        "required": [
+                            "info"
+                        ],
+                        "additionalProperties": false
+                    }
+                }
+            },
+            "required": [
+                "name",
+                "doses"
+            ],
+            "additionalProperties": false
+        }
+    }
+}

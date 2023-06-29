@@ -1,4 +1,5 @@
 {
+	"$schema": "../schemas/inotropic-infusions.json",
 	"medications": [
 		{
 			"name": "Epinephrine (1mg/1ml)",

@@ -6,17 +6,47 @@ import {displayData, getDoseAmount} from '@/utilities';
 const {Title} = Typography;
 const {medications}: {medications: OtherImportantInfusion[]} = data;
 
-type OtherImportantInfusion = {
+export type OtherImportantInfusion = {
 	name: string | string[];
 	dose:
 	| string
 	| {
 		info: string;
+		/**
+		 * The number multiplied by the weight
+		 */
 		multiplier: number | number[];
 		unit: string;
 	};
+	/**
+	 * @example
+	 * "formula_50ml": "Dilute to 1 u/ml"
+	 * @example
+	 * "formula_50ml": {
+	 *   "maximum_strength": "10 mg/ml (undiluted)",
+	 *   "minimum_strength": "prepare 20mg (2ml) with 18ml of 0.9 NS (1 mg/ml)"
+	 * }
+	 */
 	formula_50ml: string | Record<string, string>;
+	/**
+	 * Note: The first letter of the first two words will be capitalized!
+	 * @example
+	 * "compatible": "single value"
+	 * @example
+	 * "compatible": ["also single value"]
+	 * @example
+	 * "compatible": ["multiple", "values", "more than one"]
+	 */
 	compatible: string | string[];
+	/**
+	 * Note: The first letter of the first two words will be capitalized!
+	 * @example
+	 * "incompatible": "single value"
+	 * @example
+	 * "incompatible": ["also single value"]
+	 * @example
+	 * "incompatible": ["multiple", "values", "more than one"]
+	 */
 	incompatible: string | string[];
 };
 

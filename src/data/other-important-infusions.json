@@ -1,4 +1,5 @@
 {
+	"$schema": "../schemas/other-important-infusions.json",
 	"medications": [
 		{
 			"name": "Furosemide 20mg /2ml",

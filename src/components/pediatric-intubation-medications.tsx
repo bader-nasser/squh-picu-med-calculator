@@ -4,22 +4,64 @@ import data from '@/data/pediatric-intubation-medications.json';
 import {displayData, getDoseAmount} from '@/utilities';
 
 const {Title} = Typography;
+// @ts-expect-error Ignoring ts error!
 const {medications}: {medications: PediatricIntubationMedication[]} = data;
 
-type PediatricIntubationMedication = {
+export type PediatricIntubationMedication = {
+	/**
+	 * @example
+	 * "name": "Midazolam (5mg/ml), (prepare a solution of 5mg (1ml) midazolam with 4 ml of 0.9% NS (1mg/ml))"
+	 * @example
+	 * "name": [
+	 *   "Atropine (0.5mg/ml)",
+	 *   "(Prepare a solution of 0.5mg of atropine with 4ml of 0.9%NS (100mcg/ml))"
+	 * ]
+	 */
 	name: string | string[];
 	doses: Array<{
 		info: string | string[];
 		mg_mcg_mmol: {
+			/**
+			 * The number multiplied by the weight.
+			 * If the dose has a range, use an array like: [1, 2]
+			 * @example
+			 * "multiplier": [0.01, 0.5]
+			 * @example
+			 * "multiplier": 2
+			 */
 			multiplier: number | number[];
-			unit: string;
+			unit: 'mg' | 'mcg' | 'mmol';
+			/**
+			 * Optional
+			 */
 			max?: number;
+			/**
+			 * Optional
+			 */
 			min?: number;
 		};
 		ml: {
+			/**
+			 * The number multiplied by the weight.
+			 * If the dose has a range, use an array like: [1, 2]
+			 * @example
+			 * "multiplier": [0.01, 0.5]
+			 * @example
+			 * "multiplier": 2
+			 */
 			multiplier: number | number[];
+			/**
+			 * Optional
+			 */
 			max?: number;
+			/**
+			 * Optional
+			 */
 			min?: number;
+			/**
+			 * Optional
+			 * @default 1
+			 */
 			divider?: number;
 		};
 	}>;

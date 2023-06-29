@@ -1,4 +1,5 @@
 {
+	"$schema": "../schemas/sedation-and-anaesthesia.json",
 	"medications": [
 		{
 			"name": "Morphine (10mg/ml)",

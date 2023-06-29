@@ -1,4 +1,5 @@
 {
+	"$schema": "../schemas/pediatric-resuscitation-medications.json",
 	"medications": [
 		{
 			"name": "Epinephrine 1:10000 (1mg/10ml)",

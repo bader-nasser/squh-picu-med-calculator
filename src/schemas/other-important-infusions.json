@@ -1,0 +1,130 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "$ref": "#/definitions/OtherImportantInfusionMedications",
+    "definitions": {
+        "OtherImportantInfusionMedications": {
+            "type": "object",
+            "properties": {
+                "$schema": {
+                    "type": "string"
+                },
+                "medications": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/OtherImportantInfusion"
+                    }
+                }
+            },
+            "required": [
+                "$schema",
+                "medications"
+            ],
+            "additionalProperties": false
+        },
+        "OtherImportantInfusion": {
+            "type": "object",
+            "properties": {
+                "name": {
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "array",
+                            "items": {
+                                "type": "string"
+                            }
+                        }
+                    ]
+                },
+                "dose": {
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "object",
+                            "properties": {
+                                "info": {
+                                    "type": "string"
+                                },
+                                "multiplier": {
+                                    "anyOf": [
+                                        {
+                                            "type": "number"
+                                        },
+                                        {
+                                            "type": "array",
+                                            "items": {
+                                                "type": "number"
+                                            }
+                                        }
+                                    ],
+                                    "description": "The number multiplied by the weight"
+                                },
+                                "unit": {
+                                    "type": "string"
+                                }
+                            },
+                            "required": [
+                                "info",
+                                "multiplier",
+                                "unit"
+                            ],
+                            "additionalProperties": false
+                        }
+                    ]
+                },
+                "formula_50ml": {
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "object",
+                            "additionalProperties": {
+                                "type": "string"
+                            }
+                        }
+                    ]
+                },
+                "compatible": {
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "array",
+                            "items": {
+                                "type": "string"
+                            }
+                        }
+                    ],
+                    "description": "Note: The first letter of the first two words will be capitalized!"
+                },
+                "incompatible": {
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "array",
+                            "items": {
+                                "type": "string"
+                            }
+                        }
+                    ],
+                    "description": "Note: The first letter of the first two words will be capitalized!"
+                }
+            },
+            "required": [
+                "name",
+                "dose",
+                "formula_50ml",
+                "compatible",
+                "incompatible"
+            ],
+            "additionalProperties": false
+        }
+    }
+}

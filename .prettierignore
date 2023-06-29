@@ -4,6 +4,9 @@ package-lock.json
 out
 src-tauri/target
 
+src/schemas
+
+**/*.mjs
 **/*.js
 **/*.ts
 **/*.tsx

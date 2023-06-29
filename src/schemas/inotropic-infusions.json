@@ -1,0 +1,136 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "$ref": "#/definitions/InotropicInfusionMedications",
+    "definitions": {
+        "InotropicInfusionMedications": {
+            "type": "object",
+            "properties": {
+                "$schema": {
+                    "type": "string"
+                },
+                "medications": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/InotropicInfusion"
+                    }
+                }
+            },
+            "required": [
+                "$schema",
+                "medications"
+            ],
+            "additionalProperties": false
+        },
+        "InotropicInfusion": {
+            "type": "object",
+            "properties": {
+                "name": {
+                    "type": "string"
+                },
+                "dose": {
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "object",
+                            "properties": {
+                                "info": {
+                                    "type": "string"
+                                },
+                                "multiplier": {
+                                    "anyOf": [
+                                        {
+                                            "type": "number"
+                                        },
+                                        {
+                                            "type": "array",
+                                            "items": {
+                                                "type": "number"
+                                            }
+                                        }
+                                    ],
+                                    "description": "The number multiplied by the weight. If the dose has a range, use an array like: [1, 2]"
+                                },
+                                "unit": {
+                                    "type": "string"
+                                }
+                            },
+                            "required": [
+                                "info",
+                                "multiplier",
+                                "unit"
+                            ],
+                            "additionalProperties": false
+                        }
+                    ]
+                },
+                "formula_50ml": {
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "object",
+                            "properties": {
+                                "text": {
+                                    "type": "string",
+                                    "description": "Use special values for calculations:\n\n`_amount_` which is equal to (multiplier x weight).\n\n`_ns_amount_` which is equal to (50 - (ns_multiplier x weight)).\n\nNote: if ns_multiplier = multiplier, then no need to use ns_multiplier"
+                                },
+                                "multiplier": {
+                                    "type": "number",
+                                    "description": "The number multiplied by the weight. Should be a number not an array of numbers"
+                                },
+                                "ns_multiplier": {
+                                    "type": "number",
+                                    "description": "Optional key, use it when it's NOT equal to the multiplier"
+                                }
+                            },
+                            "required": [
+                                "text",
+                                "multiplier"
+                            ],
+                            "additionalProperties": false
+                        }
+                    ]
+                },
+                "compatible": {
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "array",
+                            "items": {
+                                "type": "string"
+                            }
+                        }
+                    ],
+                    "description": "Note: The first letter of the first two words will be capitalized!"
+                },
+                "incompatible": {
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "array",
+                            "items": {
+                                "type": "string"
+                            }
+                        }
+                    ],
+                    "description": "Note: The first letter of the first two words will be capitalized!"
+                }
+            },
+            "required": [
+                "name",
+                "dose",
+                "formula_50ml",
+                "compatible",
+                "incompatible"
+            ],
+            "additionalProperties": false
+        }
+    }
+}

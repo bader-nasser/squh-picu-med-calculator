@@ -9,22 +9,92 @@ const {Title} = Typography;
 const {medications}: {medications: SedationAndAnaesthesiaDataType[]} = data;
 
 type FormulaObjectData = {
+	/**
+	 * Use special values for calculations:
+	 * `_amount_` which is equal to (multiplier x weight).
+	 *
+	 * `_amount_ml_` which is equal to ((multiplier x weight) / divider).
+	 *
+	 * `_ns_amount_` which is equal to (50 - ((multiplier x weight) / divider)).
+	 */
 	text: string;
+	/**
+	 * The number multiplied by the weight.
+	 * If the dose has a range, use an array like: [1, 2]
+	 *
+	 * Note: can't be an array if you use the `_ns_amount_` in the `text`
+	 * @example
+	 * "multiplier": [0.01, 0.5]
+	 * @example
+	 * "multiplier": 2
+	 */
 	multiplier: number | number[];
+	/**
+	 * The divider applied when calculating `_amout_ml_` and `_ns_amount_` used
+	 * in `text`.
+	 */
 	divider: number;
 };
 
-type SedationAndAnaesthesiaDataType = {
+export type SedationAndAnaesthesiaDataType = {
 	name: string | string[];
 	dose:
 	| string
 	| {
 		info: string;
+		/**
+		 * The number multiplied by the weight.
+		 * If the dose has a range, use an array like: [1, 2]
+		 * @example
+		 * "multiplier": [0.01, 0.5]
+		 * @example
+		 * "multiplier": 2
+		 */
 		multiplier: number | number[];
 		unit: string;
 	};
+	/**
+	 * @example
+	 * "formula_50ml": "Undiluted"
+	 * @example
+	 * "formula_50ml": {
+	 *   "single_strength": "prepare solution of (500mcg) 10ml of fentanyl with 40 ml of 0.9% NS \n (10mcg/ml)",
+	 *   "double_strength": "prepare solution of (1000mcg) 20 ml of fentanyl with 30 ml of 0.9% NS \n (20mcg/ml)"
+	 * }
+	 * @example
+	 * "formula_50ml": {
+	 *   "full_strength": {
+	 *     "text": "prepare solution of (_amount_) mg (_amount_ml_) ml with (_ns_amount_) ml of 0.9% NS \n (20mcg/Kg/ml)",
+	 *     "multiplier": 1,
+	 *     "divider": 10
+	 *   },
+	 *   "double_strength": {
+	 *     "text": "prepare solution of (_amount_) mg (_amount_ml_) ml with (_ns_amount_) ml of 0.9% NS \n (40mcg/Kg/ml)",
+	 *     "multiplier": 2,
+	 *     "divider": 10
+	 *   }
+	 * }
+	 */
 	formula_50ml: string | Record<string, string> | Record<string, FormulaObjectData>;
+	/**
+	 * Note: The first letter of the first two words will be capitalized!
+	 * @example
+	 * "compatible": "single value"
+	 * @example
+	 * "compatible": ["also single value"]
+	 * @example
+	 * "compatible": ["multiple", "values", "more than one"]
+	 */
 	compatible: string | string[];
+	/**
+	 * Note: The first letter of the first two words will be capitalized!
+	 * @example
+	 * "incompatible": "single value"
+	 * @example
+	 * "incompatible": ["also single value"]
+	 * @example
+	 * "incompatible": ["multiple", "values", "more than one"]
+	 */
 	incompatible: string | string[];
 };
 

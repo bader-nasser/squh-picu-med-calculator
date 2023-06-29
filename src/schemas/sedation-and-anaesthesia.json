@@ -1,0 +1,166 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "$ref": "#/definitions/SedationAndAnaesthesiaMedications",
+    "definitions": {
+        "SedationAndAnaesthesiaMedications": {
+            "type": "object",
+            "properties": {
+                "$schema": {
+                    "type": "string"
+                },
+                "medications": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/SedationAndAnaesthesiaDataType"
+                    }
+                }
+            },
+            "required": [
+                "$schema",
+                "medications"
+            ],
+            "additionalProperties": false
+        },
+        "SedationAndAnaesthesiaDataType": {
+            "type": "object",
+            "properties": {
+                "name": {
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "array",
+                            "items": {
+                                "type": "string"
+                            }
+                        }
+                    ]
+                },
+                "dose": {
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "object",
+                            "properties": {
+                                "info": {
+                                    "type": "string"
+                                },
+                                "multiplier": {
+                                    "anyOf": [
+                                        {
+                                            "type": "number"
+                                        },
+                                        {
+                                            "type": "array",
+                                            "items": {
+                                                "type": "number"
+                                            }
+                                        }
+                                    ],
+                                    "description": "The number multiplied by the weight. If the dose has a range, use an array like: [1, 2]"
+                                },
+                                "unit": {
+                                    "type": "string"
+                                }
+                            },
+                            "required": [
+                                "info",
+                                "multiplier",
+                                "unit"
+                            ],
+                            "additionalProperties": false
+                        }
+                    ]
+                },
+                "formula_50ml": {
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "object",
+                            "additionalProperties": {
+                                "type": "string"
+                            }
+                        },
+                        {
+                            "type": "object",
+                            "additionalProperties": {
+                                "type": "object",
+                                "properties": {
+                                    "text": {
+                                        "type": "string",
+                                        "description": "Use special values for calculations: `_amount_` which is equal to (multiplier x weight).\n\n`_amount_ml_` which is equal to ((multiplier x weight) / divider).\n\n`_ns_amount_` which is equal to (50 - ((multiplier x weight) / divider))."
+                                    },
+                                    "multiplier": {
+                                        "anyOf": [
+                                            {
+                                                "type": "number"
+                                            },
+                                            {
+                                                "type": "array",
+                                                "items": {
+                                                    "type": "number"
+                                                }
+                                            }
+                                        ],
+                                        "description": "The number multiplied by the weight. If the dose has a range, use an array like: [1, 2]\n\nNote: can't be an array if you use the `_ns_amount_` in the `text`"
+                                    },
+                                    "divider": {
+                                        "type": "number",
+                                        "description": "The divider applied when calculating `_amout_ml_` and `_ns_amount_` used in `text`."
+                                    }
+                                },
+                                "required": [
+                                    "text",
+                                    "multiplier",
+                                    "divider"
+                                ],
+                                "additionalProperties": false
+                            }
+                        }
+                    ]
+                },
+                "compatible": {
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "array",
+                            "items": {
+                                "type": "string"
+                            }
+                        }
+                    ],
+                    "description": "Note: The first letter of the first two words will be capitalized!"
+                },
+                "incompatible": {
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "array",
+                            "items": {
+                                "type": "string"
+                            }
+                        }
+                    ],
+                    "description": "Note: The first letter of the first two words will be capitalized!"
+                }
+            },
+            "required": [
+                "name",
+                "dose",
+                "formula_50ml",
+                "compatible",
+                "incompatible"
+            ],
+            "additionalProperties": false
+        }
+    }
+}

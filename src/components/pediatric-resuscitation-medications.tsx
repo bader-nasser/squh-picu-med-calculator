@@ -4,26 +4,81 @@ import data from '@/data/pediatric-resuscitation-medications.json';
 import {displayData, getDoseAmount} from '@/utilities';
 
 const {Title} = Typography;
+// @ts-expect-error Ignoring ts error!
 const {medications}: {medications: PediatricResuscitationMedication[]} = data;
 
-type PediatricResuscitationMedication = {
+export type PediatricResuscitationMedication = {
 	name: string;
 	doses: Array<{
 		info: string;
 		mg_mcg_mmol?: {
+			/**
+			 * The number multiplied by the weight.
+			 * If the dose has a range, use an array like: [1, 2]
+			 * @example
+			 * "multiplier": [0.01, 0.5]
+			 * @example
+			 * "multiplier": 2
+			 */
 			multiplier?: number | number[];
-			unit: string;
+			unit: 'mg' | 'mcg' | 'mmol';
+			/**
+			 * Optional
+			 */
 			max?: number;
-			doses?: Array<{multiplier: number; max?: number}>;
+			/**
+			 * Optional
+			 */
+			doses?: Array<{
+				/**
+				 * The number multiplied by the weight
+				 * @example
+				 * "multiplier": 2
+				 */
+				multiplier: number;
+				/**
+				 * Optional
+				 */
+				max?: number;
+			}>;
 		};
+		/**
+		 * Optional
+		 */
 		ml?:
 		| {
+			/**
+			 * The number multiplied by the weight.
+			 * If the dose has a range, use an array like: [1, 2]
+			 * @example
+			 * "multiplier": [0.01, 0.5]
+			 * @example
+			 * "multiplier": 2
+			 */
 			multiplier: number | number[];
+			/**
+			 * Optional
+			 */
 			max?: number;
 		}
 		| Array<{
+			/**
+			 * The number multiplied by the weight.
+			 * If the dose has a range, use an array like: [1, 2]
+			 * @example
+			 * "multiplier": [0.01, 0.5]
+			 * @example
+			 * "multiplier": 2
+			 */
 			multiplier: number | number[];
+			/**
+			 * Optional
+			 * @default 1
+			 */
 			divider?: number;
+			/**
+			 * Optional
+			 */
 			label?: string;
 		}>;
 	}>;

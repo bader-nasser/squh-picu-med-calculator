@@ -1,4 +1,5 @@
 {
+	"$schema": "../schemas/pediatric-intubation-medications.json",
 	"medications": [
 		{
 			"name": [
