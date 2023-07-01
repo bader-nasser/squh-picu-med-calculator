@@ -1,7 +1,7 @@
 {
 	"name": "squh-picu-med-calculator",
 	"prettyName": "SQUH PICU Med Calculator",
-	"version": "0.26.1",
+	"version": "0.26.2",
 	"repository": "bader-nasser/squh-picu-med-calculator",
 	"license": "MIT",
 	"private": true,
@@ -52,10 +52,10 @@
 	},
 	"devDependencies": {
 		"@tauri-apps/cli": "^1.4.0",
-		"@types/node": "^20.3.2",
+		"@types/node": "^20.3.3",
 		"@types/react": "^18.2.14",
 		"@types/react-dom": "^18.2.6",
-		"eslint": "^8.43.0",
+		"eslint": "^8.44.0",
 		"eslint-config-xo-react": "^0.27.0",
 		"eslint-plugin-jsx-a11y": "^6.7.1",
 		"eslint-plugin-react": "^7.32.2",
