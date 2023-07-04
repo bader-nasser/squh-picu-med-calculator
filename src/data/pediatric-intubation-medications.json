@@ -3,8 +3,8 @@
 	"medications": [
 		{
 			"name": [
-				"Atropine (0.5mg/ml)",
-				"(Prepare a solution of 0.5mg of atropine with 4ml of 0.9%NS (100mcg/ml))"
+				"Atropine inj (0.5mg/ml)",
+				"(Prepare a solution of 0.5mg of Atropine with 4ml of 0.9%NS (100mcg/ml))"
 			],
 			"doses": [
 				{
@@ -39,7 +39,7 @@
 			]
 		},
 		{
-			"name": "Midazolam (5mg/ml), (prepare a solution of 5mg (1ml) midazolam with 4 ml of 0.9% NS (1mg/ml))",
+			"name": "Midazolam (5mg/ml), (prepare a solution of 5mg (1ml) Midazolam with 4 ml of 0.9% NS (1mg/ml))",
 			"doses": [
 				{
 					"info": "0.1-0.2 mg/kg/dose IV (max value 4mg)",
@@ -68,7 +68,7 @@
 		{
 			"name": [
 				"Ketamine (50mg/ml)",
-				"(Prepare a solution of 50mg ketamine with 9ml 0.9% NS (5mg/ml))"
+				"(Prepare a solution of 50mg Ketamine with 9ml 0.9% NS (5mg/ml))"
 			],
 			"doses": [
 				{
@@ -85,10 +85,10 @@
 			]
 		},
 		{
-			"name": "Fentanyl 100mcg/2ml, (prepare a solution of 100mcg (2ml) fentanyl with 8ml 0.9% NS (10mcg/ml))",
+			"name": "Fentanyl 100mcg/2ml, (prepare a solution of 100mcg (2ml) Fentanyl with 8ml 0.9% NS (10mcg/ml))",
 			"doses": [
 				{
-					"info": "1-3 micrograms/kg/dose IV",
+					"info": "1-3 mcg/kg/dose IV",
 					"mg_mcg_mmol": {
 						"multiplier": [1, 3],
 						"unit": "mcg"
@@ -101,7 +101,7 @@
 			]
 		},
 		{
-			"name": "Lidocaine 2% (20mg/ml)",
+			"name": "Lidocaine inj 2% (20mg/ml)",
 			"doses": [
 				{
 					"info": "1mg/kg/dose IV/ETT (max dose 100mg)",
@@ -119,7 +119,7 @@
 			]
 		},
 		{
-			"name": "Propofol 10mg/ml",
+			"name": "Propofol inj (10mg/ml)",
 			"doses": [
 				{
 					"info": "0.5-2mg/kg/dose IV",
@@ -135,7 +135,7 @@
 			]
 		},
 		{
-			"name": "Rocuronium 10mg/ml",
+			"name": "Rocuronium inj (50mg/ml), (prepare a solution of (10mg/ml))",
 			"doses": [
 				{
 					"info": "1mg/kg/dose IV",
@@ -151,7 +151,7 @@
 			]
 		},
 		{
-			"name": "Suxamethonium 5% (50mg/ml), (prepare a solution of 1mg/ml) ",
+			"name": "Suxamethonium inj 5% (50mg/ml), (prepare a solution of 1mg/ml) ",
 			"doses": [
 				{
 					"info": "1mg/kg/dose IV",
