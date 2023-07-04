@@ -5,8 +5,9 @@
 			"name": "Furosemide 20mg /2ml",
 			"dose": {
 				"info": "max rate is 0.5 mg/kg/min or 4 mg/min",
-			    "multiplier": 0.5,
-			    "unit": "mg/hr"},
+				"multiplier": 0.5,
+				"unit": "mg/hr"
+			},
 			"formula_50ml": {
 				"maximum_strength": "10 mg/ml (undiluted)",
 				"minimum_strength": "prepare 20mg (2ml) with 18ml of 0.9 NS (1 mg/ml)"
@@ -30,9 +31,10 @@
 		{
 			"name": "Heparin inj (See Avilable Concentration)",
 			"dose": {
-				"info":"0.5 - 25 unit/kg/hr titrate to APTT",
-			    "multiplier": [0.5, 25],
-			    "unit": "unit/hr"},
+				"info": "0.5 - 25 unit/kg/hr titrate to APTT",
+				"multiplier": [0.5, 25],
+				"unit": "unit/hr"
+			},
 			"formula_50ml": "Dilute to 1 unit/ml",
 			"compatible": [
 				"Dextrose 5%",
@@ -58,9 +60,10 @@
 		{
 			"name": "Insulin inj (ACTRAPID) (100 IU/ml)",
 			"dose": {
-				"info":"0.02 - 0.1 unit/kg/hr",
-			    "multiplier": [0.02, 0.1],
-			    "unit": "unit/hr"},
+				"info": "0.02 - 0.1 unit/kg/hr",
+				"multiplier": [0.02, 0.1],
+				"unit": "unit/hr"
+			},
 			"formula_50ml": "Dilute 50 units (0.5ml) of Insulin inj with 49ml of o,9% NS (1 unit /ml)",
 			"compatible": [
 				"Dextrose 5-10%",
@@ -108,9 +111,10 @@
 		{
 			"name": "Salbutamol inj (500mcg/ml)",
 			"dose": {
-				"info":"1 - 5 mcg/kg/min",
-			    "multiplier": [1, 5],
-			    "unit": "mcg/min"},
+				"info": "1 - 5 mcg/kg/min",
+				"multiplier": [1, 5],
+				"unit": "mcg/min"
+			},
 			"formula_50ml": {
 				"maximum_strength": "prepare 10mg (20ml) of Salbutamol inj with 30ml of 0.9% NS (200mcg/ml)",
 				"minimum_strength": "prepare 500mcg (1ml) of Salbutamol inj with 50ml of 0.9% NS (10mcg/ml)"
@@ -129,8 +133,9 @@
 			"name": "Labetalol inj (100mg/20ml)",
 			"dose": {
 				"info": "0.5 - 3 mg/kg/hr",
-			        "multiplier": [0.5, 3],
-			        "unit": "mg/hr"},
+				"multiplier": [0.5, 3],
+				"unit": "mg/hr"
+			},
 			"formula_50ml": "Prepare 50mg (10ml) of Labetalol inj with 40ml 0.9% NS (1mg/ml)",
 			"compatible": [
 				"Dextrose 5%",
@@ -156,8 +161,9 @@
 			"name": "Hydralazine inj 20 mg\n\nDilute in 5ml WFI",
 			"dose": {
 				"info": "12.5 - 50 mcg/kg/hr. Max 3 mg/kg/day",
-			        "multiplier": [12.5, 50],
-			        "unit": "mcg/hr"},
+				"multiplier": [12.5, 50],
+				"unit": "mcg/hr"
+			},
 			"formula_50ml": {
 				"maximum_strength": "prepare 20mg (5ml) of Hydralazine inj with 15ml 0.9% NS (1mg/ml)",
 				"minimum_strength": "prepare 2mg (0.5ml) of Hydralazine inj with 49.5 ml 0.9% NS (40mcg/ml)"

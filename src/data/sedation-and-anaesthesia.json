@@ -231,8 +231,8 @@
 			"name": "Propofol inj (10mg/ml)",
 			"dose": {
 				"info": "9-15 mg/kg/hr",
-			    "multiplier": [9, 15],
-			    "unit": "mg/hr"
+				"multiplier": [9, 15],
+				"unit": "mg/hr"
 			},
 			"formula_50ml": "Undiluted",
 			"compatible": ["Dextrose 5%", "Sodium Chloride 0.9%"],

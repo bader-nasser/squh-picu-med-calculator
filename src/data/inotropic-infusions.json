@@ -5,8 +5,9 @@
 			"name": "Epinephrine inj (1mg/1ml)",
 			"dose": {
 				"info": "0.01-0.5 mcg/kg/min",
-			    "multiplier": [0.01, 0.5],
-			    "unit": "mcg/min"},
+				"multiplier": [0.01, 0.5],
+				"unit": "mcg/min"
+			},
 			"formula_50ml": {
 				"text": "Prepare solution of (_amount_) ml Epinephrine inj with (_ns_amount_) ml of 0.9% NS \n (1ml/hr = 0.1 mcg/kg/min)",
 				"multiplier": 0.3
@@ -32,8 +33,9 @@
 			"name": "Norepinephrine inj (1mg/ml)",
 			"dose": {
 				"info": "0.01-0.5 mcg/kg/min",
-			    "multiplier": [0.01, 0.5],
-			    "unit": "mcg/min"},
+				"multiplier": [0.01, 0.5],
+				"unit": "mcg/min"
+			},
 			"formula_50ml": {
 				"text": "prepare solution of (_amount_) ml Norepinephrine inj with (_ns_amount_ml) of 0.9% NS \n (1ml/hr = 0.1mcg/kg/min)",
 				"multiplier": 0.3
@@ -57,8 +59,9 @@
 			"name": "Dopamine inj (40mg/ml)",
 			"dose": {
 				"info": "5-20 mcg/kg/min",
-			    "multiplier": [5, 20],
-			    "unit": "mcg/min"},
+				"multiplier": [5, 20],
+				"unit": "mcg/min"
+			},
 			"formula_50ml": {
 				"text": "Prepare solution of (_amount_) ml Dopamine inj with (_ns_amount_) ml of 0.9% NS \n (1ml/hr = 0.1mcg/kg/min)",
 				"multiplier": 30,
@@ -86,8 +89,9 @@
 			"name": "Dobutamine inj (5mg/ml)",
 			"dose": {
 				"info": "5-20 mcg/kg/min",
-			    "multiplier": [5, 20],
-			    "unit": "mcg/min"},
+				"multiplier": [5, 20],
+				"unit": "mcg/min"
+			},
 			"formula_50ml": {
 				"text": "Prepare solution of (_amount_) ml of Dobutamine inj with (_ns_amount_) ml of 0.9% NS \n (1ml/hr = 0.1mcg/kg/min)",
 				"multiplier": 30,
@@ -115,8 +119,9 @@
 			"name": "Milrinone inj (1mg/ml)",
 			"dose": {
 				"info": "0.25-0.75 mcg/kg/min",
-			    "multiplier": [0.25, 0.75],
-			    "unit": "mcg/min"},
+				"multiplier": [0.25, 0.75],
+				"unit": "mcg/min"
+			},
 			"formula_50ml": "Prepare solution of (10mg) 10 ml Milrinone inj with 40 ml of 0.9% NS or D5W \n (200mcg/ml)",
 			"compatible": [
 				"Dextrose 5%",
@@ -138,8 +143,9 @@
 			"name": "Vasopressin inj (20 IU/ml)",
 			"dose": {
 				"info": "0.3-1 unit/kg/hr",
-			    "multiplier": [0.3, 1],
-			    "unit": "unit/hr"},
+				"multiplier": [0.3, 1],
+				"unit": "unit/hr"
+			},
 			"formula_50ml": "Prepare solution of 5 units (0.25ml) of Vasopressin inj with 49.75ml of 0.9% NS (0.1unit/ml) or 20 units (1ml) of vasopressin inj with 49ml of 0.9% NS (1unit/ml)",
 			"compatible": ["Dextrose 5%", "Sodium Chloride 0.9%"],
 			"incompatible": "Furosemide"
