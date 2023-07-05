@@ -12,11 +12,13 @@ import {
 	Row,
 	Col,
 	Layout,
+	Button,
 	Spin,
 	Space,
 } from 'antd';
 import pkg from '../../package.json';
 import data from '@/data/categories.json';
+import {prettify} from '@/utilities';
 
 const {Content, Footer} = Layout;
 const {categories} = data;
@@ -113,6 +115,7 @@ export default function Category({category}: InferGetStaticPropsType<typeof getS
 										src='/logo_small.png'
 										alt='Logo of Sultan Qaboos University Hospital'
 									/>
+
 									{pkg.prettyName}
 								</Space>
 							</Col>
@@ -125,31 +128,31 @@ export default function Category({category}: InferGetStaticPropsType<typeof getS
 											window.print();
 										}}
 									/>
-									<Link
-										href='#'
+
+									<Button
+										ghost
+										style={{color: 'black'}}
 										onClick={async event => {
 											event.preventDefault();
 											document.body.style.cursor = 'wait';
 											await localforage.clear();
-											await router.push('/frontpage');
+											await router.push('/');
 											document.body.style.cursor = 'auto';
 										}}
-									>Front Page
-									</Link>
+									>
+										Front Page
+									</Button>
 								</Space>
 							</Col>
 						</Row>
 
-						<Row justify='end' gutter={[8, 8]} className='mb-4 no-print'>
+						<Row justify='end' gutter={[16, 16]} className='mb-4 no-print'>
 							{Object.entries(categories).map(([key, value]) => (
-								<Link
-									key={key}
-									href={`/${key}`}
-								>
-									<Col>
-										{value}
-									</Col>
-								</Link>
+								<Col key={key}>
+									<Link href={`/${key}`}>
+										{prettify(value)}
+									</Link>
+								</Col>
 							))}
 						</Row>
 
@@ -158,8 +161,9 @@ export default function Category({category}: InferGetStaticPropsType<typeof getS
 						{!isLoading && !isDataReady && (
 							<>
 								<p>Patient&apos;s information is not available!</p>
+
 								<p>Please, add it using the {' '}
-									<Link href='/frontpage'>frontpage</Link>.
+									<Link href='/'>Front Page</Link>.
 								</p>
 							</>
 						)}
@@ -172,6 +176,7 @@ export default function Category({category}: InferGetStaticPropsType<typeof getS
 									Weight: <strong>{weight}</strong> kg &mdash; {' '}
 									Height: <strong>{height ?? 'Not Provided'}</strong> cm
 								</p>
+
 								<LoadCategory category={category} weight={weight!}/>
 							</>
 						)}
@@ -188,6 +193,7 @@ export default function Category({category}: InferGetStaticPropsType<typeof getS
 						xxl={{span: 16, offset: 4}}
 					>
 						<p>Developed by Bader Nasser</p>
+
 						<p>{pkg.version}</p>
 					</Col>
 				</Row>

@@ -165,6 +165,7 @@ export default function InotropicInfusions({weight}: Props) {
 	return (
 		<>
 			<Title level={2}>Inotropic Infusions</Title>
+
 			<Table
 				columns={columns}
 				dataSource={tableData}

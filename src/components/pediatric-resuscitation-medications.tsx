@@ -187,6 +187,7 @@ export default function PediatricResuscitationMedications({weight}: Props) {
 	return (
 		<>
 			<Title level={2}>Pediatric Resuscitation Medications</Title>
+
 			<Table
 				columns={columns}
 				dataSource={tableData}

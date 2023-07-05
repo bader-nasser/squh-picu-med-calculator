@@ -209,6 +209,7 @@ export default function SedationAndAnaesthesia({weight}: Props) {
 	return (
 		<>
 			<Title level={2}>Sedation and Anaesthesia</Title>
+
 			<Table
 				columns={columns}
 				dataSource={tableData}

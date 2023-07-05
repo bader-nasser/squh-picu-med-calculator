@@ -1,183 +1,272 @@
-import {useState} from 'react';
+import {useEffect, useState} from 'react';
+import {useRouter} from 'next/router';
 import {
 	Form,
 	Input,
 	InputNumber,
-	Select,
 	Row,
 	Col,
 	Layout,
+	Card,
+	Space,
 	Typography,
+	Button,
 } from 'antd';
-import {PrinterOutlined} from '@ant-design/icons';
-import Link from 'next/link';
+import localforage from 'localforage';
 import pkg from '../../package.json';
-import ShowCategory from '@/components/show-category';
-import {round} from '@/utilities';
+import {prettify, round} from '@/utilities';
+import data from '@/data/categories.json';
+import styles from '@/styles/frontpage.module.css';
 
 const {Title} = Typography;
-const {Option} = Select;
-const {Header, Content, Footer} = Layout;
+const {Content, Footer} = Layout;
 const FormItem = Form.Item;
 
-const initialValues = {
-	weight: 50,
-	category: 'pediatric_resuscitation_medications',
+const {categories} = data;
+
+type ChangedValuesProps = {
+	name?: string;
+	age?: number;
+	weight?: number;
+	height?: number;
 };
 
-export default function Home() {
-	const [form] = Form.useForm();
-	const [weight, setWeight] = useState(round(initialValues.weight));
-	const [category, setCategory] = useState(initialValues.category);
+const minNameLength = 3;
 
-	const onValuesChange = (changedValues: {weight: number; category: string}) => {
-		const {weight, category} = changedValues;
-		if (weight) {
-			setWeight(round(weight));
+async function getSavedData() {
+	const name = await localforage.getItem<string>('name');
+	const age = await localforage.getItem<number>('age');
+	const weight = await localforage.getItem<number>('weight');
+	const height = await localforage.getItem<number>('height');
+	return {
+		name: name ?? '',
+		age: age ?? undefined,
+		weight: weight ?? undefined,
+		height: height ?? undefined,
+	};
+}
+
+export default function Home() {
+	const router = useRouter();
+	const [form] = Form.useForm();
+	const [name, setName] = useState('');
+	const [age, setAge] = useState<number>();
+	const [weight, setWeight] = useState<number>();
+	const [height, setHeight] = useState<number>();
+	const [hasOldData, setHasOldData] = useState<boolean>(false);
+
+	useEffect(() => {
+		async function getData() {
+			try {
+				const data = await getSavedData();
+				form.setFieldsValue(data);
+				setName(data.name);
+				setAge(data.age);
+				setWeight(data.weight);
+				setHeight(data.height);
+				setHasOldData(Boolean(data.name));
+			} catch (error) {
+				console.error(error);
+			}
 		}
 
-		if (category) {
-			setCategory(category);
+		void getData();
+	}, [form]);
+
+	const onValuesChange = (changedValues: ChangedValuesProps) => {
+		const {name, age, weight, height} = changedValues;
+		if (name !== undefined) {
+			setName(name.trim());
+		}
+
+		if (age !== undefined) {
+			if (age === null) {
+				setAge(undefined);
+			} else {
+				setAge(round(age));
+			}
+		}
+
+		if (weight !== undefined) {
+			if (weight === null) {
+				setWeight(undefined);
+			} else {
+				setWeight(round(weight));
+			}
+		}
+
+		if (height !== undefined) {
+			if (height === null) {
+				setHeight(undefined);
+			} else {
+				setHeight(round(height));
+			}
 		}
 	};
 
-	return (
-		<Layout className='layout'>
-			<Header className='header'>
-				<Row>
-					<Col
-						xs={{span: 22, offset: 1}}
-						lg={{span: 20, offset: 2}}
-						xxl={{span: 18, offset: 3}}
-					>
-						<Row justify='space-between' align='middle'>
-							<Col>
-								<Title className='title'>
-									{pkg.prettyName}
-								</Title>
-							</Col>
-							<Col className='no-print'>
-								<PrinterOutlined
-									style={{fontSize: '32px', paddingBlock: '16px'}}
-									onClick={() => {
-										window.print();
-									}}
-								/>
-							</Col>
-						</Row>
-						<Row justify='space-between' align='middle' className='no-print'>
-							<Col>
-								<Link
-									href='/frontpage'
-									style={{
-										color: 'white',
-										textDecorationLine: 'underline',
-									}}
-								>Front Page (Almost done)
-								</Link>
-							</Col>
-						</Row>
-					</Col>
-				</Row>
-			</Header>
+	const isDataReady = Boolean(name && name.length >= minNameLength && age && weight);
 
+	async function setData() {
+		await localforage.setItem('name', name);
+		await localforage.setItem('age', age);
+		await localforage.setItem('weight', weight);
+		await localforage.setItem('height', height);
+	}
+
+	async function removeData() {
+		form.resetFields();
+		setName('');
+		setAge(undefined);
+		setWeight(undefined);
+		setHeight(undefined);
+	}
+
+	return (
+		<Layout className={`layout ${styles.frontpage}`}>
 			<Content className='content'>
 				<Row>
 					<Col
 						xs={{span: 22, offset: 1}}
-						lg={{span: 20, offset: 2}}
-						xxl={{span: 18, offset: 3}}
+						lg={{span: 12, offset: 6}}
+						xxl={{span: 8, offset: 8}}
 					>
+						<Row align='middle' justify='center' className='mb-2'>
+							<Space align='center' direction='vertical'>
+								<img
+									src='/logo_small.png'
+									alt='Logo of Sultan Qaboos University Hospital'
+								/>
+
+								<Title style={{color: 'white'}}>{pkg.prettyName}</Title>
+							</Space>
+						</Row>
+
 						<Form
+							className={`${styles['white-text']} mb-5`}
 							form={form}
 							layout='horizontal'
-							initialValues={initialValues}
 							size='large'
+							labelCol={{span: 8}}
+							wrapperCol={{span: 8}}
 							onValuesChange={onValuesChange}
 						>
-							<Row gutter={16}>
-								<Col xs={{span: 24}} lg={{span: 12}}>
-									<FormItem
-										name='name'
-										label='Patient Name'
-										rules={[{required: true}]}
-									>
-										<Input/>
-									</FormItem>
-								</Col>
+							{hasOldData && (
+								<Row justify='center' className='mb-2'>
+									<Col>
+										<Title
+											level={3}
+											style={{color: 'white'}}
+										>
+											Previus Patient Data exists!
+										</Title>
 
-								<Col xs={{span: 24}} lg={{span: 12}}>
-									<Row gutter={16}>
-										<Col>
-											<FormItem
-												name='weight'
-												label='Weight'
-												rules={[{required: true}]}
+										<p>You must click on the {' '}
+											<Button
+												ghost
+												className='mx-1'
+												onClick={async () => {
+													document.body.style.cursor = 'wait';
+													await localforage.clear();
+													setHasOldData(false);
+													await removeData();
+													document.body.style.cursor = 'auto';
+												}}
 											>
-												<InputNumber
-													addonAfter='kg'
-													min={2}
-													max={150}
-													style={{width: '120px'}}
-												/>
-											</FormItem>
-										</Col>
+												Front Page link
+											</Button> {' '}
+											to erase it!
+										</p>
+									</Col>
+								</Row>
+							)}
 
-										<Col>
-											<FormItem
-												name='height'
-												label='Height'
-												rules={[{required: false}]}
-											>
-												<InputNumber
-													addonAfter='cm'
-													min={40}
-													max={300}
-													type='number'
-													style={{width: '120px'}}
-												/>
-											</FormItem>
-										</Col>
-									</Row>
-								</Col>
-							</Row>
+							<FormItem
+								name='name'
+								label='Patient Name'
+								rules={[{required: true, min: minNameLength}]}
+							>
+								<Input/>
+							</FormItem>
 
-							<Row className='no-print'>
-								<Col xs={{span: 24}} lg={{span: 12}}>
-									<FormItem
-										name='category'
-										label='Category'
-										rules={[{required: true}]}
-									>
-										<Select placeholder='Select a category'>
-											<Option value='pediatric_resuscitation_medications'>
-												Pediatric Resuscitation
-												Medications
-											</Option>
-											<Option value='pediatric_intubation_medications'>
-												Pediatric Intubation Medications
-											</Option>
-											<Option value='inotropic_infusions'>
-												Inotropic Infusions
-											</Option>
-											<Option value='sedation_and_anaesthesia'>
-												Sedation and Anaesthesia
-											</Option>
-											<Option value='other_important_infusions'>
-												Other Important Infusions
-											</Option>
-										</Select>
-									</FormItem>
-								</Col>
-							</Row>
+							<FormItem
+								name='age'
+								label='Age'
+								rules={[{required: true}]}
+							>
+								<InputNumber
+									addonAfter='years'
+									min={1}
+									max={120}
+								/>
+							</FormItem>
+
+							<FormItem
+								name='weight'
+								label='Weight'
+								rules={[{required: true}]}
+							>
+								<InputNumber
+									addonAfter='kg'
+									min={2}
+									max={150}
+								/>
+							</FormItem>
+
+							<FormItem
+								name='height'
+								label='Height'
+							>
+								<InputNumber
+									addonAfter='cm'
+									min={40}
+									max={300}
+								/>
+							</FormItem>
+
+							<FormItem wrapperCol={{offset: 8, span: 16}}>
+								<Button
+									htmlType='reset'
+									onClick={async () => {
+										await removeData();
+									}}
+								>
+									Clear
+								</Button>
+							</FormItem>
 						</Form>
 
-						<ShowCategory category={category} weight={weight}/>
+						<Row
+							gutter={[16, 16]}
+							justify='center'
+						>
+							{Object.entries(categories).map(([key, value]) => (
+								<Col key={key}>
+									<Card
+										hoverable={isDataReady}
+										style={{
+											cursor: isDataReady ? 'pointer' : 'not-allowed',
+										}}
+										className={isDataReady
+											? styles.active : styles.disabled}
+										onClick={async event => {
+											if (isDataReady) {
+												document.body.style.cursor = 'wait';
+												await setData();
+												await router.push(`/${key}`);
+												document.body.style.cursor = 'auto';
+											}
+										}}
+									>
+										{prettify(value)}
+									</Card>
+								</Col>
+							))}
+						</Row>
 					</Col>
 				</Row>
 			</Content>
 
-			<Footer className='footer no-print'>
+			<Footer className={`${styles.footer} no-print`}>
 				<Row>
 					<Col
 						xs={{span: 22, offset: 1}}
@@ -185,6 +274,7 @@ export default function Home() {
 						xxl={{span: 18, offset: 3}}
 					>
 						<p>Developed by Bader Nasser</p>
+
 						<p>{pkg.version}</p>
 					</Col>
 				</Row>

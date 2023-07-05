@@ -134,6 +134,7 @@ export default function OtherImportantInfusions({weight}: Props) {
 	return (
 		<>
 			<Title level={2}>Other Important Infusions</Title>
+
 			<Table
 				columns={columns}
 				dataSource={tableData}
