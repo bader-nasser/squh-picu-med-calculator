@@ -72,6 +72,7 @@ export default function Category({category}: InferGetStaticPropsType<typeof getS
 	const router = useRouter();
 	const [isLoading, setIsLoading] = useState(true);
 	const [name, setName] = useState<string>('');
+	const [mrn, setMrn] = useState<string>('');
 	const [age, setAge] = useState<number>();
 	const [weight, setWeight] = useState<number>();
 	const [height, setHeight] = useState<number>();
@@ -80,10 +81,12 @@ export default function Category({category}: InferGetStaticPropsType<typeof getS
 		async function getData() {
 			try {
 				const name = await localforage.getItem<string>('name');
+				const mrn = await localforage.getItem<string>('mrn');
 				const age = await localforage.getItem<number>('age');
 				const weight = await localforage.getItem<number>('weight');
 				const height = await localforage.getItem<number>('height');
 				setName(name ?? '');
+				setMrn(mrn ?? '');
 				setAge(age ?? undefined);
 				setWeight(weight ?? undefined);
 				setHeight(height ?? undefined);
@@ -96,7 +99,7 @@ export default function Category({category}: InferGetStaticPropsType<typeof getS
 		void getData();
 	}, []);
 
-	const isDataReady = Boolean(name && age && weight);
+	const isDataReady = Boolean(name && mrn && age && weight);
 
 	return (
 		<Layout className='layout'>
@@ -171,7 +174,8 @@ export default function Category({category}: InferGetStaticPropsType<typeof getS
 						{isDataReady && (
 							<>
 								<p>
-									Patient Name: <strong>{name}</strong> &mdash; {' '}
+									Patient&apos;s Name: <strong>{name}</strong> &mdash; {' '}
+									Patient&apos;s MRN: <strong>{mrn}</strong> &mdash; {' '}
 									Age: <strong>{age}</strong> years &mdash; {' '}
 									Weight: <strong>{weight}</strong> kg &mdash; {' '}
 									Height: <strong>{height ?? 'Not Provided'}</strong> cm

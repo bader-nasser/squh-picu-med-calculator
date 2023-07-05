@@ -26,6 +26,7 @@ const {categories} = data;
 
 type ChangedValuesProps = {
 	name?: string;
+	mrn?: string;
 	age?: number;
 	weight?: number;
 	height?: number;
@@ -35,11 +36,13 @@ const minNameLength = 3;
 
 async function getSavedData() {
 	const name = await localforage.getItem<string>('name');
+	const mrn = await localforage.getItem<string>('mrn');
 	const age = await localforage.getItem<number>('age');
 	const weight = await localforage.getItem<number>('weight');
 	const height = await localforage.getItem<number>('height');
 	return {
 		name: name ?? '',
+		mrn: mrn ?? '',
 		age: age ?? undefined,
 		weight: weight ?? undefined,
 		height: height ?? undefined,
@@ -50,6 +53,7 @@ export default function Home() {
 	const router = useRouter();
 	const [form] = Form.useForm();
 	const [name, setName] = useState('');
+	const [mrn, setMrn] = useState('');
 	const [age, setAge] = useState<number>();
 	const [weight, setWeight] = useState<number>();
 	const [height, setHeight] = useState<number>();
@@ -62,6 +66,7 @@ export default function Home() {
 				form.setFieldsValue(data);
 				setName(data.name);
 				setAge(data.age);
+				setMrn(data.mrn);
 				setWeight(data.weight);
 				setHeight(data.height);
 				setHasOldData(Boolean(data.name));
@@ -74,9 +79,13 @@ export default function Home() {
 	}, [form]);
 
 	const onValuesChange = (changedValues: ChangedValuesProps) => {
-		const {name, age, weight, height} = changedValues;
+		const {name, mrn, age, weight, height} = changedValues;
 		if (name !== undefined) {
 			setName(name.trim());
+		}
+
+		if (mrn !== undefined) {
+			setMrn(mrn.trim());
 		}
 
 		if (age !== undefined) {
@@ -104,10 +113,11 @@ export default function Home() {
 		}
 	};
 
-	const isDataReady = Boolean(name && name.length >= minNameLength && age && weight);
+	const isDataReady = Boolean(name && mrn && name.length >= minNameLength && age && weight);
 
 	async function setData() {
 		await localforage.setItem('name', name);
+		await localforage.setItem('mrn', mrn);
 		await localforage.setItem('age', age);
 		await localforage.setItem('weight', weight);
 		await localforage.setItem('height', height);
@@ -116,6 +126,7 @@ export default function Home() {
 	async function removeData() {
 		form.resetFields();
 		setName('');
+		setMrn('');
 		setAge(undefined);
 		setWeight(undefined);
 		setHeight(undefined);
@@ -182,8 +193,16 @@ export default function Home() {
 
 							<FormItem
 								name='name'
-								label='Patient Name'
+								label='Patient&apos;s Name'
 								rules={[{required: true, min: minNameLength}]}
+							>
+								<Input/>
+							</FormItem>
+
+							<FormItem
+								name='mrn'
+								label='Patient&apos;s MRN'
+								rules={[{required: true}]}
 							>
 								<Input/>
 							</FormItem>
