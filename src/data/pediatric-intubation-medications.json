@@ -3,8 +3,7 @@
 	"medications": [
 		{
 			"name": [
-				"Atropine inj (0.5mg/ml)",
-				"(Prepare a solution of 0.5mg of Atropine with 4ml of 0.9%NS (100mcg/ml))"
+				"Atropine inj (0.5mg/ml),\n\n (Prepare a solution of (0.5mg) 1ml of Atropine with 4ml of 0.9% NS (100mcg/ml))"
 			],
 			"doses": [
 				{
@@ -39,7 +38,7 @@
 			]
 		},
 		{
-			"name": "Midazolam (5mg/ml), (prepare a solution of 5mg (1ml) Midazolam with 4 ml of 0.9% NS (1mg/ml))",
+			"name": "Midazolam (5mg/ml),\n\n (prepare a solution of (5mg) 1ml of Midazolam with 4 ml of 0.9% NS (1mg/ml))",
 			"doses": [
 				{
 					"info": "0.1-0.2 mg/kg/dose IV (max value 4mg)",
@@ -66,10 +65,7 @@
 			]
 		},
 		{
-			"name": [
-				"Ketamine (50mg/ml)",
-				"(Prepare a solution of 50mg Ketamine with 9ml 0.9% NS (5mg/ml))"
-			],
+			"name": "Ketamine (50mg/ml),\n\n (Prepare a solution of (50mg) 1ml of Ketamine with 9ml 0.9% NS (5mg/ml))",
 			"doses": [
 				{
 					"info": "1-2 mg/kg/dose IV",
@@ -85,7 +81,7 @@
 			]
 		},
 		{
-			"name": "Fentanyl 100mcg/2ml, (prepare a solution of 100mcg (2ml) Fentanyl with 8ml 0.9% NS (10mcg/ml))",
+			"name": "Fentanyl (100mcg/2ml),\n\n (prepare a solution of (100mcg) 2ml Fentanyl with 8ml 0.9% NS (10mcg/ml))",
 			"doses": [
 				{
 					"info": "1-3 mcg/kg/dose IV",
@@ -135,7 +131,7 @@
 			]
 		},
 		{
-			"name": "Rocuronium inj (50mg/ml), (prepare a solution of (10mg/ml))",
+			"name": "Rocuronium inj (50mg/ml),\n\n (prepare a solution of (100 mg) 2ml of Rocuronium wih 8ml of 0.9% NS (10mg/ml))",
 			"doses": [
 				{
 					"info": "1mg/kg/dose IV",
@@ -151,7 +147,7 @@
 			]
 		},
 		{
-			"name": "Suxamethonium inj 5% (50mg/ml), (prepare a solution of 1mg/ml) ",
+			"name": "Suxamethonium inj 5% (50mg/ml),\n\n (prepare a solution of (10mg) 0.2ml of Suxamethonium with 9.8ml of 0.9% NS (1mg/ml)) ",
 			"doses": [
 				{
 					"info": "1mg/kg/dose IV",

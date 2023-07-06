@@ -30,7 +30,7 @@ type FormulaObjectData = {
 	 */
 	multiplier: number | number[];
 	/**
-	 * The divider applied when calculating `_amout_ml_` and `_ns_amount_` used
+	 * The divider applied when calculating `_amount_ml_` and `_ns_amount_` used
 	 * in `text`.
 	 */
 	divider: number;

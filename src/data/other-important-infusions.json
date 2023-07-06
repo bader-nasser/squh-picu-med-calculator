@@ -2,7 +2,7 @@
 	"$schema": "../schemas/other-important-infusions.json",
 	"medications": [
 		{
-			"name": "Furosemide 20mg /2ml",
+			"name": "Furosemide inj (20mg /2ml)",
 			"dose": {
 				"info": "max rate is 0.5 mg/kg/min or 4 mg/min",
 				"multiplier": 0.5,
@@ -10,7 +10,7 @@
 			},
 			"formula_50ml": {
 				"maximum_strength": "10 mg/ml (undiluted)",
-				"minimum_strength": "prepare 20mg (2ml) with 18ml of 0.9 NS (1 mg/ml)"
+				"minimum_strength": "prepare 20mg (2ml) with 18ml of 0.9% NS (1 mg/ml)"
 			},
 			"compatible": [
 				"Dextrose 5%",
@@ -64,7 +64,7 @@
 				"multiplier": [0.02, 0.1],
 				"unit": "unit/hr"
 			},
-			"formula_50ml": "Dilute 50 units (0.5ml) of Insulin inj with 49ml of o,9% NS (1 unit /ml)",
+			"formula_50ml": "Dilute (50 units) 0.5ml of Insulin inj with 49ml of 0.9% NS (1 unit /ml)",
 			"compatible": [
 				"Dextrose 5-10%",
 				"Hartmann's",
@@ -158,7 +158,7 @@
 			]
 		},
 		{
-			"name": "Hydralazine inj 20 mg\n\nDilute in 5ml WFI",
+			"name": "Hydralazine inj 20 mg\n\n Dilute in 5ml WFI",
 			"dose": {
 				"info": "12.5 - 50 mcg/kg/hr. Max 3 mg/kg/day",
 				"multiplier": [12.5, 50],
