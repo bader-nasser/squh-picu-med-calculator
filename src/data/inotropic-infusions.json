@@ -63,9 +63,10 @@
 				"unit": "mcg/min"
 			},
 			"formula_50ml": {
-				"text": "Prepare solution of (_amount_) ml Dopamine inj with (_ns_amount_) ml of 0.9% NS \n (1ml/hr = 0.1mcg/kg/min)",
+				"text": "Prepare solution of (_amount_) mg (_amount_ml) ml Dopamine inj with (_ns_amount_) ml of 0.9% NS \n (1ml/hr = 0.1mcg/kg/min)",
 				"multiplier": 30,
-				"ns_multiplier": 0.3
+				"ns_multiplier": 0.3,
+				"divider": 40
 			},
 			"compatible": [
 				"Dextrose 5%",
@@ -93,9 +94,10 @@
 				"unit": "mcg/min"
 			},
 			"formula_50ml": {
-				"text": "Prepare solution of (_amount_) ml of Dobutamine inj with (_ns_amount_) ml of 0.9% NS \n (1ml/hr = 0.1mcg/kg/min)",
+				"text": "Prepare solution of (_amount_) mg (_amount_ml) ml Dobutamine inj with (_ns_amount_) ml of 0.9% NS \n (1ml/hr = 0.1mcg/kg/min)",
 				"multiplier": 30,
-				"ns_multiplier": 0.3
+				"ns_multiplier": 0.3,
+				"divider": 5
 			},
 			"compatible": [
 				"Dextrose 5-10%",

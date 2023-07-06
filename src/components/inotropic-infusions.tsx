@@ -49,6 +49,11 @@ export type InotropicInfusion = {
 		 * "ns_multiplier": 0.3
 		 */
 		ns_multiplier?: number;
+		/**
+		 * the devider applied when calculating '_amount_ml' and '_ns_amount_' used
+		 * in 'text'.
+		 */
+		divider: number;
 	};
 	/**
 	 * Note: The first letter of the first two words will be capitalized!
