@@ -210,8 +210,8 @@
 				"unit": "mcg/min"
 			},
 			"formula_50ml": {
-				"single_strength": "prepare solution of (50mg) 1ml of ketamine inj with 49 ml of 0.9% NS \n (1mg/ml)",
-				"double_strength": "prepare solution of (50mg) 1ml of ketamine inj with 24 ml of 0.9% NS \n (2mg/ml)"
+				"single_strength": "prepare solution of (50mg) 1ml of Ketamine inj with 49 ml of 0.9% NS \n (1mg/ml)",
+				"double_strength": "prepare solution of (50mg) 1ml of Ketamine inj with 24 ml of 0.9% NS \n (2mg/ml)"
 			},
 			"compatible": [
 				"Dextrose 5%",
