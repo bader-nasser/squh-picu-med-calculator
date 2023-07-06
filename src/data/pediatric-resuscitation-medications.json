@@ -14,7 +14,12 @@
 					"ml": {
 						"multiplier": 0.1
 					}
-				},
+				}
+			]
+		},
+		{
+			"name": "Epinephrine 1:1000 (1mg/ml)",
+			"doses": [
 				{
 					"info": "0.1 mg/kg/dose (max 2.5 mg) ETT (0.1 mL/kg 1:1000) ETT",
 					"mg_mcg_mmol": {
