@@ -168,12 +168,16 @@ export default function Home() {
 											level={3}
 											style={{color: 'white'}}
 										>
-											Previus Patient Data exists!
+											Current Patient&apos;s Data!
 										</Title>
 
-										<p>You must click on the {' '}
+										<p>To delete it, you must use the {' '}
 											<Button
 												ghost
+												style={{
+													background: 'red',
+													color: 'white',
+												}}
 												className='mx-1'
 												onClick={async () => {
 													document.body.style.cursor = 'wait';
@@ -183,9 +187,9 @@ export default function Home() {
 													document.body.style.cursor = 'auto';
 												}}
 											>
-												Front Page link
+												Change Patient
 											</Button> {' '}
-											to erase it!
+											button!
 										</p>
 									</Col>
 								</Row>
@@ -267,7 +271,7 @@ export default function Home() {
 										}}
 										className={isDataReady
 											? styles.active : styles.disabled}
-										onClick={async event => {
+										onClick={async () => {
 											if (isDataReady) {
 												document.body.style.cursor = 'wait';
 												await setData();

@@ -77,25 +77,25 @@ export default function Category({category}: InferGetStaticPropsType<typeof getS
 	const [weight, setWeight] = useState<number>();
 	const [height, setHeight] = useState<number>();
 
-	useEffect(() => {
-		async function getData() {
-			try {
-				const name = await localforage.getItem<string>('name');
-				const mrn = await localforage.getItem<string>('mrn');
-				const age = await localforage.getItem<number>('age');
-				const weight = await localforage.getItem<number>('weight');
-				const height = await localforage.getItem<number>('height');
-				setName(name ?? '');
-				setMrn(mrn ?? '');
-				setAge(age ?? undefined);
-				setWeight(weight ?? undefined);
-				setHeight(height ?? undefined);
-				setIsLoading(false);
-			} catch (error) {
-				console.error(error);
-			}
+	async function getData() {
+		try {
+			const name = await localforage.getItem<string>('name');
+			const mrn = await localforage.getItem<string>('mrn');
+			const age = await localforage.getItem<number>('age');
+			const weight = await localforage.getItem<number>('weight');
+			const height = await localforage.getItem<number>('height');
+			setName(name ?? '');
+			setMrn(mrn ?? '');
+			setAge(age ?? undefined);
+			setWeight(weight ?? undefined);
+			setHeight(height ?? undefined);
+			setIsLoading(false);
+		} catch (error) {
+			console.error(error);
 		}
+	}
 
+	useEffect(() => {
 		void getData();
 	}, []);
 
@@ -119,7 +119,7 @@ export default function Category({category}: InferGetStaticPropsType<typeof getS
 										alt='Logo of Sultan Qaboos University Hospital'
 									/>
 
-									{pkg.prettyName}
+									<Link href='/'>{pkg.prettyName}</Link>
 								</Space>
 							</Col>
 
@@ -132,18 +132,40 @@ export default function Category({category}: InferGetStaticPropsType<typeof getS
 										}}
 									/>
 
+									{isDataReady && (
+										<Button
+											ghost
+											style={{
+												background: 'blue',
+												color: 'white',
+											}}
+											onClick={async () => {
+												document.body.style.cursor = 'wait';
+												await router.push('/');
+												document.body.style.cursor = 'auto';
+											}}
+										>
+											Edit data
+										</Button>
+									)}
+
 									<Button
 										ghost
-										style={{color: 'black'}}
-										onClick={async event => {
-											event.preventDefault();
+										style={{
+											background: 'red',
+											color: 'white',
+										}}
+										onClick={async () => {
 											document.body.style.cursor = 'wait';
-											await localforage.clear();
+											if (isDataReady) {
+												await localforage.clear();
+											}
+
 											await router.push('/');
 											document.body.style.cursor = 'auto';
 										}}
 									>
-										Front Page
+										{isDataReady ? 'Change' : 'New'} Patient
 									</Button>
 								</Space>
 							</Col>
@@ -152,7 +174,15 @@ export default function Category({category}: InferGetStaticPropsType<typeof getS
 						<Row justify='end' gutter={[16, 16]} className='mb-4 no-print'>
 							{Object.entries(categories).map(([key, value]) => (
 								<Col key={key}>
-									<Link href={`/${key}`}>
+									<Link
+										href={`/${key}`}
+										// Todo: revise!
+										onClick={async event => {
+											event.preventDefault();
+											await router.push(`/${key}`);
+											await getData();
+										}}
+									>
 										{prettify(value)}
 									</Link>
 								</Col>
@@ -166,7 +196,21 @@ export default function Category({category}: InferGetStaticPropsType<typeof getS
 								<p>Patient&apos;s information is not available!</p>
 
 								<p>Please, add it using the {' '}
-									<Link href='/'>Front Page</Link>.
+									<Button
+										ghost
+										style={{
+											background: 'red',
+											color: 'white',
+										}}
+										onClick={async () => {
+											document.body.style.cursor = 'wait';
+											await router.push('/');
+											document.body.style.cursor = 'auto';
+										}}
+									>
+										New Patient
+									</Button> {' '}
+									button.
 								</p>
 							</>
 						)}
