@@ -50,7 +50,7 @@ export type InotropicInfusion = {
 		 */
 		ns_multiplier?: number;
 		/**
-		 * the devider applied when calculating '_amount_ml' and '_ns_amount_' used
+		 * the devider applied when calculating '_amount_ml_' and '_ns_amount_' used
 		 * in "text".
 		 */
 		divider?: number;
@@ -123,7 +123,7 @@ const columns: ColumnsType<DataType> = [
 			const doseAmountMl = getDoseAmount({multiplier, weight, divider});
 			const nsAmount = getNsAmount({nsMultiplier, multiplier, weight});
 			let newText = text.replace('_amount_', `${doseAmount}`);
-			newText = newText.replace('_amount_ml_', doseAmountMl);
+			newText = newText.replace('_amount_ml_', '${doseAmountMl}'
 			newText = newText.replace('_ns_amount_', `${nsAmount}`);
 			return capitalize(newText);
 		},

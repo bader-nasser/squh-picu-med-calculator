@@ -64,7 +64,7 @@
 				"multiplier": [0.02, 0.1],
 				"unit": "unit/hr"
 			},
-			"formula_50ml": "Dilute (50 units) 0.5ml of Insulin inj with 49ml of o,9% NS (1 unit /ml)",
+			"formula_50ml": "Dilute (50 units) 0.5ml of Insulin inj with 49ml of o.9% NS (1 unit /ml)",
 			"compatible": [
 				"Dextrose 5-10%",
 				"Hartmann's",
