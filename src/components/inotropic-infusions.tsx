@@ -51,9 +51,9 @@ export type InotropicInfusion = {
 		ns_multiplier?: number;
 		/**
 		 * the devider applied when calculating '_amount_ml' and '_ns_amount_' used
-		 * in 'text'.
+		 * in "text".
 		 */
-		divider: number;
+		divider?: number;
 	};
 	/**
 	 * Note: The first letter of the first two words will be capitalized!
@@ -118,10 +118,12 @@ const columns: ColumnsType<DataType> = [
 				return capitalize(formula_50ml);
 			}
 
-			const {text, multiplier, ns_multiplier: nsMultiplier} = formula_50ml;
+			const {text, multiplier, ns_multiplier: nsMultiplier, divider} = formula_50ml;
 			const doseAmount = getDoseAmount({weight, multiplier});
+			const doseAmountMl = getDoseAmount({multiplier, weight, divider});
 			const nsAmount = getNsAmount({nsMultiplier, multiplier, weight});
 			let newText = text.replace('_amount_', `${doseAmount}`);
+			newText = newText.replace('_amount_ml_', doseAmountMl);
 			newText = newText.replace('_ns_amount_', `${nsAmount}`);
 			return capitalize(newText);
 		},
