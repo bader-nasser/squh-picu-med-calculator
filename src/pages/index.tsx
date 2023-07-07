@@ -26,23 +26,25 @@ const {categories} = data;
 
 type ChangedValuesProps = {
 	name?: string;
-	mrn?: string;
+	mrn?: number;
 	age?: number;
 	weight?: number;
 	height?: number;
 };
 
-const minNameLength = 3;
+const minNameLength = 7;
+const namePattern = /^\D{7,}$/;
+const mrnPattern = /^\d{8,10}$/;
 
 async function getSavedData() {
 	const name = await localforage.getItem<string>('name');
-	const mrn = await localforage.getItem<string>('mrn');
+	const mrn = await localforage.getItem<number>('mrn');
 	const age = await localforage.getItem<number>('age');
 	const weight = await localforage.getItem<number>('weight');
 	const height = await localforage.getItem<number>('height');
 	return {
 		name: name ?? '',
-		mrn: mrn ?? '',
+		mrn: mrn ?? undefined,
 		age: age ?? undefined,
 		weight: weight ?? undefined,
 		height: height ?? undefined,
@@ -53,7 +55,7 @@ export default function Home() {
 	const router = useRouter();
 	const [form] = Form.useForm();
 	const [name, setName] = useState('');
-	const [mrn, setMrn] = useState('');
+	const [mrn, setMrn] = useState<number>();
 	const [age, setAge] = useState<number>();
 	const [weight, setWeight] = useState<number>();
 	const [height, setHeight] = useState<number>();
@@ -70,6 +72,7 @@ export default function Home() {
 				setWeight(data.weight);
 				setHeight(data.height);
 				setHasOldData(Boolean(data.name));
+				await form.validateFields();
 			} catch (error) {
 				console.error(error);
 			}
@@ -85,7 +88,7 @@ export default function Home() {
 		}
 
 		if (mrn !== undefined) {
-			setMrn(mrn.trim());
+			setMrn(mrn);
 		}
 
 		if (age !== undefined) {
@@ -113,7 +116,11 @@ export default function Home() {
 		}
 	};
 
-	const isDataReady = Boolean(name && mrn && name.length >= minNameLength && age && weight);
+	const isDataReady = Boolean(
+		name && namePattern.test(name)
+		&& mrn && mrnPattern.test(`${mrn}`)
+		&& age && weight,
+	);
 
 	async function setData() {
 		await localforage.setItem('name', name);
@@ -126,7 +133,7 @@ export default function Home() {
 	async function removeData() {
 		form.resetFields();
 		setName('');
-		setMrn('');
+		setMrn(undefined);
 		setAge(undefined);
 		setWeight(undefined);
 		setHeight(undefined);
@@ -138,8 +145,8 @@ export default function Home() {
 				<Row>
 					<Col
 						xs={{span: 22, offset: 1}}
-						lg={{span: 12, offset: 6}}
-						xxl={{span: 8, offset: 8}}
+						lg={{span: 20, offset: 2}}
+						xxl={{span: 18, offset: 3}}
 					>
 						<Row align='middle' justify='center' className='mb-2'>
 							<Space align='center' direction='vertical'>
@@ -150,140 +157,193 @@ export default function Home() {
 
 								<Title style={{color: 'white'}}>{pkg.prettyName}</Title>
 							</Space>
+
 						</Row>
 
-						<Form
-							className={`${styles['white-text']} mb-5`}
-							form={form}
-							layout='horizontal'
-							size='large'
-							labelCol={{span: 8}}
-							wrapperCol={{span: 8}}
-							onValuesChange={onValuesChange}
-						>
-							{hasOldData && (
-								<Row justify='center' className='mb-2'>
-									<Col>
-										<Title
-											level={3}
-											style={{color: 'white'}}
-										>
-											Current Patient&apos;s Data!
-										</Title>
+						{hasOldData && (
+							<Row justify='center' className='mb-2'>
+								<Col>
+									<Title
+										level={3}
+										style={{color: 'white'}}
+									>
+										Current Patient&apos;s Data!
+									</Title>
 
-										<p>To delete it, you must use the {' '}
-											<Button
-												ghost
+									<p
+										style={{color: 'white'}}
+									>
+										To delete it, you must use the {' '}
+										<Button
+											ghost
+											style={{
+												background: 'red',
+												color: 'white',
+											}}
+											className='mx-1'
+											onClick={async () => {
+												document.body.style.cursor = 'wait';
+												await localforage.clear();
+												setHasOldData(false);
+												await removeData();
+												document.body.style.cursor = 'auto';
+											}}
+										>
+											Change Patient
+										</Button> {' '}
+										button!
+									</p>
+								</Col>
+							</Row>
+						)}
+
+						<Row>
+							<Col
+								xs={{span: 24}}
+								md={{span: 8}}
+							>
+								<Form
+									className={`${styles['white-text']} mb-5`}
+									form={form}
+									layout='horizontal'
+									size='large'
+									labelCol={{span: 8}}
+									onValuesChange={onValuesChange}
+								>
+									<FormItem
+										name='name'
+										label='Patient&apos;s Name'
+										rules={[
+											{
+												required: true,
+												min: minNameLength,
+												type: 'string',
+											},
+											{
+												pattern: /^\D{7,}$/,
+												validator(rule, value, callback) {
+													if (!rule.pattern?.test(value as string)) {
+														callback('Use letters, spaces and no numbers');
+													}
+												},
+											},
+										]}
+									>
+										<Input/>
+									</FormItem>
+
+									<FormItem
+										name='mrn'
+										label='Patient&apos;s MRN'
+										rules={[
+											{
+												required: true,
+												type: 'number',
+												pattern: /^\d{8,10}$/,
+											},
+											{
+												pattern: /^\d{8,10}$/,
+												validator(rule, value, callback) {
+													if (!rule.pattern?.test(value as string)) {
+														callback('The length must be between 8-10 numbers');
+													}
+												},
+											},
+										]}
+									>
+										<Input
+											minLength={8}
+											maxLength={10}
+										/>
+									</FormItem>
+
+									<FormItem
+										name='age'
+										label='Age'
+										rules={[{required: true}]}
+									>
+										<InputNumber
+											addonAfter='years'
+											min={1}
+											max={120}
+										/>
+									</FormItem>
+
+									<FormItem
+										name='weight'
+										label='Weight'
+										rules={[{required: true}]}
+									>
+										<InputNumber
+											addonAfter='kg'
+											min={2}
+											max={150}
+										/>
+									</FormItem>
+
+									<FormItem
+										name='height'
+										label='Height'
+									>
+										<InputNumber
+											addonAfter='cm'
+											min={40}
+											max={300}
+										/>
+									</FormItem>
+
+									<FormItem wrapperCol={{offset: 8, span: 16}}>
+										<Button
+											htmlType='reset'
+											onClick={async () => {
+												await removeData();
+											}}
+										>
+											Clear
+										</Button>
+									</FormItem>
+								</Form>
+							</Col>
+
+							<Col
+								xs={{span: 24}}
+								md={{span: 16}}
+							>
+								{Object.entries(categories).map(([key, value]) => (
+									<Row
+										key={key}
+										justify='center'
+										style={{paddingBlockEnd: '1rem'}}
+									>
+										<Col>
+											<Card
+												hoverable={isDataReady}
 												style={{
-													background: 'red',
-													color: 'white',
+													cursor: isDataReady
+														? 'pointer'
+														: 'not-allowed',
 												}}
-												className='mx-1'
+												className={
+													isDataReady
+														? styles.active
+														: styles.disabled
+												}
 												onClick={async () => {
-													document.body.style.cursor = 'wait';
-													await localforage.clear();
-													setHasOldData(false);
-													await removeData();
-													document.body.style.cursor = 'auto';
+													if (isDataReady) {
+														document.body.style.cursor = 'wait';
+														await setData();
+														await router.push(`/${key}`);
+														document.body.style.cursor = 'auto';
+													}
 												}}
 											>
-												Change Patient
-											</Button> {' '}
-											button!
-										</p>
-									</Col>
-								</Row>
-							)}
+												{prettify(value)}
+											</Card>
+										</Col>
+									</Row>
+								))}
 
-							<FormItem
-								name='name'
-								label='Patient&apos;s Name'
-								rules={[{required: true, min: minNameLength}]}
-							>
-								<Input/>
-							</FormItem>
-
-							<FormItem
-								name='mrn'
-								label='Patient&apos;s MRN'
-								rules={[{required: true}]}
-							>
-								<Input/>
-							</FormItem>
-
-							<FormItem
-								name='age'
-								label='Age'
-								rules={[{required: true}]}
-							>
-								<InputNumber
-									addonAfter='years'
-									min={1}
-									max={120}
-								/>
-							</FormItem>
-
-							<FormItem
-								name='weight'
-								label='Weight'
-								rules={[{required: true}]}
-							>
-								<InputNumber
-									addonAfter='kg'
-									min={2}
-									max={150}
-								/>
-							</FormItem>
-
-							<FormItem
-								name='height'
-								label='Height'
-							>
-								<InputNumber
-									addonAfter='cm'
-									min={40}
-									max={300}
-								/>
-							</FormItem>
-
-							<FormItem wrapperCol={{offset: 8, span: 16}}>
-								<Button
-									htmlType='reset'
-									onClick={async () => {
-										await removeData();
-									}}
-								>
-									Clear
-								</Button>
-							</FormItem>
-						</Form>
-
-						<Row
-							gutter={[16, 16]}
-							justify='center'
-						>
-							{Object.entries(categories).map(([key, value]) => (
-								<Col key={key}>
-									<Card
-										hoverable={isDataReady}
-										style={{
-											cursor: isDataReady ? 'pointer' : 'not-allowed',
-										}}
-										className={isDataReady
-											? styles.active : styles.disabled}
-										onClick={async () => {
-											if (isDataReady) {
-												document.body.style.cursor = 'wait';
-												await setData();
-												await router.push(`/${key}`);
-												document.body.style.cursor = 'auto';
-											}
-										}}
-									>
-										{prettify(value)}
-									</Card>
-								</Col>
-							))}
+							</Col>
 						</Row>
 					</Col>
 				</Row>
