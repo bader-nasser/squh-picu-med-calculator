@@ -4,8 +4,16 @@ export function prettifyKeyName(key: string): string {
 	return newText;
 }
 
-export function prettify(key: string): string {
-	return key.split('-').map(k => `${k[0].toUpperCase()}${k.slice(1)}`).join(' ');
+type PrettifyOptions = {
+	splitText?: string;
+};
+
+export function prettify(text: string, options: PrettifyOptions = {}): string {
+	const {splitText = '-'} = options;
+	return text
+		.split(splitText)
+		.map(t => `${t[0].toUpperCase()}${t.slice(1)}`)
+		.join(' ');
 }
 
 export function round(value: number): number {

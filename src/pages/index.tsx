@@ -167,7 +167,7 @@ export default function Home() {
 										level={3}
 										style={{color: 'white'}}
 									>
-										Current Patient&apos;s Data!
+										Current Patient&apos;s Data exists!
 									</Title>
 
 									<p

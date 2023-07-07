@@ -72,7 +72,7 @@ export default function Category({category}: InferGetStaticPropsType<typeof getS
 	const router = useRouter();
 	const [isLoading, setIsLoading] = useState(true);
 	const [name, setName] = useState<string>('');
-	const [mrn, setMrn] = useState<string>('');
+	const [mrn, setMrn] = useState<number>();
 	const [age, setAge] = useState<number>();
 	const [weight, setWeight] = useState<number>();
 	const [height, setHeight] = useState<number>();
@@ -80,12 +80,12 @@ export default function Category({category}: InferGetStaticPropsType<typeof getS
 	async function getData() {
 		try {
 			const name = await localforage.getItem<string>('name');
-			const mrn = await localforage.getItem<string>('mrn');
+			const mrn = await localforage.getItem<number>('mrn');
 			const age = await localforage.getItem<number>('age');
 			const weight = await localforage.getItem<number>('weight');
 			const height = await localforage.getItem<number>('height');
-			setName(name ?? '');
-			setMrn(mrn ?? '');
+			setName(prettify(name ?? '', {splitText: ' '}));
+			setMrn(mrn ?? undefined);
 			setAge(age ?? undefined);
 			setWeight(weight ?? undefined);
 			setHeight(height ?? undefined);
