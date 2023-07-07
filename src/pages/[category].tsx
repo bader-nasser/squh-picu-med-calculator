@@ -110,6 +110,7 @@ export default function Category({category}: InferGetStaticPropsType<typeof getS
 						sm={{span: 20, offset: 2}}
 						lg={{span: 18, offset: 3}}
 						xxl={{span: 16, offset: 4}}
+						className='print-flex-100'
 					>
 						<Row align='middle' justify='space-between' className='mb-2'>
 							<Col>
@@ -119,7 +120,12 @@ export default function Category({category}: InferGetStaticPropsType<typeof getS
 										alt='Logo of Sultan Qaboos University Hospital'
 									/>
 
-									<Link href='/'>{pkg.prettyName}</Link>
+									<Link
+										href='/'
+										className='print-bigger'
+									>
+										{pkg.prettyName}
+									</Link>
 								</Space>
 							</Col>
 
@@ -218,11 +224,16 @@ export default function Category({category}: InferGetStaticPropsType<typeof getS
 						{isDataReady && (
 							<>
 								<p>
-									Patient&apos;s Name: <strong>{name}</strong> &mdash; {' '}
-									Patient&apos;s MRN: <strong>{mrn}</strong> &mdash; {' '}
-									Age: <strong>{age}</strong> years &mdash; {' '}
-									Weight: <strong>{weight}</strong> kg &mdash; {' '}
-									Height: <strong>{height ?? 'Not Provided'}</strong> cm
+									Patient&apos;s Name: {' '}
+									<strong className='print-bigger'>{name}</strong> &mdash; {' '}
+									Patient&apos;s MRN: {' '}
+									<strong className='print-bigger'>{mrn}</strong> &mdash; {' '}
+									Age: {' '}
+									<strong className='print-bigger'>{age}</strong> years &mdash; {' '}
+									Weight: {' '}
+									<strong className='print-bigger'>{weight}</strong> kg &mdash; {' '}
+									Height: {' '}
+									<strong className='print-bigger'>{height ?? 'Not Provided'}</strong> cm
 								</p>
 
 								<LoadCategory category={category} weight={weight!}/>

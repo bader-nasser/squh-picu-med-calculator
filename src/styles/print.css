@@ -45,4 +45,17 @@
 	.no-print {
 		display: none !important;
 	}
+
+	.print-flex-100 {
+		max-width: 100% !important;
+		flex-basis: 100% !important;
+	}
+
+	.print-bigger {
+		font-size: 12pt !important;
+	}
+
+	.print-margin {
+		margin-block-end: 0.4em !important;
+	}
 }

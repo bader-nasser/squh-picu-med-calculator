@@ -133,7 +133,12 @@ export default function OtherImportantInfusions({weight}: Props) {
 
 	return (
 		<>
-			<Title level={2}>Other Important Infusions</Title>
+			<Title
+				level={2}
+				className='print-bigger print-margin'
+			>
+				Other Important Infusions
+			</Title>
 
 			<Table
 				columns={columns}

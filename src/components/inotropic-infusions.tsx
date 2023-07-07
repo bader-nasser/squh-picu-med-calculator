@@ -172,7 +172,12 @@ export default function InotropicInfusions({weight}: Props) {
 
 	return (
 		<>
-			<Title level={2}>Inotropic Infusions</Title>
+			<Title
+				level={2}
+				className='print-bigger print-margin'
+			>
+				Inotropic Infusions
+			</Title>
 
 			<Table
 				columns={columns}

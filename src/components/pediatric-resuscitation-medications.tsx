@@ -186,7 +186,12 @@ export default function PediatricResuscitationMedications({weight}: Props) {
 
 	return (
 		<>
-			<Title level={2}>Pediatric Resuscitation Medications</Title>
+			<Title
+				level={2}
+				className='print-bigger print-margin'
+			>
+				Pediatric Resuscitation Medications
+			</Title>
 
 			<Table
 				columns={columns}

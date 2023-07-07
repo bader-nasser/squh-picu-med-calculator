@@ -209,7 +209,12 @@ export default function SedationAndAnaesthesia({weight}: Props) {
 
 	return (
 		<>
-			<Title level={2}>Sedation and Anaesthesia</Title>
+			<Title
+				level={2}
+				className='print-bigger print-margin'
+			>
+				Sedation and Anaesthesia
+			</Title>
 
 			<Table
 				columns={columns}
