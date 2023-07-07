@@ -75,7 +75,7 @@
                             "properties": {
                                 "text": {
                                     "type": "string",
-                                    "description": "Use special values for calculations:\n\n`_amount_` which is equal to (multiplier x weight).\n\n`_ns_amount_` which is equal to (50 - (ns_multiplier x weight)).\n\nNote: if ns_multiplier = multiplier, then no need to use ns_multiplier"
+                                    "description": "Use special values for calculations:\n\n`_amount_` which is equal to (`multiplier` x weight).\n\n`_ns_amount_` which is equal to (50 - (`ns_multiplier` x weight)).\n\nNote: if `ns_multiplier` = `multiplier`, then no need to use `ns_multiplier`"
                                 },
                                 "multiplier": {
                                     "type": "number",
@@ -83,7 +83,11 @@
                                 },
                                 "ns_multiplier": {
                                     "type": "number",
-                                    "description": "Optional key, use it when it's NOT equal to the multiplier"
+                                    "description": "Optional key, use it when it's NOT equal to the `multiplier`"
+                                },
+                                "divider": {
+                                    "type": "number",
+                                    "description": "The devider applied when calculating `_amount_ml_` and `_ns_amount_` used in `text`. Optional"
                                 }
                             },
                             "required": [

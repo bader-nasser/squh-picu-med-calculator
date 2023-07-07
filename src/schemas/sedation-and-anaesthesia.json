@@ -93,7 +93,7 @@
                                 "properties": {
                                     "text": {
                                         "type": "string",
-                                        "description": "Use special values for calculations: `_amount_` which is equal to (multiplier x weight).\n\n`_amount_ml_` which is equal to ((multiplier x weight) / divider).\n\n`_ns_amount_` which is equal to (50 - ((multiplier x weight) / divider))."
+                                        "description": "Use special values for calculations:\n\n`_amount_` which is equal to (`multiplier` x weight).\n\n`_amount_ml_` which is equal to ((`multiplier` x weight) / `divider`).\n\n`_ns_amount_` which is equal to (50 - ((`multiplier` x weight) / `divider`))."
                                     },
                                     "multiplier": {
                                         "anyOf": [
@@ -111,7 +111,7 @@
                                     },
                                     "divider": {
                                         "type": "number",
-                                        "description": "The divider applied when calculating `_amout_ml_` and `_ns_amount_` used in `text`."
+                                        "description": "The divider applied when calculating `_amount_ml_` and `_ns_amount_` used in `text`."
                                     }
                                 },
                                 "required": [

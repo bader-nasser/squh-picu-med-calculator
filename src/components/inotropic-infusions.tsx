@@ -29,11 +29,12 @@ export type InotropicInfusion = {
 		/**
 		 * Use special values for calculations:
 		 *
-		 * `_amount_` which is equal to (multiplier x weight).
+		 * `_amount_` which is equal to (`multiplier` x weight).
 		 *
-		 * `_ns_amount_` which is equal to (50 - (ns_multiplier x weight)).
+		 * `_ns_amount_` which is equal to (50 - (`ns_multiplier` x weight)).
 		 *
-		 * Note: if ns_multiplier = multiplier, then no need to use ns_multiplier
+		 * Note: if `ns_multiplier` = `multiplier`, then no need to use
+		 * `ns_multiplier`
 		 */
 		text: string;
 		/**
@@ -44,14 +45,14 @@ export type InotropicInfusion = {
 		 */
 		multiplier: number;
 		/**
-		 * Optional key, use it when it's NOT equal to the multiplier
+		 * Optional key, use it when it's NOT equal to the `multiplier`
 		 * @example
 		 * "ns_multiplier": 0.3
 		 */
 		ns_multiplier?: number;
 		/**
-		 * the devider applied when calculating '_amount_ml_' and '_ns_amount_' used
-		 * in `text`.
+		 * The devider applied when calculating `_amount_ml_` and `_ns_amount_` used
+		 * in `text`. Optional
 		 */
 		divider?: number;
 	};

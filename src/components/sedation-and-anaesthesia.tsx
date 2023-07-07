@@ -11,11 +11,12 @@ const {medications}: {medications: SedationAndAnaesthesiaDataType[]} = data;
 type FormulaObjectData = {
 	/**
 	 * Use special values for calculations:
-	 * `_amount_` which is equal to (multiplier x weight).
 	 *
-	 * `_amount_ml_` which is equal to ((multiplier x weight) / divider).
+	 * `_amount_` which is equal to (`multiplier` x weight).
 	 *
-	 * `_ns_amount_` which is equal to (50 - ((multiplier x weight) / divider)).
+	 * `_amount_ml_` which is equal to ((`multiplier` x weight) / `divider`).
+	 *
+	 * `_ns_amount_` which is equal to (50 - ((`multiplier` x weight) / `divider`)).
 	 */
 	text: string;
 	/**
