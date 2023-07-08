@@ -211,7 +211,7 @@ export default function SedationAndAnaesthesia({weight}: Props) {
 		<>
 			<Title
 				level={2}
-				className='print-bigger print-margin'
+				className='print-bigger print-margin print-center'
 			>
 				Sedation and Anaesthesia
 			</Title>
