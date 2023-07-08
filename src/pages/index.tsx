@@ -167,7 +167,7 @@ export default function Home() {
 										level={3}
 										style={{color: 'white'}}
 									>
-										Current Patient&apos;s Data exists!
+										Patient&apos;s Data exists!
 									</Title>
 
 									<p
@@ -200,7 +200,7 @@ export default function Home() {
 						<Row>
 							<Col
 								xs={{span: 24}}
-								md={{span: 8}}
+								md={{span: 12}}
 							>
 								<Form
 									className={`${styles['white-text']} mb-5`}
@@ -307,16 +307,16 @@ export default function Home() {
 
 							<Col
 								xs={{span: 24}}
-								md={{span: 16}}
+								md={{span: 12}}
 							>
-								{Object.entries(categories).map(([key, value]) => (
-									<Row
-										key={key}
-										justify='center'
-										style={{paddingBlockEnd: '1rem'}}
-									>
-										<Col>
+								<Row
+									gutter={[16, 16]}
+									justify={{xs: 'center', lg: 'start'}}
+								>
+									{Object.entries(categories).map(([key, value]) => (
+										<Col key={key} md={{span: 20, offset: 2}}>
 											<Card
+												size='small'
 												hoverable={isDataReady}
 												style={{
 													cursor: isDataReady
@@ -340,9 +340,8 @@ export default function Home() {
 												{prettify(value)}
 											</Card>
 										</Col>
-									</Row>
-								))}
-
+									))}
+								</Row>
 							</Col>
 						</Row>
 					</Col>
