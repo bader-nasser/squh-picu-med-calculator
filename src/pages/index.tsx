@@ -13,6 +13,7 @@ import {
 	Button,
 } from 'antd';
 import localforage from 'localforage';
+import Head from 'next/head';
 import pkg from '../../package.json';
 import {prettify, round} from '@/utilities';
 import data from '@/data/categories.json';
@@ -141,6 +142,12 @@ export default function Home() {
 
 	return (
 		<Layout className={`layout ${styles.frontpage}`}>
+			<Head>
+				<title>{pkg.prettyName}</title>
+				<meta name='viewport' content='width=device-width, initial-scale=1'/>
+				<meta key='title' property='og:title' content={pkg.prettyName}/>
+			</Head>
+
 			<Content className='content'>
 				<Row>
 					<Col

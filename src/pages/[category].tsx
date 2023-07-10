@@ -16,6 +16,7 @@ import {
 	Spin,
 	Space,
 } from 'antd';
+import Head from 'next/head';
 import pkg from '../../package.json';
 import data from '@/data/categories.json';
 import {prettify} from '@/utilities';
@@ -101,8 +102,16 @@ export default function Category({category}: InferGetStaticPropsType<typeof getS
 
 	const isDataReady = Boolean(name && mrn && age && weight);
 
+	const title = `${prettify(category)} - ${pkg.prettyName}`;
+
 	return (
 		<Layout className='layout'>
+			<Head>
+				<title>{title}</title>
+				<meta name='viewport' content='width=device-width, initial-scale=1'/>
+				<meta key='title' property='og:title' content={title}/>
+			</Head>
+
 			<Content className='content'>
 				<Row>
 					<Col
