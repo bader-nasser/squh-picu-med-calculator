@@ -37,6 +37,8 @@ for = "/*"
 [headers.values]
 X-Frame-Options = "DENY"
 X-XSS-Protection = "1; mode=block"
+X-Content-Type-Options = "nosniff"
+Strict-Transport-Security = "max-age=31536000"
 # Content-Security-Policy = "frame-ancestors https://www.facebook.com"
 
 # Multi-value headers are expressed with multi-line strings.
@@ -46,16 +48,18 @@ X-XSS-Protection = "1; mode=block"
 # no-store,
 # must-revalidate'''
 
-# Basic-Auth allows you to password protect your whole site.
-# This feature may not be available on all plans.
-# Basic-Auth = "someuser:somepassword anotheruser:anotherpassword"
+[[headers]]
+for = "/*.js"
+[headers.values]
+cache-control = "max-age=31536000"
 
-# Use [dev] to set configuration overrides for local
-# development environments run using Netlify Dev - except
-# for environment variables. Environment variables for Netlify
-# Dev should be set under [context.dev.environment] instead.
 
-[dev]
-command = "pnpm dev"
-port = 3000
-publish = ".next"
+[[headers]]
+for = "/*.css"
+[headers.values]
+cache-control = "max-age=31536000"
+
+[[headers]]
+for = "/_next/*.json"
+[headers.values]
+cache-control = "max-age=31536000"
