@@ -2,11 +2,13 @@
 // https://nextjs.org/docs/pages/building-your-application/rendering/static-site-generation
 // https://nextjs.org/docs/pages/building-your-application/data-fetching/get-static-props
 import {useState, useEffect} from 'react';
+import {type GetStaticProps, type InferGetStaticPropsType} from 'next';
+import Head from 'next/head';
 import dynamic from 'next/dynamic';
 import {useRouter} from 'next/router';
-import {PrinterOutlined} from '@ant-design/icons';
 import Link from 'next/link';
-import {type GetStaticProps, type InferGetStaticPropsType} from 'next';
+import Image from 'next/image';
+import {PrinterOutlined} from '@ant-design/icons';
 import localforage from 'localforage';
 import {
 	Row,
@@ -16,7 +18,6 @@ import {
 	Spin,
 	Space,
 } from 'antd';
-import Head from 'next/head';
 import pkg from '../../package.json';
 import data from '@/data/categories.json';
 import {prettify} from '@/utilities';
@@ -108,7 +109,6 @@ export default function Category({category}: InferGetStaticPropsType<typeof getS
 		<Layout className='layout'>
 			<Head>
 				<title>{title}</title>
-				<meta name='viewport' content='width=device-width, initial-scale=1'/>
 				<meta key='title' property='og:title' content={title}/>
 			</Head>
 
@@ -124,7 +124,10 @@ export default function Category({category}: InferGetStaticPropsType<typeof getS
 						<Row align='middle' justify='space-between' className='mb-2'>
 							<Col>
 								<Space align='center'>
-									<img
+									<Image
+										width='323'
+										height='65'
+										style={{maxWidth: '100%', height: 'auto'}}
 										src='/logo_small.png'
 										alt='Logo of Sultan Qaboos University Hospital'
 									/>

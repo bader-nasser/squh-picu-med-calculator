@@ -49,6 +49,11 @@ Strict-Transport-Security = "max-age=31536000"
 # must-revalidate'''
 
 [[headers]]
+for = "/sw.js"
+[headers.values]
+"Cache-Control" = "no-cache"
+
+[[headers]]
 for = "/*.js"
 [headers.values]
 # cache-control = "max-age=31536000"
