@@ -50,7 +50,18 @@ const OtherImportantInfusions = dynamic(async () =>
 	loading: () => <Spin size='large'/>,
 });
 
-function LoadCategory({category, weight}: {category: string; weight: number}) {
+const DefibrillationAndEquipments = dynamic(async () =>
+	import('@/components/defibrillation-and-equipments'), {
+	loading: () => <Spin size='large'/>,
+});
+
+type LoadCategoryProps = {
+	category: string;
+	age: number;
+	weight: number;
+};
+
+function LoadCategory({category, age, weight}: LoadCategoryProps) {
 	if (category === categories['pediatric-resuscitation-medications']) {
 		return <PediatricResuscitationMedications weight={weight}/>;
 	}
@@ -67,7 +78,15 @@ function LoadCategory({category, weight}: {category: string; weight: number}) {
 		return <SedationAndAnaesthesia weight={weight}/>;
 	}
 
-	return <OtherImportantInfusions weight={weight}/>;
+	if (category === categories['other-important-infusions']) {
+		return <OtherImportantInfusions weight={weight}/>;
+	}
+
+	if (category === categories['defibrillation-and-equipments']) {
+		return <DefibrillationAndEquipments weight={weight} age={age}/>;
+	}
+
+	return <div>Unknown category!</div>;
 }
 
 export default function Category({category}: InferGetStaticPropsType<typeof getStaticProps>) {
@@ -248,7 +267,7 @@ export default function Category({category}: InferGetStaticPropsType<typeof getS
 									<strong className='print-bigger'>{height ?? 'Not Provided'}</strong> cm
 								</p>
 
-								<LoadCategory category={category} weight={weight!}/>
+								<LoadCategory category={category} age={age!} weight={weight!}/>
 							</>
 						)}
 					</Col>
