@@ -98,7 +98,7 @@ export default function Home() {
 			if (age === null) {
 				setAge(undefined);
 			} else {
-				setAge(round(age));
+				setAge(age);
 			}
 		}
 
@@ -106,7 +106,7 @@ export default function Home() {
 			if (weight === null) {
 				setWeight(undefined);
 			} else {
-				setWeight(round(weight));
+				setWeight(weight);
 			}
 		}
 
@@ -275,7 +275,7 @@ export default function Home() {
 									>
 										<InputNumber
 											addonAfter='years'
-											min={1}
+											min={0.002}
 											max={120}
 										/>
 									</FormItem>
@@ -287,7 +287,7 @@ export default function Home() {
 									>
 										<InputNumber
 											addonAfter='kg'
-											min={2}
+											min={0.5}
 											max={150}
 										/>
 									</FormItem>

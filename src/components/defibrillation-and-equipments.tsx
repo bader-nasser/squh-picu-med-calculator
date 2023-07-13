@@ -1,7 +1,55 @@
-import {Card, Space, Typography} from 'antd';
+import {Alert, Card, Space, Typography} from 'antd';
 import {round} from '@/utilities';
 
 const {Title} = Typography;
+
+function getEttSize({weight, age}: {weight: number; age: number}): string {
+	const uncuffedEttSize = ((age / 4) + 4);
+	const cuffedEttSize = ((age / 4) + 3);
+
+	if (weight < 1) {
+		return `${2.5 * uncuffedEttSize} uncuffed`;
+	}
+
+	if (weight >= 1 && weight <= 2) {
+		return `${3 * uncuffedEttSize} uncuffed`;
+	}
+
+	// Todo: revise
+	if (weight >= 3 && weight <= 5) {
+		return `${3.5 * uncuffedEttSize} uncuffed`;
+	}
+
+	if (weight >= 6 && weight <= 9) {
+		return `${3.5 * uncuffedEttSize} uncuffed, ${3 * cuffedEttSize} cuffed`;
+	}
+
+	if (weight >= 10 && weight <= 11) {
+		return `${4 * uncuffedEttSize} uncuffed, ${3.5 * cuffedEttSize} cuffed`;
+	}
+
+	if (weight >= 12 && weight <= 14) {
+		return `${4.5 * uncuffedEttSize} uncuffed, ${4 * cuffedEttSize} cuffed`;
+	}
+
+	if (weight >= 15 && weight <= 18) {
+		return `${5 * uncuffedEttSize} uncuffed, ${4.5 * cuffedEttSize} cuffed`;
+	}
+
+	if (weight >= 19 && weight <= 23) {
+		return `${5.5 * uncuffedEttSize} uncuffed, ${5 * cuffedEttSize} cuffed`;
+	}
+
+	if (weight >= 24 && weight <= 29) {
+		return `${6 * cuffedEttSize} cuffed`;
+	}
+
+	if (weight >= 30 && weight <= 36) {
+		return `${6.5 * cuffedEttSize} cuffed`;
+	}
+
+	return 'No data availabe for weights > 36!';
+}
 
 function getEttDepth(weight: number): number | string {
 	if (weight === 0.5) {
@@ -258,8 +306,14 @@ export default function DefibrillationAndEquipments({age, weight}: Props) {
 				level={2}
 				className='print-bigger print-margin print-center'
 			>
-				Defibrillation And Equipments
+				Defibrillation and Equipments
 			</Title>
+
+			<Alert
+				message='This page is NOT ready yet and might contain inaccurate data!'
+				type='warning'
+				className='mb-4'
+			/>
 
 			<Space wrap direction='horizontal' align='baseline'>
 				<Card title='Defibrillation' bordered={false}>
@@ -274,7 +328,7 @@ export default function DefibrillationAndEquipments({age, weight}: Props) {
 						<li>Cuffed tube: {cuffedEttSize} mm</li>
 					</ul>
 
-					To be done...
+					{getEttSize({weight, age})}
 				</Card>
 
 				<Card title='B. ETT depth (lip level) (cm)' bordered={false}>

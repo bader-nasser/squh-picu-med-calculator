@@ -1,7 +1,7 @@
 {
 	"name": "squh-picu-med-calculator",
 	"prettyName": "SQUH PICU Med Calculator",
-	"version": "0.43.0",
+	"version": "0.44.0",
 	"repository": "bader-nasser/squh-picu-med-calculator",
 	"website": "https://picu-med-calc.netlify.app/",
 	"license": "MIT",
