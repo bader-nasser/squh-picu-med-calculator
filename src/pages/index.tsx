@@ -24,6 +24,7 @@ const {Title} = Typography;
 const {Content, Footer} = Layout;
 const FormItem = Form.Item;
 
+const {prettyName: appName, version} = pkg;
 const {categories} = data;
 
 type ChangedValuesProps = {
@@ -144,8 +145,8 @@ export default function Home() {
 	return (
 		<Layout className={`layout ${styles.frontpage}`}>
 			<Head>
-				<title>{pkg.prettyName}</title>
-				<meta key='title' property='og:title' content={pkg.prettyName}/>
+				<title>{appName}</title>
+				<meta key='title' property='og:title' content={appName}/>
 			</Head>
 
 			<Content className='content'>
@@ -165,7 +166,7 @@ export default function Home() {
 									alt='Logo of Sultan Qaboos University Hospital'
 								/>
 
-								<Title style={{color: 'white'}}>{pkg.prettyName}</Title>
+								<Title style={{color: 'white'}}>{appName}</Title>
 							</Space>
 
 						</Row>
@@ -367,7 +368,7 @@ export default function Home() {
 					>
 						<p>Developed by Bader Nasser</p>
 
-						<p>{pkg.version}</p>
+						<p>{version}</p>
 					</Col>
 				</Row>
 			</Footer>
