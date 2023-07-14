@@ -77,4 +77,29 @@
 	.print-center {
 		text-align: center !important;
 	}
+
+	.print-gap {
+		row-gap: 1ch !important;
+	}
+
+	.print-border {
+		border: 1pt solid black !important;
+	}
+
+	.print-padding {
+		padding-inline: 2ch !important;
+		padding-block-end: 1ch !important;
+	}
+
+	.print-margin-end {
+		margin-inline-end: 1ch !important;
+	}
+
+	.print-no-shadow {
+		box-shadow: unset !important;
+	}
+
+	.print-flex-item {
+		flex: 1 1 0% !important;
+	}
 }

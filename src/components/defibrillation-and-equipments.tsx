@@ -1,4 +1,4 @@
-import {Alert, Card, Space, Typography} from 'antd';
+import {Alert, Card, Row, Col, Typography} from 'antd';
 import {round} from '@/utilities';
 
 const {Title} = Typography;
@@ -310,78 +310,210 @@ export default function DefibrillationAndEquipments({age, weight}: Props) {
 			</Title>
 
 			<Alert
-				message='This page is NOT ready yet and might contain inaccurate data!'
+				message='Note: This section is NOT ready yet and might contain inaccurate data!'
 				type='warning'
 				className='mb-4'
 			/>
 
-			<Space wrap direction='horizontal' align='baseline'>
-				<Card title='Defibrillation' bordered={false}>
-					<p>First Dose: {2 * weight}</p>
-					<p>Second Dose: {4 * weight}</p>
-					<p>Third Dose: {4 * weight}</p>
-				</Card>
+			<Row align='stretch' justify='start' gutter={[16, 16]} className='print-gap'>
+				<Col
+					xs={24}
+					md={12}
+					lg={8}
+					className='print-border print-padding print-margin-end print-flex-item'
+				>
+					<Card
+						title='Defibrillation'
+						bordered={false}
+						className='print-no-shadow'
+					>
+						<p>First Dose: {2 * weight}</p>
+						<p>Second Dose: {4 * weight}</p>
+						<p>Third Dose: {4 * weight}</p>
+					</Card>
+				</Col>
 
-				<Card title='A. ETT size (mm)' bordered={false}>
-					<ul>
-						<li>Uncuffed tube: {uncuffedEttSize} mm</li>
-						<li>Cuffed tube: {cuffedEttSize} mm</li>
-					</ul>
+				<Col
+					xs={24}
+					md={12}
+					lg={8}
+					className='print-border print-padding print-margin-end print-flex-item'
+				>
+					<Card
+						title='A. ETT size (mm)'
+						bordered={false}
+						className='print-no-shadow'
+					>
+						<ul>
+							<li>Uncuffed tube: {uncuffedEttSize} mm</li>
+							<li>Cuffed tube: {cuffedEttSize} mm</li>
+						</ul>
 
-					{getEttSize({weight, age})}
-				</Card>
+						{getEttSize({weight, age})}
+					</Card>
+				</Col>
 
-				<Card title='B. ETT depth (lip level) (cm)' bordered={false}>
-					<ul>
-						<li>Newborn: {6 + weight} cm</li>
-						<li>
-							Others:
-							<ul>
-								<li>Cuffed tube: {3 * cuffedEttSize} cm</li>
-								<li>Uncuffed tube: {3 * uncuffedEttSize} cm</li>
-							</ul>
-						</li>
-					</ul>
+				<Col
+					xs={24}
+					md={12}
+					lg={8}
+					className='print-border print-padding print-margin-end print-flex-item'
+				>
+					<Card
+						title='B. ETT depth (lip level) (cm)'
+						bordered={false}
+						className='print-no-shadow'
+					>
+						<ul>
+							<li>Newborn: {6 + weight} cm</li>
+							<li>
+								Others:
+								<ul>
+									<li>Cuffed tube: {3 * cuffedEttSize} cm</li>
+									<li>Uncuffed tube: {3 * uncuffedEttSize} cm</li>
+								</ul>
+							</li>
+						</ul>
 
-					{getEttDepth(weight)}
-				</Card>
+						{getEttDepth(weight)}
+					</Card>
+				</Col>
 
-				<Card title='C. Oral airway (mm)' bordered={false}>
-					{getOralAirway(weight)}
-				</Card>
+				<Col
+					xs={24}
+					md={12}
+					lg={8}
+					className='print-border print-padding print-margin-end print-flex-item'
+				>
+					<Card
+						title='C. Oral airway (mm)'
+						bordered={false}
+						className='print-no-shadow'
+					>
+						{getOralAirway(weight)}
+					</Card>
+				</Col>
 
-				<Card title='D. Resuscitation Bag Size' bordered={false}>
-					{getResuscitationBagSize(weight)}
-				</Card>
+				<Col
+					xs={24}
+					md={12}
+					lg={8}
+					className='print-border print-padding print-margin-end print-flex-item'
+				>
+					<Card
+						title='D. Resuscitation Bag Size'
+						bordered={false}
+						className='print-no-shadow'
+					>
+						{getResuscitationBagSize(weight)}
+					</Card>
+				</Col>
 
-				<Card title='E. Laryngoscope Blade Size' bordered={false}>
-					{getLaryngoscopeBladeSize(weight)}
-				</Card>
+				<Col
+					xs={24}
+					md={12}
+					lg={8}
+					className='print-border print-padding print-margin-end print-flex-item'
+				>
+					<Card
+						title='E. Laryngoscope Blade Size'
+						bordered={false}
+						className='print-no-shadow'
+					>
+						{getLaryngoscopeBladeSize(weight)}
+					</Card>
+				</Col>
 
-				<Card title='F. Suction Catheter (Fr.)' bordered={false}>
-					{getSuctionCatheter(weight)}
-				</Card>
+				<Col
+					xs={24}
+					md={12}
+					lg={8}
+					className='print-border print-padding print-margin-end print-flex-item'
+				>
+					<Card
+						title='F. Suction Catheter (Fr.)'
+						bordered={false}
+						className='print-no-shadow'
+					>
+						{getSuctionCatheter(weight)}
+					</Card>
+				</Col>
 
-				<Card title='G. NG Tube (Fr.)' bordered={false}>
-					{getNgTube(weight)}
-				</Card>
+				<Col
+					xs={24}
+					md={12}
+					lg={8}
+					className='print-border print-padding print-margin-end print-flex-item'
+				>
+					<Card
+						title='G. NG Tube (Fr.)'
+						bordered={false}
+						className='print-no-shadow'
+					>
+						{getNgTube(weight)}
+					</Card>
+				</Col>
 
-				<Card title='H. Urinary catheter (Fr.)' bordered={false}>
-					{getUrinaryCatheter(weight)}
-				</Card>
+				<Col
+					xs={24}
+					md={12}
+					lg={8}
+					className='print-border print-padding print-margin-end print-flex-item'
+				>
+					<Card
+						title='H. Urinary catheter (Fr.)'
+						bordered={false}
+						className='print-no-shadow'
+					>
+						{getUrinaryCatheter(weight)}
+					</Card>
+				</Col>
 
-				<Card title='I. Chest Tube (Fr.)' bordered={false}>
-					{getChestTube(weight)}
-				</Card>
+				<Col
+					xs={24}
+					md={12}
+					lg={8}
+					className='print-border print-padding print-margin-end print-flex-item'
+				>
+					<Card
+						title='I. Chest Tube (Fr.)'
+						bordered={false}
+						className='print-no-shadow'
+					>
+						{getChestTube(weight)}
+					</Card>
+				</Col>
 
-				<Card title='J. IO (ga)' bordered={false}>
-					{getIo(weight)}
-				</Card>
+				<Col
+					xs={24}
+					md={12}
+					lg={8}
+					className='print-border print-padding print-margin-end print-flex-item'
+				>
+					<Card
+						title='J. IO (ga)'
+						bordered={false}
+						className='print-no-shadow'
+					>
+						{getIo(weight)}
+					</Card>
+				</Col>
 
-				<Card title='K. BP Cuff' bordered={false}>
-					{getBpCuff(weight)}
-				</Card>
-			</Space>
+				<Col
+					xs={24}
+					md={12}
+					lg={8}
+					className='print-border print-padding print-margin-end print-flex-item'
+				>
+					<Card
+						title='K. BP Cuff'
+						bordered={false}
+						className='print-no-shadow'
+					>
+						{getBpCuff(weight)}
+					</Card>
+				</Col>
+			</Row>
 		</>
 	);
 }
